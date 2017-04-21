@@ -1,0 +1,5 @@
+web/node_modules
+.env
+web/npm-debug.log
+web/dist
+web/src/public

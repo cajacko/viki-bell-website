@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./scripts/support/run-wordpress
+./scripts/support/log-ip
