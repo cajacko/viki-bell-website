@@ -1,0 +1,7 @@
+{
+  "include": [
+    "./src/**/*.{js,jsx}",
+    "!./src/public/**/*.js",
+    "!./src/views/store/configureStore.js"
+  ]
+}

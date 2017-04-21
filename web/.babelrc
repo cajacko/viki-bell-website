@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "es2015",
+    "stage-2",
+    "react"
+  ],
+  "plugins": [
+    "transform-flow-strip-types",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./src/views/components",
+        "constants": "./src/constants",
+        "helpers": "./src/helpers",
+        "routes": "./src/views/routes",
+        "views": "./src/views",
+        "store": "./src/views/store",
+        "reducers": "./src/views/reducers"
+      },
+      "extensions": [".js", ".jsx"]
+      }
+    ]
+  ]
+}
