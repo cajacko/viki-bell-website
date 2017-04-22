@@ -57,5 +57,5 @@ nodemon.on('quit', () => {
   });
 
   // eslint-disable-next-line
-  this.stdout.on('data', log => console.log(log));
+  this.stderr.on('data', log => console.log(log));
 });
