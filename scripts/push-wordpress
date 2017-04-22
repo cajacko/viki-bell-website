@@ -8,7 +8,7 @@ copyFiles() {
     # echo $result_string
     echo $f
     # echo $2$result_string
-    docker cp $f wordpress:$2$result_string
+    docker cp $f viki-bell-website-wordpress:$2$result_string
   done
 }
 
