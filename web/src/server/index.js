@@ -3,14 +3,14 @@
 import express from 'express';
 import compression from 'compression';
 import path from 'path';
+import graphqlHTTP from 'express-graphql';
 import './dotenv';
 import cacheServe from './middleware/cacheServe';
-import api from './routes/api';
-import cacheClear from './routes/cacheClear';
-import cacheDelete from './routes/cacheDelete';
 import port from '../constants/port';
 import home from './routes/home';
 import listenLog from '../constants/listenLog';
+import schema from './graph/schema';
+import root from './graph/root';
 
 const app = express();
 
@@ -21,9 +21,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(compression());
 app.use(cacheServe);
 
-app.get(/api\/(.*)/, api);
-app.get('/cache/clear', cacheClear);
-app.get(/cache\/delete\/(.+)/, cacheDelete);
+app.use('/api', graphqlHTTP({
+  schema,
+  rootValue: root,
+  graphiql: true, // Turn off for prod
+}));
+
 app.get('*', home);
 
 app.listen(port, () => {
