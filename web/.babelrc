@@ -6,6 +6,7 @@
   ],
   "plugins": [
     "transform-flow-strip-types",
+    "relay",
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
