@@ -2,6 +2,49 @@
 
 A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.
 
+# Graph QL
+Here's a dummy query:
+```
+fragment PostFragment on Post {
+  id
+  postId
+  title
+  excerpt
+}
+
+query WooYay {
+  posts(first: 2) {
+    edges {
+      cursor
+      node {
+        ...PostFragment
+      }
+    }
+    pageInfo {
+      hasNextPage
+    }
+  }
+
+  post(id:1) {
+    ...PostFragment
+  }
+
+  UG9zdDox:node(id:"UG9zdDox") {
+    id
+    ... on Post {
+      ...PostFragment
+    }
+  }
+
+  UG9zdDoy:node(id:"UG9zdDoy") {
+    id
+    ... on Post {
+      ...PostFragment
+    }
+  }
+}
+```
+
 <!--- generator-readme-start generator-generator-wordpress-react -->
 # generator-wordpress-react
 

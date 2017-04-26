@@ -10,7 +10,6 @@ import port from '../constants/port';
 import home from './routes/home';
 import listenLog from '../constants/listenLog';
 import schema from './graph/schema';
-import root from './graph/root';
 
 const app = express();
 
@@ -23,7 +22,7 @@ app.use(cacheServe);
 
 app.use('/api', graphqlHTTP({
   schema,
-  rootValue: root,
+  pretty: true,
   graphiql: true, // Turn off for prod
 }));
 
