@@ -1,10 +1,5 @@
-/* @flow */
-
 class Post {
-  id: number;
-  excerpt: string;
-
-  constructor(id: number) {
+  constructor(id) {
     this.id = id;
     this.excerpt = 'I am a post excerpt';
   }

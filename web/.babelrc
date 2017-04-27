@@ -11,6 +11,7 @@
       "root": ["./src"],
       "alias": {
         "components": "./src/views/components",
+        "containers": "./src/views/containers",
         "constants": "./src/constants",
         "helpers": "./src/helpers",
         "routes": "./src/views/routes",

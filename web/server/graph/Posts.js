@@ -1,5 +1,3 @@
-/* @flow */
-
 import Post from './Post';
 
 // Function to get all posts

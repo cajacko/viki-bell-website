@@ -1,5 +1,3 @@
-/* @flow */
-
 /**
  *  Copyright (c) 2015, Facebook, Inc.
  *  All rights reserved.
@@ -10,12 +8,7 @@
  */
 
 // Model types
-class Post {
-  title: string;
-  id: string;
-  postId: string;
-  excerpt: string;
-}
+class Post {}
 
 const posts = ['What\'s-it', 'Who\'s-it', 'How\'s-it'].map((title, i) => {
   const post = new Post();
@@ -28,7 +21,7 @@ const posts = ['What\'s-it', 'Who\'s-it', 'How\'s-it'].map((title, i) => {
 
 module.exports = {
   // Export methods that your schema can use to interact with your database
-  getPost: (id: number) => posts.find(w => w.id === id),
+  getPost: id => posts.find(w => w.id === id),
   getPosts: () => posts,
   Post,
 };

@@ -28,7 +28,8 @@
         "optionalDependencies": true,
         "peerDependencies": true
       }
-    ]
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "plugins": [
     "flowtype"
