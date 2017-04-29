@@ -1,0 +1,12 @@
+#!/bin/sh
+
+docker stop viki-bell-website-node
+docker rm viki-bell-website-node
+
+docker stop viki-bell-website-wordpress
+docker rm viki-bell-website-wordpress
+
+docker stop viki-bell-website-mysql
+docker rm viki-bell-website-mysql
+
+./scripts/support/clear-old-volumes
