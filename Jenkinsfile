@@ -24,10 +24,19 @@ node {
 //         sh 'sudo ./scripts/cleanup'
 //     }
 
-    stage('Deploy on server') {
+    stage('Pull repo on server') {
         sh '''ssh -o StrictHostKeyChecking=no root@${dev_ip} 'bash -s' < ./scripts/pull-repo'''
+    }
+
+    stage('Pass .env to server') {
         sh '''scp -o StrictHostKeyChecking=no ./.env root@${dev_ip}:/root/viki-bell-website'''
+    }
+
+    stage('Install on server') {
         sh '''ssh -o StrictHostKeyChecking=no root@${dev_ip} 'bash -s' < ./scripts/deploy-install'''
+    }
+
+    stage('Test on server') {
         sh '''ssh -o StrictHostKeyChecking=no root@${dev_ip} 'bash -s' < ./scripts/deploy-test'''
     }
 }
