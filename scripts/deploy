@@ -3,4 +3,4 @@
 git clone https://github.com/cajacko/viki-bell-website.git
 ls
 ls /
-ls /home
+ls /root
