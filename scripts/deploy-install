@@ -4,4 +4,4 @@ set -e
 
 cd viki-bell-website
 
-./script/install
+./scripts/install
