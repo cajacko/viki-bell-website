@@ -17,7 +17,7 @@ class Post {
   excerpt: string;
 }
 
-const posts = ['What\'s-it', 'Who\'s-it', 'How\'s-it', 'Woo yeah'].map((title, i) => {
+const posts = ['Wuzzup', 'Who\'s-it', 'How\'s-it', 'Woo yeah'].map((title, i) => {
   const post = new Post();
   post.title = title;
   post.id = `${i}`;
