@@ -6,5 +6,3 @@ docker rm viki-bell-website-node
 # docker build --no-cache -t viki-bell-website-node -f dockerfiles/node .
 docker build -t viki-bell-website-node -f dockerfiles/node .
 docker run --link viki-bell-website-mysql:viki-bell-website-mysql -p 80:5000 -d --name viki-bell-website-node --env-file ./.env viki-bell-website-node
-
-./scripts/support/log-ip
