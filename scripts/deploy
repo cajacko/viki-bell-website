@@ -2,6 +2,7 @@
 
 git clone https://github.com/cajacko/viki-bell-website.git
 cd viki-bell-website
+git pull
 
 cat <<EOF >/root/viki-bell-website
 MYSQL_DATABASE=MYSQL_DATABASE
