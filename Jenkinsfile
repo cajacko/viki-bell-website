@@ -1,6 +1,9 @@
 // Setup pipeline parameters:
 //  env: multiline
 //  dev_ip: string
+//
+// Setup githooks to run on push
+// Setup pipeline script to use this one
 
 node {
     stage('Pull repo') {
