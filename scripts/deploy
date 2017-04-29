@@ -1,6 +1,6 @@
 #!/bin/sh
 
 git clone https://github.com/cajacko/viki-bell-website.git
-ls
-ls /
-ls /root
+cd viki-bell-website
+./scripts/install
+./scripts/test
