@@ -7,9 +7,10 @@ import reducers from 'reducers/index';
 
 let composeEnhancers = compose;
 
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line
-  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const reduxDevToolsName = '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__';
+
+if (typeof window !== 'undefined' && window[reduxDevToolsName]) {
+  composeEnhancers = window[reduxDevToolsName];
 }
 
 export default function configureStore(preloadedState: {}) {
