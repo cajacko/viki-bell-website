@@ -2,39 +2,24 @@
 
 import React from 'react';
 
-const Nav = () => {
-  const navItems = [
-    {
-      title: 'Home',
-      url: '/',
-    },
-    {
-      title: 'Item 1',
-      url: '/post/1',
-    },
-    {
-      title: 'Item 2',
-      url: '/post/2',
-    },
-    {
-      title: 'Item 3',
-      url: '/post/3',
-    },
-    {
-      title: 'Item 4',
-      url: '/post/4',
-    },
-  ];
-
-  return (
+const Nav = () => (
+  <nav>
     <ul>
-      {
-        navItems.map(({ url, title }) => (
-          <li key={url}><a href={url}>{title}</a></li>
-        ))
-      }
+      <li><a>Burger</a></li>
+      <li><a>Posts</a></li>
+      <li><a>About</a></li>
+      <li><a>Life</a></li>
+      <li><a>Food</a></li>
+      <li><a>Travel</a></li>
     </ul>
-  );
-};
+
+    <ul>
+      <li><a>Twitter</a></li>
+      <li><a>Instagram</a></li>
+      <li><a>Facebook</a></li>
+      <li><a>More Social</a></li>
+    </ul>
+  </nav>
+);
 
 export default Nav;
