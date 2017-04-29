@@ -1,0 +1,8 @@
+#!/bin/sh
+
+git clone https://github.com/cajacko/viki-bell-website.git
+
+set -e
+
+cd viki-bell-website
+git pull
