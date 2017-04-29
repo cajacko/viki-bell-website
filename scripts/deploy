@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo 'Deployed'
+ls /
+ls
