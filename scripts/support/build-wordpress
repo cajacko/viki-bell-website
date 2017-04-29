@@ -3,5 +3,7 @@
 docker stop viki-bell-website-wordpress
 docker rm viki-bell-website-wordpress
 
+set -e
+
 # docker build --no-cache -t viki-bell-website-wordpress -f dockerfiles/wordpress .
 docker build -t viki-bell-website-wordpress -f dockerfiles/wordpress .

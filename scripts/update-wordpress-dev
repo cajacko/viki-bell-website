@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # ./scripts/support/run-wordpress-dev
 ./scripts/support/run-wordpress
 ./scripts/support/dev-permissions
