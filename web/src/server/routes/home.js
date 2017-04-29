@@ -2,9 +2,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Server from 'views/server';
 
 const mappingPath = path.join(__dirname, '../../public/manifest.json');
 let manifestFileName = 'manifest.js';
@@ -24,10 +21,5 @@ const manifestPath = path.join(__dirname, `../../public/${manifestFileName}`);
 const manifest = fs.readFileSync(manifestPath, { encoding: 'utf-8' });
 
 export default function (req: { url: String }, res: { render: () => {} }) {
-  const html = ReactDOMServer.renderToString(
-    // eslint-disable-next-line
-    <Server url={req.url} context={{}} />,
-  );
-
-  res.render('index', { vendor, main, manifest, html });
+  res.render('index', { vendor, main, manifest });
 }
