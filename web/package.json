@@ -11,16 +11,16 @@
     "flow": "flowcheck",
     "flow:check": "flowcheck check --skip-check",
     "start:production": "node dist/server/index.js",
-    "build:production": "babel-node scripts/build.js --env.production",
-    "relay": "relay-compiler --src ./src/views --schema ./src/server/graph/schema.graphql --extensions=js,jsx",
+    "build:production": "npm run update-schema && npm run relay && babel-node scripts/build.js --env.production",
+    "relay": "relay-compiler --src ./src/views --schema ./src/server/graph/schema.graphql",
     "update-schema": "babel-node scripts/updateSchema.js"
   },
   "author": {
-    "name": "Reading Room",
-    "email": "info.uk@readingroom.com",
-    "url": "https://www.readingroom.com"
+    "name": "Charlie Jackson",
+    "email": "contact@charliejackson.com",
+    "url": "https://charliejackson.com"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": "node, nodejs, javascript, wordpress, php, headless, express, expressjs, react, reactjs, eslint, jest, redux",
   "repository": {
     "type": "git",
@@ -72,6 +72,7 @@
     "node-fetch": "1.6.3",
     "nodemon": "1.11.0",
     "prop-types": "15.5.8",
+    "react-moment-proptypes": "^1.4.0",
     "react-redux": "5.0.4",
     "react-relay": "1.0.0-rc.2",
     "react-router-dom": "4.1.1",

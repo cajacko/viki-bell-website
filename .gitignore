@@ -3,3 +3,5 @@ web/node_modules
 web/npm-debug.log
 web/dist
 web/src/public
+web/**/__generated__/*
+web/src/server/graph/schema.graphql

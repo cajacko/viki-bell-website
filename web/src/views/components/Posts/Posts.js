@@ -8,19 +8,23 @@ const Posts = ({ posts }: {
   posts: Array<{
     id: Number,
     title: String,
-    date: Date,
+    date: {},
     image: String,
-    category: String
+    category: String,
+    imageAlt: String,
+    slug: String,
   }>
 }) => (
   <div>
     {
-      posts.map(({ id, title, date, image, category }: {
+      posts.map(({ id, title, date, image, category, imageAlt, slug }: {
         id: Number,
         title: String,
-        date: Date,
+        date: {},
         image: String,
         category: String,
+        imageAlt: String,
+        slug: String,
       }) => (
         <PostsItem
           key={id}
@@ -28,6 +32,8 @@ const Posts = ({ posts }: {
           date={date}
           image={image}
           category={category}
+          imageAlt={imageAlt}
+          slug={slug}
         />
       ))
     }

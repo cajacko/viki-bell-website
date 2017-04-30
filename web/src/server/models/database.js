@@ -20,6 +20,8 @@ class Post {
   date: Date;
   image: string;
   category: string;
+  imageAlt: string;
+  slug: string;
 }
 
 const posts = ['Wuzzup', 'Yeah yeah yeah', 'How\'s-it', 'Woo yeah'].map((title, i) => {
@@ -31,6 +33,8 @@ const posts = ['Wuzzup', 'Yeah yeah yeah', 'How\'s-it', 'Woo yeah'].map((title, 
   post.date = moment().unix();
   post.image = 'https://unsplash.it/400/300';
   post.category = 'Life';
+  post.imageAlt = 'Image alt tag';
+  post.slug = title;
   return post;
 });
 

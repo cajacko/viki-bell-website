@@ -6,6 +6,7 @@ import {
   graphql,
 } from 'react-relay';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import environment from 'views/relayEnvironment';
 import Posts from 'components/Posts/Posts';
 
@@ -21,6 +22,8 @@ const query = graphql`
           date
           image
           category
+          imageAlt
+          slug
         }
       }
       pageInfo {
@@ -40,7 +43,13 @@ const PostsContainer = () => (
       } else if (props) {
         const posts = [];
 
-        props.posts.edges.map(post => posts.push(post.node));
+        props.posts.edges.map((post) => {
+          const finalPostObject = Object.assign({}, post.node);
+
+          finalPostObject.date = moment.unix(finalPostObject.date);
+
+          return posts.push(finalPostObject);
+        });
 
         return (
           <Posts

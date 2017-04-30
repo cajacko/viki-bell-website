@@ -78,6 +78,14 @@ const postType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The main post category',
     },
+    imageAlt: {
+      type: GraphQLString,
+      description: 'The posts featured image alt tag',
+    },
+    slug: {
+      type: GraphQLString,
+      description: 'The post slug',
+    },
   }),
   interfaces: [nodeInterface],
 });
