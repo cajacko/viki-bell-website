@@ -8,6 +8,7 @@
     "test": "npm run jest && npm run lint && npm run flow",
     "lint": "eslint **/*.{js,jsx}",
     "jest": "jest",
+    "jest-coverage": "jest --coverage",
     "eslint": "eslint",
     "flow": "flowcheck",
     "flow:check": "flowcheck check --skip-check",
@@ -16,6 +17,9 @@
     "build:production": "npm run build-graph-relay && babel-node scripts/build.js --env.production",
     "relay": "relay-compiler --src ./src/views --schema ./src/server/graph/schema.graphql",
     "update-schema": "babel-node scripts/updateSchema.js"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "author": {
     "name": "Charlie Jackson",
