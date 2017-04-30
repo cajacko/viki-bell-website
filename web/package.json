@@ -3,15 +3,16 @@
   "version": "0.0.1",
   "description": "A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.",
   "scripts": {
-    "start": "babel-node scripts/watch.js",
+    "start": "npm run build-graph-relay && babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
     "test": "npm run lint && npm run flow",
     "lint": "eslint **/*.{js,jsx}",
     "eslint": "eslint",
     "flow": "flowcheck",
     "flow:check": "flowcheck check --skip-check",
+    "build-graph-relay": "npm run update-schema && npm run relay",
     "start:production": "node dist/server/index.js",
-    "build:production": "npm run update-schema && npm run relay && babel-node scripts/build.js --env.production",
+    "build:production": "npm run build-graph-relay && babel-node scripts/build.js --env.production",
     "relay": "relay-compiler --src ./src/views --schema ./src/server/graph/schema.graphql",
     "update-schema": "babel-node scripts/updateSchema.js"
   },
