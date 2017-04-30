@@ -9,12 +9,17 @@
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
 
+import moment from 'moment';
+
 // Model types
 class Post {
   title: string;
   id: string;
   postId: string;
   excerpt: string;
+  date: Date;
+  image: string;
+  category: string;
 }
 
 const posts = ['Wuzzup', 'Yeah yeah yeah', 'How\'s-it', 'Woo yeah'].map((title, i) => {
@@ -23,6 +28,9 @@ const posts = ['Wuzzup', 'Yeah yeah yeah', 'How\'s-it', 'Woo yeah'].map((title, 
   post.id = `${i}`;
   post.postId = `${i}`;
   post.excerpt = 'I am an excerpt';
+  post.date = moment().unix();
+  post.image = 'https://unsplash.it/400/300';
+  post.category = 'Life';
   return post;
 });
 

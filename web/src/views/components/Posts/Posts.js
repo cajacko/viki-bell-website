@@ -5,19 +5,29 @@ import PropTypes from 'prop-types';
 import PostsItem from 'components/PostsItem/PostsItem';
 
 const Posts = ({ posts }: {
-  posts: Array<{ id: Number, title: String, excerpt: String }>
+  posts: Array<{
+    id: Number,
+    title: String,
+    date: Date,
+    image: String,
+    category: String
+  }>
 }) => (
   <div>
     {
-      posts.map(({ id, title, excerpt }: {
+      posts.map(({ id, title, date, image, category }: {
         id: Number,
         title: String,
-        excerpt: String
+        date: Date,
+        image: String,
+        category: String,
       }) => (
         <PostsItem
           key={id}
           title={title}
-          excerpt={excerpt}
+          date={date}
+          image={image}
+          category={category}
         />
       ))
     }

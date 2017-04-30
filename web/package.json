@@ -68,6 +68,7 @@
     "graphql-relay": "^0.5.1",
     "isomorphic-fetch": "^2.2.1",
     "memory-cache": "0.1.6",
+    "moment": "^2.18.1",
     "node-fetch": "1.6.3",
     "nodemon": "1.11.0",
     "prop-types": "15.5.8",

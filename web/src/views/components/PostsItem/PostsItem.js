@@ -3,17 +3,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PostsItem = ({ title, excerpt }: { title: String, excerpt: String }) => (
+const PostsItem = ({ title, date, image, category }: {
+  title: String,
+  date: Date,
+  image: String,
+  category: String,
+}) => (
   <article>
+    <img alt="" src={image} />
+    <p>{date}</p>
     <h2>{title}</h2>
-    <p>{excerpt}</p>
-    <a href="">View Post</a>
+    <p>{category}</p>
   </article>
 );
 
 PostsItem.propTypes = {
   title: PropTypes.string.isRequired,
-  excerpt: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  image: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default PostsItem;

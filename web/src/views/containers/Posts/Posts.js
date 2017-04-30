@@ -18,7 +18,9 @@ const query = graphql`
           id
           postId
           title
-          excerpt
+          date
+          image
+          category
         }
       }
       pageInfo {

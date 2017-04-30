@@ -4,6 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLString,
+  GraphQLInt,
 } from 'graphql';
 
 import {
@@ -40,6 +41,7 @@ const { nodeInterface, nodeField } = nodeDefinitions(
   },
   (obj) => {
     if (obj instanceof Post) {
+      // eslint-disable-next-line
       return postType;
     }
 
@@ -63,6 +65,18 @@ const postType = new GraphQLObjectType({
     excerpt: {
       type: GraphQLString,
       description: 'The post excerpt',
+    },
+    date: {
+      type: GraphQLInt,
+      description: 'The posts published date',
+    },
+    image: {
+      type: GraphQLString,
+      description: 'The posts featured image',
+    },
+    category: {
+      type: GraphQLString,
+      description: 'The main post category',
     },
   }),
   interfaces: [nodeInterface],
