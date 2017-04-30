@@ -26,7 +26,7 @@ class PostsItem extends React.Component {
     this.getPostRoute(this.props.slug);
   }
 
-  componentWillUpdate(nextProps: {
+  componentWillReceiveProps(nextProps: {
     title: String,
     date: {},
     image: String,
@@ -37,12 +37,12 @@ class PostsItem extends React.Component {
     this.getPostRoute(nextProps.slug);
   }
 
-  getPostRoute: () => void;
-
   getPostRoute(slug: String) {
     const route = getRouteFromSlug(slug);
     this.setState({ route });
   }
+
+  getPostRoute: () => void;
 
   render() {
     return (

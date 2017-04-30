@@ -57,6 +57,7 @@ const PostsContainer = () => (
           />
         );
       }
+
       return <div>Loading</div>;
     }}
   />
