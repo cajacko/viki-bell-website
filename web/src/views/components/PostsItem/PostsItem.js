@@ -37,7 +37,7 @@ class PostsItem extends React.Component {
     this.getPostRoute(nextProps.slug);
   }
 
-  getPostRoute(slug: String) {
+  getPostRoute(slug: string) {
     const route = getRouteFromSlug(slug);
     this.setState({ route });
   }

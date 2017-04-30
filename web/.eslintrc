@@ -46,5 +46,8 @@
   "globals": {
     "document": false,
     "window": false
+  },
+  "env": {
+    "jest": true
   }
 }

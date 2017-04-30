@@ -2,6 +2,7 @@
   "include": [
     "./src/**/*.{js,jsx}",
     "!./src/public/**/*.js",
-    "!./src/views/store/configureStore.js"
+    "!./src/views/store/configureStore.js",
+    "!./src/**/*.test.js"
   ]
 }

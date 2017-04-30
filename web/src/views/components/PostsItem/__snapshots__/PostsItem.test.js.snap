@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<article>
+  <a
+    href="viki-bell-post-title"
+  >
+    <img
+      alt="Dummy Image"
+      src="https://unsplash.it/400/300"
+    />
+  </a>
+  <p>
+    2017-04-30
+  </p>
+  <a
+    href="viki-bell-post-title"
+  >
+    <h2>
+      Viki Bell Post Title
+    </h2>
+  </a>
+  <a
+    href="viki-bell-post-title"
+  >
+    Life
+  </a>
+</article>
+`;
+
+exports[`renders correctly again 1`] = `
+<article>
+  <a
+    href="viki-bell-post-title-2"
+  >
+    <img
+      alt="Ooo yeah"
+      src="https://unsplash.it/200/300"
+    />
+  </a>
+  <p>
+    2017-04-30
+  </p>
+  <a
+    href="viki-bell-post-title-2"
+  >
+    <h2>
+      Viki Bell Post Title 2
+    </h2>
+  </a>
+  <a
+    href="viki-bell-post-title-2"
+  >
+    Food
+  </a>
+</article>
+`;
