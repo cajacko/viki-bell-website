@@ -1,9 +1,10 @@
 FROM node:latest
 
 EXPOSE 5000
-COPY web/package.json /var/www/web/package.json
+
+RUN mkdir /var/www/web
 WORKDIR /var/www/web
-RUN npm install
+
 RUN npm install pm2 -g
 
 RUN apt-get install -y autoconf
@@ -18,6 +19,9 @@ RUN make
 RUN make install
 
 WORKDIR /var/www/web
+
+COPY web/package.json /var/www/web/package.json
+RUN npm install
 
 COPY .env /var/www/.env
 COPY .env-sample /var/www/.env-sample
