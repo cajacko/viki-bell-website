@@ -17,7 +17,8 @@
         "routes": "./src/views/routes",
         "views": "./src/views",
         "store": "./src/views/store",
-        "reducers": "./src/views/reducers"
+        "reducers": "./src/views/reducers",
+        "coverage": "./coverage/"
       },
       "extensions": [".js", ".jsx"]
       }

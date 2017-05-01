@@ -5,11 +5,12 @@
   "scripts": {
     "start": "npm run build-graph-relay && babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
-    "test": "npm run file-coverage && npm run jest && npm run lint && npm run flow",
+    "test": "npm run file-coverage && npm run jest && npm run code-coverage && npm run lint && npm run flow",
     "lint": "eslint **/*.{js,jsx}",
     "jest": "jest",
     "jest-coverage": "jest --coverage",
     "file-coverage": "babel-node scripts/fileTestCoverage.js",
+    "code-coverage": "babel-node scripts/codeCoverageChecker.js",
     "eslint": "eslint",
     "flow": "flowcheck",
     "flow:check": "flowcheck check --skip-check",
@@ -66,7 +67,8 @@
     "webpack": "2.4.1",
     "webpack-bundle-analyzer": "2.4.0",
     "webpack-chunk-hash": "0.4.0",
-    "webpack-manifest-plugin": "1.1.0"
+    "webpack-manifest-plugin": "1.1.0",
+    "xml2js": "^0.4.17"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
