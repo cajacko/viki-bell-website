@@ -12,6 +12,7 @@ import glob from 'glob-fs';
 
 glob({ dotfiles: false })
   // .exclude(/__generated__/)
+
   .readdir('**/*.js', (err, files) => {
     console.log(files);
   });
