@@ -5,11 +5,11 @@
   "scripts": {
     "start": "npm run build-graph-relay && babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
-    "test": "npm run jest && npm run lint && npm run flow",
+    "test": "npm run file-coverage && npm run jest && npm run lint && npm run flow",
     "lint": "eslint **/*.{js,jsx}",
     "jest": "jest",
     "jest-coverage": "jest --coverage",
-    "code-coverage": "babel-node scripts/fileTestCoverage.js",
+    "file-coverage": "babel-node scripts/fileTestCoverage.js",
     "eslint": "eslint",
     "flow": "flowcheck",
     "flow:check": "flowcheck check --skip-check",
