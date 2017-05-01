@@ -5,7 +5,6 @@ import compression from 'compression';
 import path from 'path';
 import graphqlHTTP from 'express-graphql';
 import './dotenv';
-import cacheServe from './middleware/cacheServe';
 import port from '../constants/port';
 import home from './routes/home';
 import listenLog from '../constants/listenLog';
@@ -18,7 +17,6 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(compression());
-app.use(cacheServe);
 
 app.use('/api', graphqlHTTP({
   schema,

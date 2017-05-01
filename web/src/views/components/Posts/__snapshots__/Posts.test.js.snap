@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <article>
+    <a
+      href="post-title"
+    >
+      <img
+        alt="Image alt"
+        src="https://unsplash.it/400/300"
+      />
+    </a>
+    <p>
+      2016-09-09
+    </p>
+    <a
+      href="post-title"
+    >
+      <h2>
+        Post title
+      </h2>
+    </a>
+    <a
+      href="post-title"
+    >
+      Life
+    </a>
+  </article>
+  <article>
+    <a
+      href="post-title"
+    >
+      <img
+        alt="Image alt"
+        src="https://unsplash.it/400/300"
+      />
+    </a>
+    <p>
+      2016-09-04
+    </p>
+    <a
+      href="post-title"
+    >
+      <h2>
+        Post title 2
+      </h2>
+    </a>
+    <a
+      href="post-title"
+    >
+      Life
+    </a>
+  </article>
+  <article>
+    <a
+      href="post-title"
+    >
+      <img
+        alt="Image alt"
+        src="https://unsplash.it/400/300"
+      />
+    </a>
+    <p>
+      2016-09-02
+    </p>
+    <a
+      href="post-title"
+    >
+      <h2>
+        Post title 3
+      </h2>
+    </a>
+    <a
+      href="post-title"
+    >
+      Life
+    </a>
+  </article>
+</div>
+`;

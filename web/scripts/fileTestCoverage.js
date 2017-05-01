@@ -8,6 +8,23 @@ const excludes = {
   path: [
     '__generated__',
     'webpack',
+    'dist',
+    'scripts',
+    'src/public',
+    'src/constants',
+    'src/server/dotenv',
+    'src/server/index',
+    'coverage',
+    'src/views/store',
+  ],
+  absolute: [
+    'src/server/dotenv',
+    'src/server/index',
+    'src/views/client',
+    'server/models/database.js',
+    'src/views/reducers/index.js',
+    'src/views/relayEnvironment.js',
+    'server/graph/schema.js',
   ],
 };
 
@@ -28,6 +45,10 @@ function exclude(file) {
   }
 
   if (excludeFromArray(excludes.path, file.relative)) {
+    return true;
+  }
+
+  if (excludeFromArray(excludes.absolute, file.absolute)) {
     return true;
   }
 
