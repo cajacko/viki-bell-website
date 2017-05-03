@@ -20,6 +20,6 @@ if (fs.existsSync(mappingPath)) {
 const manifestPath = path.join(__dirname, `../../public/${manifestFileName}`);
 const manifest = fs.readFileSync(manifestPath, { encoding: 'utf-8' });
 
-export default function (req: { url: String }, res: { render: () => {} }) {
+export default function (req, res) {
   res.render('index', { vendor, main, manifest });
 }

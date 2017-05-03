@@ -4,28 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostsItem from 'components/PostsItem/PostsItem';
 
-const Posts = ({ posts }: {
-  posts: Array<{
-    id: Number,
-    title: String,
-    date: {},
-    image: String,
-    category: String,
-    imageAlt: String,
-    slug: String,
-  }>
-}) => (
+const Posts = ({ posts }) => (
   <div>
     {
-      posts.map(({ id, title, date, image, category, imageAlt, slug }: {
-        id: Number,
-        title: String,
-        date: {},
-        image: String,
-        category: String,
-        imageAlt: String,
-        slug: String,
-      }) => (
+      posts.map(({ id, title, date, image, category, imageAlt, slug }) => (
         <PostsItem
           key={id}
           title={title}

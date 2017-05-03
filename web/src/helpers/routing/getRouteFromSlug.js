@@ -1,5 +1,3 @@
-/* @flow */
-
-export default function (slug: string) {
+export default function (slug) {
   return slug;
 }

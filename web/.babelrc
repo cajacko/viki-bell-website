@@ -5,7 +5,6 @@
     "react"
   ],
   "plugins": [
-    "transform-flow-strip-types",
     "relay",
     ["module-resolver", {
       "root": ["./src"],

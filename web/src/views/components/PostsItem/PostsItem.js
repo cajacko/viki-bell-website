@@ -6,43 +6,25 @@ import momentPropTypes from 'react-moment-proptypes';
 import getRouteFromSlug from 'helpers/routing/getRouteFromSlug';
 
 class PostsItem extends React.Component {
-  constructor(props: {
-    title: String,
-    date: {},
-    image: String,
-    category: String,
-    imageAlt: String,
-    slug: String,
-  }) {
+  constructor(props) {
     super(props);
 
     this.state = { route: '' };
     this.getPostRoute = this.getPostRoute.bind(this);
   }
 
-  state: { route: string };
-
   componentDidMount() {
     this.getPostRoute(this.props.slug);
   }
 
-  componentWillReceiveProps(nextProps: {
-    title: String,
-    date: {},
-    image: String,
-    category: String,
-    imageAlt: String,
-    slug: String,
-  }) {
+  componentWillReceiveProps(nextProps) {
     this.getPostRoute(nextProps.slug);
   }
 
-  getPostRoute(slug: string) {
+  getPostRoute(slug) {
     const route = getRouteFromSlug(slug);
     this.setState({ route });
   }
-
-  getPostRoute: () => void;
 
   render() {
     return (

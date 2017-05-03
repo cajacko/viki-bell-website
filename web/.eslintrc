@@ -1,7 +1,6 @@
 {
   "extends": [
-    "airbnb",
-    "plugin:flowtype/recommended"
+    "airbnb"
   ],
   "rules": {
     "max-lines": [
@@ -31,14 +30,8 @@
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
-  "plugins": [
-    "flowtype"
-  ],
   "parser": "babel-eslint",
   "settings": {
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": true
-    },
     "import/resolver": {
       "babel-module": {}
     }
@@ -46,8 +39,5 @@
   "globals": {
     "document": false,
     "window": false
-  },
-  "env": {
-    "jest": true
   }
 }

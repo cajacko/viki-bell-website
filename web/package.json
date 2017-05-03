@@ -6,23 +6,14 @@
     "start": "npm run build-graph-relay && babel-node scripts/watch.js",
     "start:windows": "babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
-    "test": "npm run file-coverage && npm run jest && npm run code-coverage && npm run lint && npm run flow",
+    "test": "npm run lint",
     "lint": "eslint **/*.{js,jsx}",
-    "jest": "jest",
-    "jest-coverage": "jest --coverage",
-    "file-coverage": "babel-node scripts/fileTestCoverage.js",
-    "code-coverage": "babel-node scripts/codeCoverageChecker.js",
     "eslint": "eslint",
-    "flow": "flowcheck",
-    "flow:check": "flowcheck check --skip-check",
     "build-graph-relay": "npm run update-schema && npm run relay",
     "start:production": "node dist/server/index.js",
     "build:production": "npm run build-graph-relay && babel-node scripts/build.js --env.production",
     "relay": "relay-compiler --src ./src/views --schema ./src/server/graph/schema.graphql",
     "update-schema": "babel-node scripts/updateSchema.js"
-  },
-  "jest": {
-    "collectCoverage": true
   },
   "author": {
     "name": "Charlie Jackson",
@@ -30,7 +21,7 @@
     "url": "https://charliejackson.com"
   },
   "license": "MIT",
-  "keywords": "node, nodejs, javascript, wordpress, php, headless, express, expressjs, react, reactjs, eslint, jest, redux",
+  "keywords": "node, nodejs, javascript, wordpress, php, headless, express, expressjs, react, reactjs, eslint, redux",
   "repository": {
     "type": "git",
     "url": "https://github.com/cajacko/viki-bell-website.git"
@@ -42,7 +33,6 @@
   "private": true,
   "devDependencies": {
     "babel-eslint": "7.2.2",
-    "babel-jest": "^19.0.0",
     "babel-loader": "6.4.1",
     "babel-plugin-module-resolver": "2.7.0",
     "babel-preset-es2015": "6.24.1",
@@ -53,14 +43,12 @@
     "eslint-config-airbnb": "14.1.0",
     "eslint-import-resolver-babel-module": "3.0.0",
     "eslint-import-resolver-webpack": "0.8.1",
-    "eslint-plugin-flowtype": "2.31.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
     "glob-fs": "^0.1.6",
     "glob-fs-gitignore": "^0.1.5",
     "i": "^0.3.5",
-    "jest": "^19.0.2",
     "npm": "^4.5.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
@@ -74,13 +62,11 @@
   "dependencies": {
     "babel-cli": "6.24.1",
     "babel-plugin-relay": "^1.0.1-rc.2",
-    "babel-plugin-transform-flow-strip-types": "6.22.0",
     "compression": "1.6.2",
     "dotenv": "4.0.0",
     "ejs": "2.5.6",
     "express": "4.15.2",
     "express-graphql": "^0.6.4",
-    "flow-check": "0.2.1",
     "graphql": "^0.9.3",
     "graphql-relay": "^0.5.1",
     "isomorphic-fetch": "^2.2.1",
