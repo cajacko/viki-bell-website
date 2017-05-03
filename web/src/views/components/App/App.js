@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import Posts from 'containers/Posts/Posts';
+import Posts from 'containers/PostLoop/PostLoop';
 
 const App = () => (
   <div>

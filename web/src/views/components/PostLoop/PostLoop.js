@@ -1,13 +1,21 @@
-/* @flow */
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import PostsItem from 'components/PostsItem/PostsItem';
+import PostsItem from 'components/PostLoopItem/PostLoopItem';
+import Button from 'components/Button/Button';
 
 const Posts = ({ posts }) => (
   <div>
     {
-      posts.map(({ id, title, date, image, category, imageAlt, slug }) => (
+      posts.map(({
+        id,
+        title,
+        date,
+        image,
+        category,
+        imageAlt,
+        postSlug,
+        categorySlug,
+      }) => (
         <PostsItem
           key={id}
           title={title}
@@ -15,10 +23,13 @@ const Posts = ({ posts }) => (
           image={image}
           category={category}
           imageAlt={imageAlt}
-          slug={slug}
+          postSlug={postSlug}
+          categorySlug={categorySlug}
         />
       ))
     }
+
+    <Button>Show More Posts</Button>
   </div>
 );
 

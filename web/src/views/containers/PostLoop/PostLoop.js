@@ -8,10 +8,10 @@ import {
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import environment from 'views/relayEnvironment';
-import Posts from 'components/Posts/Posts';
+import PostLoop from 'components/PostLoop/PostLoop';
 
 const query = graphql`
-  query PostsQuery {
+  query PostLoopQuery {
     posts(first: 5) {
       edges {
         cursor
@@ -23,7 +23,8 @@ const query = graphql`
           image
           category
           imageAlt
-          slug
+          postSlug
+          categorySlug
         }
       }
       pageInfo {
@@ -52,7 +53,7 @@ const PostsContainer = () => (
         });
 
         return (
-          <Posts
+          <PostLoop
             posts={posts}
           />
         );
