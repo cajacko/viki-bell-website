@@ -10,6 +10,8 @@ import moment from 'moment';
 import environment from 'views/relayEnvironment';
 import PostLoop from 'components/PostLoop/PostLoop';
 
+console.log('Jenkis update');
+
 const query = graphql`
   query PostLoopQuery {
     posts(first: 5) {
