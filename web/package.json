@@ -4,6 +4,7 @@
   "description": "A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.",
   "scripts": {
     "start": "npm run build-graph-relay && babel-node scripts/watch.js",
+    "start:windows": "babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
     "test": "npm run file-coverage && npm run jest && npm run code-coverage && npm run lint && npm run flow",
     "lint": "eslint **/*.{js,jsx}",

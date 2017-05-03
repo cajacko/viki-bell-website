@@ -26,6 +26,5 @@ RUN npm install
 COPY .env /var/www/.env
 COPY .env-sample /var/www/.env-sample
 COPY web /var/www/web
-RUN npm run build:production
 
-CMD ["pm2-docker", "/var/www/web/dist/server/index.js"]
+CMD ["npm", "start"]
