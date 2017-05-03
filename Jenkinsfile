@@ -7,7 +7,7 @@
 
 node {
     stage('Pull repo') {
-        git branch: 'develop', url: 'https://github.com/cajacko/viki-bell-website.git'
+        git branch: 'feature/post_loop', url: 'https://github.com/cajacko/viki-bell-website.git'
     }
 
     stage('Setup .env') {
