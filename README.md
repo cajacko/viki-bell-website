@@ -1,4 +1,4 @@
-# Viki Bell Website 
+# Viki Bell Website
 
 A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.
 
