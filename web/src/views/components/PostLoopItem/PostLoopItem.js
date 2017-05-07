@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
+import Radium from 'radium';
 import getRouteFromSlug from 'helpers/routing/getRouteFromSlug';
+import style from 'components/PostLoopItem/PostLoopItem.style';
+import WindowResize from 'components/WindowResize/WindowResize';
 
 class PostsItem extends React.Component {
   constructor(props) {
@@ -22,6 +25,10 @@ class PostsItem extends React.Component {
     this.getCategoryRoute(nextProps.categorySlug);
   }
 
+  onWindowResize(width) {
+    console.log('width changed', width);
+  }
+
   getPostRoute(slug) {
     const postRoute = getRouteFromSlug(slug, 'post');
     this.setState({ postRoute });
@@ -34,18 +41,23 @@ class PostsItem extends React.Component {
 
   render() {
     return (
-      <article>
-        <a href={this.state.postRoute}>
-          <img alt={this.props.imageAlt} src={this.props.image} />
-        </a>
-        <div>
-          <p>{this.props.date.format('YYYY-MM-DD')}</p>
-          <a href={this.state.postRoute}>
-            <h2>{this.props.title}</h2>
+      <WindowResize onWindowResize={this.onWindowResize}>
+        <article style={style.article}>
+          <a href={this.state.postRoute} style={style.imageLink}>
+            <img alt={this.props.imageAlt} src={this.props.image} />
           </a>
-          <a href={this.state.categoryRoute}>{this.props.category}</a>
-        </div>
-      </article>
+          <div>
+            <p style={style.date}>{this.props.date.format('YYYY-MM-DD')}</p>
+            <a style={style.titleLink} href={this.state.postRoute}>
+              <h2 style={style.title}>{this.props.title}</h2>
+            </a>
+            <a
+              style={style.category}
+              href={this.state.categoryRoute}
+            >{this.props.category}</a>
+          </div>
+        </article>
+      </WindowResize>
     );
   }
 }
@@ -60,4 +72,4 @@ PostsItem.propTypes = {
   categorySlug: PropTypes.string.isRequired,
 };
 
-export default PostsItem;
+export default Radium(PostsItem);
