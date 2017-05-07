@@ -3,7 +3,7 @@
 A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.
 
 # Graph QL
-Here's a dummy query:
+Here's a dummy query: 
 ```
 fragment PostFragment on Post {
   id
