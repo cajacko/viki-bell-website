@@ -7,7 +7,7 @@
 
 node {
     stage('Pull repo') {
-        // sh 'if cd scripts; then git pull; else git clone https://github.com/cajacko/viki-bell-website.git .; fi'
+        sh 'if cd scripts; then git fetch; else git clone https://github.com/cajacko/viki-bell-website.git .; fi'
         sh 'git checkout $(git rev-list --remotes --max-count=1)'
     }
 
