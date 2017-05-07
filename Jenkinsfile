@@ -7,7 +7,7 @@
 
 node {
     stage('Pull repo') {
-        sh 'git clone https://github.com/cajacko/viki-bell-website.git .'
+        // sh 'if cd scripts; then git pull; else git clone https://github.com/cajacko/viki-bell-website.git .; fi'
         sh 'git checkout $(git log --branches -1 --pretty=format:"%H")'
     }
 
