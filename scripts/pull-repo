@@ -5,5 +5,5 @@ git clone https://github.com/cajacko/viki-bell-website.git
 set -e
 
 cd viki-bell-website
-git pull
+git fetch
 git checkout $(git log --branches -1 --pretty=format:"%H")
