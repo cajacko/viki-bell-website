@@ -7,25 +7,14 @@
 
 node {
     stage('Pull repo') {
-        git branch: 'feature/post_loop', url: 'https://github.com/cajacko/viki-bell-website.git'
+        sh 'git clone https://github.com/cajacko/viki-bell-website.git .'
+        sh 'git checkout $(git log --branches -1 --pretty=format:"%H")'
     }
 
     stage('Setup .env') {
         writeFile file: '.env', text: env.env
         sh 'cat .env'
     }
-
-//     stage('Run Local') {
-//         sh 'sudo ./scripts/install'
-//     }
-
-//     stage('Testing Local') {
-//         sh 'sudo ./scripts/test'
-//     }
-
-//     stage('Cleanup') {
-//         sh 'sudo ./scripts/cleanup'
-//     }
 
     stage('Pull repo on server') {
         sh '''ssh -o StrictHostKeyChecking=no root@${dev_ip} 'bash -s' < ./scripts/pull-repo'''
