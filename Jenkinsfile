@@ -8,7 +8,7 @@
 node {
     stage('Pull repo') {
         // sh 'if cd scripts; then git pull; else git clone https://github.com/cajacko/viki-bell-website.git .; fi'
-        sh 'git checkout $(git log --branches -1 --pretty=format:"%H")'
+        sh 'git checkout $(git rev-list --remotes --max-count=1)'
     }
 
     stage('Setup .env') {
