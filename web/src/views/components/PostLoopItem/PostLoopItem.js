@@ -5,6 +5,7 @@ import Radium from 'radium';
 import getRouteFromSlug from 'helpers/routing/getRouteFromSlug';
 import style from 'components/PostLoopItem/PostLoopItem.style';
 import WindowResize from 'components/WindowResize/WindowResize';
+import TextLink from 'components/TextLink/TextLink';
 
 class PostsItem extends React.Component {
   constructor(props) {
@@ -46,15 +47,25 @@ class PostsItem extends React.Component {
           <a href={this.state.postRoute} style={style.imageLink}>
             <img alt={this.props.imageAlt} src={this.props.image} />
           </a>
+
           <div>
-            <p style={style.date}>{this.props.date.format('YYYY-MM-DD')}</p>
-            <a style={style.titleLink} href={this.state.postRoute}>
+            <p style={style.date}>{this.props.date.format('MMMM D, YYYY')}</p>
+
+            <TextLink
+              style={style.titleLink}
+              href={this.state.postRoute}
+              colour="black"
+            >
               <h2 style={style.title}>{this.props.title}</h2>
-            </a>
-            <a
+            </TextLink>
+
+            <TextLink
               style={style.category}
               href={this.state.categoryRoute}
-            >{this.props.category}</a>
+              colour="turqoise"
+            >
+              {this.props.category}
+            </TextLink>
           </div>
         </article>
       </WindowResize>
