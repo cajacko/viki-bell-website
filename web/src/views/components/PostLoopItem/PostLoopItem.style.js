@@ -5,6 +5,9 @@ export default {
   article: {
     width: '25%',
     ...BORDER,
+    flexGrow: 1,
+    // maxWidth: '25%',
+    // minWidth: '25%',
   },
   imageLink: {
     maxHeight: '200px',

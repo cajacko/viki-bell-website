@@ -3,6 +3,7 @@ import { FONT_COLOURS } from 'constants/fonts';
 export default {
   style: {
     textDecoration: 'none',
+    cursor: 'pointer',
 
     ':hover': {
       textDecoration: 'underline',

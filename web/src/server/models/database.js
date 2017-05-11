@@ -14,7 +14,12 @@ import moment from 'moment';
 // Model types
 class Post {}
 
-const posts = ['Wuzzup', 'Yeah yeah yeah', 'How\'s-it', 'Woo yeah'].map((title, i) => {
+const posts = [
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+].map((title, i) => {
   const post = new Post();
   post.title = title;
   post.id = `${i}`;
