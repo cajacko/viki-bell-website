@@ -7,7 +7,7 @@ import style from 'components/PostLoopItem/PostLoopItem.style';
 import WindowResize from 'components/WindowResize/WindowResize';
 import TextLink from 'components/TextLink/TextLink';
 
-class PostsItem extends React.Component {
+class PostsLoopItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,7 +27,7 @@ class PostsItem extends React.Component {
   }
 
   onWindowResize(width) {
-    console.log('width changed', width);
+    // console.log('width changed', width);
   }
 
   getPostRoute(slug) {
@@ -44,28 +44,32 @@ class PostsItem extends React.Component {
     return (
       <WindowResize onWindowResize={this.onWindowResize}>
         <article style={style.article}>
-          <a href={this.state.postRoute} style={style.imageLink}>
-            <img alt={this.props.imageAlt} src={this.props.image} />
-          </a>
+          <div style={style.container}>
+            <a href={this.state.postRoute} style={style.imageLink}>
+              <img alt={this.props.imageAlt} src={this.props.image} />
+            </a>
 
-          <div>
-            <p style={style.date}>{this.props.date.format('MMMM D, YYYY')}</p>
+            <div style={style.textContainer}>
+              <div>
+                <p style={style.date}>{this.props.date.format('MMMM D, YYYY')}</p>
 
-            <TextLink
-              style={style.titleLink}
-              href={this.state.postRoute}
-              colour="black"
-            >
-              <h2 style={style.title}>{this.props.title}</h2>
-            </TextLink>
+                <TextLink
+                  style={style.titleLink}
+                  href={this.state.postRoute}
+                  colour="black"
+                >
+                  <h2 style={style.title}>{this.props.title}</h2>
+                </TextLink>
+              </div>
 
-            <TextLink
-              style={style.category}
-              href={this.state.categoryRoute}
-              colour="turqoise"
-            >
-              {this.props.category}
-            </TextLink>
+              <TextLink
+                style={style.category}
+                href={this.state.categoryRoute}
+                colour="turqoise"
+              >
+                {this.props.category}
+              </TextLink>
+            </div>
           </div>
         </article>
       </WindowResize>
@@ -73,7 +77,7 @@ class PostsItem extends React.Component {
   }
 }
 
-PostsItem.propTypes = {
+PostsLoopItem.propTypes = {
   title: PropTypes.string.isRequired,
   date: momentPropTypes.momentObj.isRequired,
   image: PropTypes.string.isRequired,
@@ -83,4 +87,4 @@ PostsItem.propTypes = {
   categorySlug: PropTypes.string.isRequired,
 };
 
-export default Radium(PostsItem);
+export default Radium(PostsLoopItem);

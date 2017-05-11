@@ -19,6 +19,7 @@ const posts = [
   'Yeah yeah yeah',
   'How\'s-it',
   'Woo yeah',
+  'Using habitica for your habits',
 ].map((title, i) => {
   const post = new Post();
   post.title = title;

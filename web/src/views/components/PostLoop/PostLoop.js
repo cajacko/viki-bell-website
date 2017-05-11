@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Radium from 'radium';
 import PostsItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 
-const Posts = ({ posts }) => (
-  <div>
+const PostLoop = ({ posts }) => (
+  <div style={style.container}>
     <div style={style.posts}>
       {
         posts.map(({
@@ -32,12 +33,12 @@ const Posts = ({ posts }) => (
       }
     </div>
 
-    <Button>Show More Posts</Button>
+    <Button style={style.button}>Show More Posts</Button>
   </div>
 );
 
-Posts.propTypes = {
+PostLoop.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default Posts;
+export default Radium(PostLoop);
