@@ -41,9 +41,17 @@ class PostsLoopItem extends React.Component {
   }
 
   render() {
+    let articleStyles;
+
+    if (this.props.inverseColours) {
+      articleStyles = { ...style.article, ...style.articleInverse };
+    } else {
+      articleStyles = { ...style.article, ...style.articleDefault };
+    }
+
     return (
       <WindowResize onWindowResize={this.onWindowResize}>
-        <article style={style.article}>
+        <article style={articleStyles}>
           <div style={style.container}>
             <a href={this.state.postRoute} style={style.imageLink}>
               <img alt={this.props.imageAlt} src={this.props.image} />
@@ -85,6 +93,7 @@ PostsLoopItem.propTypes = {
   imageAlt: PropTypes.string.isRequired,
   postSlug: PropTypes.string.isRequired,
   categorySlug: PropTypes.string.isRequired,
+  inverseColours: PropTypes.bool.isRequired,
 };
 
 export default Radium(PostsLoopItem);

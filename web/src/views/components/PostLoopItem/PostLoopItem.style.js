@@ -1,7 +1,7 @@
 import BORDER from 'constants/borders';
 import { FONT_FAMILY, FONT_SIZES, FONT_COLOURS } from 'constants/fonts';
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
-import { WHITE } from 'constants/colours';
+import { WHITE, LIGHT_GREY } from 'constants/colours';
 
 export const ARTICLE_MARGIN = 40;
 
@@ -12,17 +12,24 @@ export default {
     marginBottom: ARTICLE_MARGIN,
     display: 'flex',
     ...MEDIA_QUERIES,
+  },
+
+  articleDefault: {
     backgroundColor: WHITE,
   },
+
+  articleInverse: {
+    backgroundColor: LIGHT_GREY,
+  },
+
   container: {
     ...BORDER,
-    // borderRightStyle: 'none',
-    // borderLeftStyle: 'none',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
   },
+
   imageLink: {
     maxHeight: '200px',
     overflow: 'hidden',
@@ -30,6 +37,7 @@ export default {
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   textContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -37,6 +45,7 @@ export default {
     flex: 1,
     padding: 10,
   },
+
   date: {
     textAlign: 'center',
     fontFamily: FONT_FAMILY,
@@ -44,10 +53,12 @@ export default {
     color: FONT_COLOURS.GREY,
     margin: 0,
   },
+
   titleLink: {
     display: 'block',
     color: FONT_COLOURS.BLACK,
   },
+
   title: {
     textAlign: 'center',
     fontFamily: FONT_FAMILY,
@@ -55,6 +66,7 @@ export default {
     textTransform: 'uppercase',
     margin: '12px 0px',
   },
+
   category: {
     textAlign: 'center',
     display: 'block',

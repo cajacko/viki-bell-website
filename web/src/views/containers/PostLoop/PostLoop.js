@@ -34,7 +34,7 @@ const query = graphql`
   }
 `;
 
-const PostsContainer = () => (
+const PostsContainer = ({ inverseColours, recommendedPosts }) => (
   <QueryRenderer
     environment={environment}
     query={query}
@@ -55,6 +55,8 @@ const PostsContainer = () => (
         return (
           <PostLoop
             posts={posts}
+            inverseColours={inverseColours}
+            recommendedPosts={recommendedPosts}
           />
         );
       }
@@ -70,12 +72,16 @@ PostsContainer.propTypes = {
 
     })),
   }),
+  inverseColours: PropTypes.bool,
+  recommendedPosts: PropTypes.bool,
 };
 
 PostsContainer.defaultProps = {
   posts: {
     edges: [],
   },
+  inverseColours: false,
+  recommendedPosts: false,
 };
 
 export default PostsContainer;
