@@ -9,6 +9,7 @@ const PostLoop = ({ posts, inverseColours, recommendedPosts }) => {
   let containerStyles;
   let containerPadding;
   let recommendedText = false;
+  let showMore = false;
 
   if (recommendedPosts) {
     containerPadding = { ...style.container, ...style.containerRecommended };
@@ -18,6 +19,7 @@ const PostLoop = ({ posts, inverseColours, recommendedPosts }) => {
     );
   } else {
     containerPadding = style.container;
+    showMore = <Button>Show More Posts</Button>;
   }
 
   if (inverseColours) {
@@ -56,7 +58,7 @@ const PostLoop = ({ posts, inverseColours, recommendedPosts }) => {
         }
       </div>
 
-      <Button>Show More Posts</Button>
+      {showMore}
     </div>
   );
 };
