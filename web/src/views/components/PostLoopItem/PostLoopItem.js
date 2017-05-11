@@ -26,9 +26,9 @@ class PostsLoopItem extends React.Component {
     this.getCategoryRoute(nextProps.categorySlug);
   }
 
-  // onWindowResize(width) {
-  //   console.log('width changed', width);
-  // }
+  onWindowResize(width) {
+    // console.log('width changed', width);
+  }
 
   getPostRoute(slug) {
     const postRoute = getRouteFromSlug(slug, 'post');
