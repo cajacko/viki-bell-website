@@ -33,7 +33,7 @@ const PostLoop = ({ posts }) => (
       }
     </div>
 
-    <Button style={style.button}>Show More Posts</Button>
+    <Button>Show More Posts</Button>
   </div>
 );
 
