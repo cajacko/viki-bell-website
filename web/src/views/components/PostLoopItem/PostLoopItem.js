@@ -55,7 +55,7 @@ class PostsLoopItem extends React.Component {
       articleStyles = { ...style.article, ...style.articleDefault };
     }
 
-    const date = moment(this.props.post.date).format('MMMM D, YYYY');
+    const date = moment.unix(this.props.post.date).format('MMMM D, YYYY');
 
     return (
       <WindowResize onWindowResize={this.onWindowResize}>

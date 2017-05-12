@@ -22,9 +22,6 @@ const App = () => (
       if (error) {
         return <div>{error.message}</div>;
       } else if (props) {
-        // eslint-disable-next-line
-        console.warn('App', props);
-
         return (
           <div>
             <PostLoop data={props} />
