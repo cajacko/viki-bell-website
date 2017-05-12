@@ -2,7 +2,7 @@ import {
   graphql,
   createFragmentContainer,
 } from 'react-relay';
-import PostsLoopItem from 'components/PostLoopItem/PostLoopItem.view';
+import { PostsLoopItem } from 'components/PostLoopItem/PostLoopItem';
 
 export default createFragmentContainer(PostsLoopItem, {
   post: graphql`
