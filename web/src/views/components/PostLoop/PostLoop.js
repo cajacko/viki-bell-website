@@ -5,7 +5,12 @@ import PostsItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 
-const PostLoop = ({ posts, inverseColours, recommendedPosts }) => {
+const PostLoop = ({
+  posts,
+  inverseColours,
+  recommendedPosts,
+  getMorePosts,
+}) => {
   let containerStyles;
   let containerPadding;
   let recommendedText = false;
@@ -19,7 +24,7 @@ const PostLoop = ({ posts, inverseColours, recommendedPosts }) => {
     );
   } else {
     containerPadding = style.container;
-    showMore = <Button>Show More Posts</Button>;
+    showMore = <Button action={getMorePosts}>Show More Posts</Button>;
   }
 
   if (inverseColours) {
@@ -67,6 +72,7 @@ PostLoop.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   inverseColours: PropTypes.bool.isRequired,
   recommendedPosts: PropTypes.bool.isRequired,
+  getMorePosts: PropTypes.func.isRequired,
 };
 
 export default Radium(PostLoop);

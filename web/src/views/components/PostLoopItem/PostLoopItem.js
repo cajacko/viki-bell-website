@@ -26,6 +26,7 @@ class PostsLoopItem extends React.Component {
     this.getCategoryRoute(nextProps.categorySlug);
   }
 
+  // eslint-disable-next-line
   onWindowResize(width) {
     // console.log('width changed', width);
   }

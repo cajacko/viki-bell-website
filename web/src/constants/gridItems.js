@@ -1,7 +1,7 @@
 export const MAX_WIDTH = 270;
 
 const mediaQueries = {};
-const minWidth = 190;
+const minWidth = 200;
 let mediaQuery;
 let width;
 

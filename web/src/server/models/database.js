@@ -13,6 +13,7 @@ import moment from 'moment';
 
 // Model types
 class Post {}
+class Viewer {}
 
 const posts = [
   'My guide to secret cinema',
@@ -20,6 +21,19 @@ const posts = [
   'How\'s-it',
   'Woo yeah',
   'Using habitica for your habits',
+  'Yeah buddy',
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+  'Using habitica for your habits',
+  'Yeah buddy',
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+  'Using habitica for your habits',
+  'Yeah buddy',
 ].map((title, i) => {
   const post = new Post();
   post.title = title;
@@ -39,5 +53,7 @@ module.exports = {
   // Export methods that your schema can use to interact with your database
   getPost: id => posts.find(w => w.id === id),
   getPosts: () => posts,
+  getViewer: () => {},
   Post,
+  Viewer,
 };
