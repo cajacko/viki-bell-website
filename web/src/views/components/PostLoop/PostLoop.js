@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
-import PostsItem from 'components/PostLoopItem/PostLoopItem';
+import {
+  graphql,
+  createFragmentContainer,
+} from 'react-relay';
+import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 
+function getMorePosts() {
+  // eslint-disable-next-line
+  console.log('get more posts');
+}
+
 const PostLoop = ({
-  posts,
+  data,
   inverseColours,
   recommendedPosts,
-  getMorePosts,
 }) => {
   let containerStyles;
   let containerPadding;
@@ -38,25 +46,10 @@ const PostLoop = ({
       {recommendedText}
       <div style={style.posts}>
         {
-          posts.map(({
-            id,
-            title,
-            date,
-            image,
-            category,
-            imageAlt,
-            postSlug,
-            categorySlug,
-          }) => (
-            <PostsItem
-              key={id}
-              title={title}
-              date={date}
-              image={image}
-              category={category}
-              imageAlt={imageAlt}
-              postSlug={postSlug}
-              categorySlug={categorySlug}
+          data.posts.edges.map(edge => (
+            <PostLoopItem
+              key={edge.node.id}
+              post={edge.node}
               inverseColours={inverseColours}
             />
           ))
@@ -69,10 +62,33 @@ const PostLoop = ({
 };
 
 PostLoop.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  inverseColours: PropTypes.bool.isRequired,
-  recommendedPosts: PropTypes.bool.isRequired,
-  getMorePosts: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    posts: {
+      edges: PropTypes.arrayOf(PropTypes.object),
+    },
+  }).isRequired,
+  inverseColours: PropTypes.bool,
+  recommendedPosts: PropTypes.bool,
 };
 
-export default Radium(PostLoop);
+PostLoop.defaultProps = {
+  inverseColours: false,
+  recommendedPosts: false,
+};
+
+export default createFragmentContainer(Radium(PostLoop), {
+  data: graphql`
+    fragment PostLoop_data on Query {
+      posts(
+        first: 2147483647  # max GraphQLInt
+      ) @connection(key: "PostLoop_posts") {
+        edges {
+          node {
+            id,
+            ...PostLoopItem_post,
+          },
+        },
+      },
+    }
+  `,
+});

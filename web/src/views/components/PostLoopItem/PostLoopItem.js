@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import Radium from 'radium';
+import {
+  graphql,
+  createFragmentContainer,
+} from 'react-relay';
+import moment from 'moment';
 import getRouteFromSlug from 'helpers/routing/getRouteFromSlug';
 import style from 'components/PostLoopItem/PostLoopItem.style';
 import WindowResize from 'components/WindowResize/WindowResize';
@@ -17,13 +22,13 @@ class PostsLoopItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getPostRoute(this.props.postSlug);
-    this.getCategoryRoute(this.props.categorySlug);
+    this.getPostRoute(this.props.post.postSlug);
+    this.getCategoryRoute(this.props.post.categorySlug);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getPostRoute(nextProps.postSlug);
-    this.getCategoryRoute(nextProps.categorySlug);
+    this.getPostRoute(nextProps.post.postSlug);
+    this.getCategoryRoute(nextProps.post.categorySlug);
   }
 
   // eslint-disable-next-line
@@ -44,30 +49,32 @@ class PostsLoopItem extends React.Component {
   render() {
     let articleStyles;
 
-    if (this.props.inverseColours) {
+    if (this.props.post.inverseColours) {
       articleStyles = { ...style.article, ...style.articleInverse };
     } else {
       articleStyles = { ...style.article, ...style.articleDefault };
     }
+
+    const date = moment(this.props.post.date).format('MMMM D, YYYY');
 
     return (
       <WindowResize onWindowResize={this.onWindowResize}>
         <article style={articleStyles}>
           <div style={style.container}>
             <a href={this.state.postRoute} style={style.imageLink}>
-              <img alt={this.props.imageAlt} src={this.props.image} />
+              <img alt={this.props.post.imageAlt} src={this.props.post.image} />
             </a>
 
             <div style={style.textContainer}>
               <div>
-                <p style={style.date}>{this.props.date.format('MMMM D, YYYY')}</p>
+                <p style={style.date}>{date}</p>
 
                 <TextLink
                   style={style.titleLink}
                   href={this.state.postRoute}
                   colour="black"
                 >
-                  <h2 style={style.title}>{this.props.title}</h2>
+                  <h2 style={style.title}>{this.props.post.title}</h2>
                 </TextLink>
               </div>
 
@@ -76,7 +83,7 @@ class PostsLoopItem extends React.Component {
                 href={this.state.categoryRoute}
                 colour="turqoise"
               >
-                {this.props.category}
+                {this.props.post.category}
               </TextLink>
             </div>
           </div>
@@ -87,14 +94,28 @@ class PostsLoopItem extends React.Component {
 }
 
 PostsLoopItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: momentPropTypes.momentObj.isRequired,
-  image: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string.isRequired,
-  postSlug: PropTypes.string.isRequired,
-  categorySlug: PropTypes.string.isRequired,
-  inverseColours: PropTypes.bool.isRequired,
+  post: PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.number,
+    image: PropTypes.string,
+    category: PropTypes.string,
+    imageAlt: PropTypes.string,
+    postSlug: PropTypes.string,
+    categorySlug: PropTypes.string,
+    inverseColours: PropTypes.bool,
+  }).isRequired,
 };
 
-export default Radium(PostsLoopItem);
+export default createFragmentContainer(Radium(PostsLoopItem), {
+  post: graphql`
+    fragment PostLoopItem_post on Post {
+      id
+      postId
+      title
+      excerpt
+      date
+      image
+      category
+    }
+  `,
+});

@@ -1,9 +1,6 @@
-/* @flow */
-
 import React from 'react';
 import { Route } from 'react-router-dom';
-import App from 'containers/App';
-// import Post from 'components/Post/Post';
+import App from 'components/App/App';
 
 const Router = () => (
   <div>
