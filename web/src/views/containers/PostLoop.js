@@ -7,33 +7,36 @@ import {
 
 import Post from './Post';
 
-const PostLoop = createFragmentContainer(
-  ({ posts }) => {
-    console.warn('PostLoop', posts);
+const PostLoop = ({ data }) => {
+  // eslint-disable-next-line
+  console.warn('PostLoop', data);
 
-    if (!posts) {
-      return false;
-    }
+  if (!data) {
+    return false;
+  }
 
-    return (
-      <div>
-        {posts.map(entry => (
-          <Post data={entry} />
-        ))}
-      </div>
-    );
-  },
-  graphql`
-    fragment PostLoop_posts on Query {
-      posts(first: 5) @connection(key: "PostLoop_posts") {
+  return (
+    <div>
+      {data.posts.edges.map(edge => (
+        <Post key={edge.node.id} post={edge.node} />
+      ))}
+    </div>
+  );
+};
+
+export default createFragmentContainer(PostLoop, {
+  data: graphql`
+    fragment PostLoop_data on Query {
+      posts(
+        first: 2147483647  # max GraphQLInt
+      ) @connection(key: "PostLoop_posts") {
         edges {
           node {
-            ...Post_post
-          }
-        }
-      }
+            id,
+            ...Post_post,
+          },
+        },
+      },
     }
   `,
-);
-
-export default PostLoop;
+});

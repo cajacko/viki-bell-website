@@ -18,18 +18,21 @@ class App extends Component {
           environment={environment}
 
           query={graphql`
-            query AppPostLoopQuery {
-              ...PostLoop_posts
+            query AppQuery {
+              ...PostLoop_data
             }
           `}
+
+          variables={{}}
 
           render={({ error, props }) => {
             if (error) {
               return <div>{error.message}</div>;
             } else if (props) {
+              // eslint-disable-next-line
               console.warn('App', props);
 
-              return <PostLoop posts={props}/>;
+              return <PostLoop data={props} />;
             }
             return <div>Loading</div>;
           }}
