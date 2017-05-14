@@ -11,12 +11,17 @@ const App = () => (
     environment={environment}
 
     query={graphql`
-      query AppQuery {
+      query AppQuery(
+        $count: Int!
+        $after: String
+      ) {
         ...PostLoop_data
       }
     `}
 
-    variables={{}}
+    variables={{
+      count: 2,
+    }}
 
     render={({ error, props }) => {
       if (error) {

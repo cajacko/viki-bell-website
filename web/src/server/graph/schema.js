@@ -101,10 +101,6 @@ const {
   nodeType: GraphQLPost,
 });
 
-/**
- * This is the type that will be the root of our query,
- * and the entry point into our schema.
- */
 const Query = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
@@ -124,7 +120,7 @@ const Query = new GraphQLObjectType({
         ...connectionArgs,
       },
       resolve: (obj, { queryType, queryTerm, ...args }) =>
-        connectionFromArray(getPosts(queryType, queryTerm), args),
+        connectionFromArray(getPosts(queryType, queryTerm, args), args),
     },
   }),
 });

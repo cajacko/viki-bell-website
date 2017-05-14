@@ -1,94 +1,65 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
 import {
   graphql,
-  createFragmentContainer,
+  createPaginationContainer,
 } from 'react-relay';
-import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
-import Button from 'components/Button/Button';
-import style from 'components/PostLoop/PostLoop.style';
+import PostLoop from 'components/PostLoop/PostLoop.view';
 
-function getMorePosts() {
-  // eslint-disable-next-line
-  console.log('get more posts');
-}
+// eslint-disable-next-line
+console.log('loaded');
 
-const PostLoop = ({
-  data,
-  inverseColours,
-  recommendedPosts,
-}) => {
-  let containerStyles;
-  let containerPadding;
-  let recommendedText = false;
-  let showMore = false;
-
-  if (recommendedPosts) {
-    containerPadding = { ...style.container, ...style.containerRecommended };
-
-    recommendedText = (
-      <p style={style.recommendedText}>More posts you may like</p>
-    );
-  } else {
-    containerPadding = style.container;
-    showMore = <Button action={getMorePosts}>Show More Posts</Button>;
-  }
-
-  if (inverseColours) {
-    containerStyles = { ...containerPadding, ...style.containerInverse };
-  } else {
-    containerStyles = { ...containerPadding, ...style.containerDefault };
-  }
-
-  return (
-    <div style={containerStyles}>
-      {recommendedText}
-      <div style={style.posts}>
-        {
-          data.posts.edges.map(edge => (
-            <PostLoopItem
-              key={edge.node.id}
-              post={edge.node}
-              inverseColours={inverseColours}
-            />
-          ))
-        }
-      </div>
-
-      {showMore}
-    </div>
-  );
-};
-
-PostLoop.propTypes = {
-  data: PropTypes.shape({
-    posts: {
-      edges: PropTypes.arrayOf(PropTypes.object),
-    },
-  }).isRequired,
-  inverseColours: PropTypes.bool,
-  recommendedPosts: PropTypes.bool,
-};
-
-PostLoop.defaultProps = {
-  inverseColours: false,
-  recommendedPosts: false,
-};
-
-export default createFragmentContainer(Radium(PostLoop), {
-  data: graphql`
-    fragment PostLoop_data on Query {
-      posts(
-        first: 2147483647  # max GraphQLInt
-      ) @connection(key: "PostLoop_posts") {
-        edges {
-          node {
-            id,
-            ...PostLoopItem_post,
+export default createPaginationContainer(
+  PostLoop,
+  {
+    data: graphql`
+      fragment PostLoop_data on Query {
+        posts(
+          first: $count
+          after: $after
+        ) @connection(key: "PostLoop_posts") {
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
+          },
+          edges {
+            node {
+              id,
+              ...PostLoopItem_post,
+            },
           },
         },
-      },
-    }
-  `,
-});
+      }
+    `,
+  },
+  {
+    // direction: 'forward',
+    // getConnectionFromProps: props => props.data.posts,
+    getFragmentVariables(prevVars, totalCount) {
+      // eslint-disable-next-line
+      console.log('getFragmentVariables', prevVars, totalCount);
+
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      // eslint-disable-next-line
+      console.log('getVariables', props, count, cursor, fragmentVariables);
+
+      return {
+        count,
+        after: cursor,
+      };
+    },
+    query: graphql`
+      query PostLoopQuery(
+        $count: Int!
+        $after: String
+      ) {
+        ...PostLoop_data
+      }
+    `,
+  },
+);
