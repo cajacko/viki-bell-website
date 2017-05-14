@@ -29,6 +29,7 @@ class PostLoop extends React.Component {
     this.setActualHeight = this.setActualHeight.bind(this);
     this.onWindowResize = this.onWindowResize.bind(this);
     this.showAllPosts = this.showAllPosts.bind(this);
+    this.splitVisibleHiddenPosts = this.splitVisibleHiddenPosts.bind(this);
   }
 
   componentDidMount() {
@@ -48,25 +49,17 @@ class PostLoop extends React.Component {
   }
 
   onWindowResize() {
-    const rowWidth = getRowWidth();
     let state = { maxHeight: 'none' };
 
-    const itemsPerRow = rowWidth.columns;
-    const allPosts = this.state.visiblePosts.concat(
-      this.state.hiddenPosts,
-    );
+    const { visiblePosts, hiddenPosts } = this.splitVisibleHiddenPosts();
 
-    const hiddenCount = allPosts.length % itemsPerRow;
-    const visibleCount = allPosts.length - hiddenCount;
-
-    const visiblePosts = allPosts.splice(0, visibleCount);
-    const hiddenPosts = allPosts; // As previous splice alters original array
-
-    if (visibleCount !== this.state.visiblePosts.length) {
-      state = { ...state, visiblePosts, hiddenPosts };
+    if (visiblePosts.length === 0 && !this.state.loading) {
+      this.getMorePosts(true);
+    } else if (visiblePosts.length !== this.state.visiblePosts.length && !this.state.loading) {
+      this.setState({ ...state, visiblePosts, hiddenPosts });
+    } else if (this.state.maxHeight !== 'none') {
+      this.setState(state);
     }
-
-    this.setState(state);
   }
 
   setActualHeight(skipTimeout, additionalState = {}) {
@@ -82,15 +75,22 @@ class PostLoop extends React.Component {
     }
   }
 
-  getMorePosts() {
+  getMorePosts(ranOutOfPosts) {
     if (!this.props.relay.hasMore() || this.props.relay.isLoading()) {
       return;
     }
 
-    this.setActualHeight(true, { loading: true });
-
+    let moreCount;
     const postLoopItemsPerLoad = getRowWidth().postLoopItemsPerLoad;
-    const moreCount = postLoopItemsPerLoad - this.state.hiddenPosts.length;
+    const state = { loading: true };
+
+    if (ranOutOfPosts) {
+      moreCount = postLoopItemsPerLoad * 2;
+      this.setState(state);
+    } else {
+      this.setActualHeight(true, state);
+      moreCount = postLoopItemsPerLoad - this.state.hiddenPosts.length;
+    }
 
     if (moreCount === 0) {
       this.showAllPosts(this.props.data.posts.edges);
@@ -112,10 +112,40 @@ class PostLoop extends React.Component {
     }
   }
 
-  showAllPosts(posts) {
-    const edges = posts.map((edge, index) => {
+  splitVisibleHiddenPosts(columns, posts) {
+    let itemsPerRow = columns;
+    let allPosts;
+
+    if (!itemsPerRow) {
+      itemsPerRow = getRowWidth().columns;
+    }
+
+    if (posts) {
+      allPosts = Object.assign([], posts);
+    } else {
+      allPosts = this.state.visiblePosts.concat(
+        this.state.hiddenPosts,
+      );
+    }
+
+    const hiddenCount = allPosts.length % itemsPerRow;
+    const visibleCount = allPosts.length - hiddenCount;
+
+    const visiblePosts = allPosts.splice(0, visibleCount);
+    const hiddenPosts = allPosts; // As previous splice alters original array
+
+    return { visiblePosts, hiddenPosts };
+  }
+
+  showAllPosts(posts, itemsPerRow) {
+    const {
+      visiblePosts,
+      hiddenPosts,
+    } = this.splitVisibleHiddenPosts(itemsPerRow, posts);
+
+    const edges = visiblePosts.map((edge, index) => {
       if (!this.state.visiblePosts[index]) {
-        return Object.assign({ theme: 'invisible' }, edge);
+        return Object.assign({}, edge, { theme: 'invisible' });
       }
 
       return edge;
@@ -123,18 +153,23 @@ class PostLoop extends React.Component {
 
     this.setState({
       visiblePosts: edges,
-      hiddenPosts: [],
+      hiddenPosts,
       maxHeight: this.state.maxHeight + 1000,
     });
 
     setTimeout(() => {
+      const visible = this.state.visiblePosts.map(
+        edge => Object.assign({}, edge, { theme: null }),
+      );
+
       this.setState({
-        visiblePosts: this.props.data.posts.edges,
+        visiblePosts: visible,
       });
     }, 100);
   }
 
   render() {
+
     let containerStyles;
     let containerPadding;
     let recommendedText = false;
@@ -160,7 +195,7 @@ class PostLoop extends React.Component {
 
       showMore = (
         <Button
-          action={this.getMorePosts}
+          action={() => this.getMorePosts()}
           theme={theme}
         >
           {showMoreText}

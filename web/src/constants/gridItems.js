@@ -57,7 +57,7 @@ function getRowWidthForWindow() {
   let currentRowWidth;
 
   rowWidthMap.forEach((rowWidth) => {
-    if (windowWidth > rowWidth.breakpoint) {
+    if (windowWidth >= rowWidth.breakpoint) {
       currentRowWidth = rowWidth;
     }
   });
