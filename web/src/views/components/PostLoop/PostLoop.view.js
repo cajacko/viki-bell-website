@@ -5,12 +5,45 @@ import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 
+/*
+set initial posts as visible
+when new posts are added set style to invisible
+after css animation timeout set all posts to visible
+*/
+
+// function setInitialPostsAsVisible(posts) {
+//   return posts.map(post => Object.assign({ theme: 'visible' }, post));
+// }
+
 class PostLoop extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { loading: props.relay.isLoading(), error: false };
+    this.state = {
+      loading: props.relay.isLoading(),
+      error: false,
+      posts: this.props.data.posts.edges,
+    };
+
     this.getMorePosts = this.getMorePosts.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.data.posts.edges !== nextProps.data.posts.edges) {
+      const edges = nextProps.data.posts.edges.map((edge, index) => {
+        if (!this.props.data.posts.edges[index]) {
+          return Object.assign({ theme: 'invisible' }, edge);
+        }
+
+        return edge;
+      });
+
+      this.setState({
+        posts: edges,
+      });
+
+      // Set timeout
+    }
   }
 
   getMorePosts() {
@@ -21,7 +54,7 @@ class PostLoop extends React.Component {
     this.setState({ loading: true });
 
     this.props.relay.loadMore(
-      2,
+      3,
       (e) => {
         let error = false;
 
@@ -81,11 +114,12 @@ class PostLoop extends React.Component {
         {recommendedText}
         <div style={style.posts}>
           {
-            this.props.data.posts.edges.map(edge => (
+            this.state.posts.map(edge => (
               <PostLoopItem
                 key={edge.node.id}
                 post={edge.node}
                 inverseColours={this.props.inverseColours}
+                theme={edge.theme}
               />
             ))
           }

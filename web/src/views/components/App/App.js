@@ -20,7 +20,7 @@ const App = () => (
     `}
 
     variables={{
-      count: 2,
+      count: 3,
     }}
 
     render={({ error, props }) => {

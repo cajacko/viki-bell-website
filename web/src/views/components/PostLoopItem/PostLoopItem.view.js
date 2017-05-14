@@ -50,6 +50,10 @@ class PostsLoopItem extends React.Component {
       articleStyles = { ...style.article, ...style.articleDefault };
     }
 
+    if (this.props.theme === 'invisible') {
+      articleStyles.opacity = 0;
+    }
+
     const date = moment.unix(this.props.post.date).format('MMMM D, YYYY');
 
     return (

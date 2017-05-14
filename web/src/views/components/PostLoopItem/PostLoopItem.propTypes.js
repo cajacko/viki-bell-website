@@ -11,4 +11,5 @@ export default {
     categorySlug: PropTypes.string,
     inverseColours: PropTypes.bool,
   }).isRequired,
+  theme: PropTypes.string,
 };
