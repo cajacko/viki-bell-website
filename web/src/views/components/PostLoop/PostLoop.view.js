@@ -4,7 +4,8 @@ import Radium from 'radium';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
-import { POST_LOOP_ITEMS_PER_LOAD } from 'constants/gridItems';
+import { getRowWidth } from 'constants/gridItems';
+import WindowResize from 'components/WindowResize/WindowResize';
 
 let postLoopId = 0;
 
@@ -15,14 +16,19 @@ class PostLoop extends React.Component {
     this.state = {
       loading: props.relay.isLoading(),
       error: false,
-      posts: this.props.data.posts.edges,
+      visiblePosts: this.props.data.posts.edges,
+      hiddenPosts: [],
       maxHeight: 5000,
     };
+
+    this.temp = true;
 
     this.id = `PostLoop-${postLoopId += 1}`;
 
     this.getMorePosts = this.getMorePosts.bind(this);
     this.setActualHeight = this.setActualHeight.bind(this);
+    this.onWindowResize = this.onWindowResize.bind(this);
+    this.showAllPosts = this.showAllPosts.bind(this);
   }
 
   componentDidMount() {
@@ -37,33 +43,43 @@ class PostLoop extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.data.posts.edges !== nextProps.data.posts.edges) {
-      const edges = nextProps.data.posts.edges.map((edge, index) => {
-        if (!this.props.data.posts.edges[index]) {
-          return Object.assign({ theme: 'invisible' }, edge);
-        }
-
-        return edge;
-      });
-
-      this.setState({
-        posts: edges,
-        maxHeight: this.state.maxHeight + 1000,
-      });
-
-      setTimeout(() => {
-        this.setState({
-          posts: this.props.data.posts.edges,
-        });
-      }, 100);
+      this.showAllPosts(nextProps.data.posts.edges);
     }
   }
 
-  setActualHeight() {
-    setTimeout(() => {
-      this.setState({
-        maxHeight: this.element.offsetHeight,
-      });
-    }, 100);
+  onWindowResize() {
+    const rowWidth = getRowWidth();
+    let state = { maxHeight: 'none' };
+
+    const itemsPerRow = rowWidth.columns;
+    const allPosts = this.state.visiblePosts.concat(
+      this.state.hiddenPosts,
+    );
+
+    const hiddenCount = allPosts.length % itemsPerRow;
+    const visibleCount = allPosts.length - hiddenCount;
+
+    const visiblePosts = allPosts.splice(0, visibleCount);
+    const hiddenPosts = allPosts; // As previous splice alters original array
+
+    if (visibleCount !== this.state.visiblePosts.length) {
+      state = { ...state, visiblePosts, hiddenPosts };
+    }
+
+    this.setState(state);
+  }
+
+  setActualHeight(skipTimeout, additionalState = {}) {
+    const setState = () => this.setState({
+      maxHeight: this.element.offsetHeight,
+      ...additionalState,
+    });
+
+    if (skipTimeout) {
+      setState();
+    } else {
+      setTimeout(() => setState(), 100);
+    }
   }
 
   getMorePosts() {
@@ -71,22 +87,51 @@ class PostLoop extends React.Component {
       return;
     }
 
-    this.setState({ loading: true });
+    this.setActualHeight(true, { loading: true });
 
-    this.props.relay.loadMore(
-      POST_LOOP_ITEMS_PER_LOAD,
-      (e) => {
-        let error = false;
+    const postLoopItemsPerLoad = getRowWidth().postLoopItemsPerLoad;
+    const moreCount = postLoopItemsPerLoad - this.state.hiddenPosts.length;
 
-        if (e) {
-          // eslint-disable-next-line
-          console.warn('Could not get more posts', e);
-          error = e;
-        }
+    if (moreCount === 0) {
+      this.showAllPosts(this.props.data.posts.edges);
+    } else {
+      this.props.relay.loadMore(
+        moreCount,
+        (e) => {
+          let error = false;
 
-        this.setState({ loading: false, error });
-      },
-    );
+          if (e) {
+            // eslint-disable-next-line
+            console.warn('Could not get more posts', e);
+            error = e;
+          }
+
+          this.setState({ loading: false, error });
+        },
+      );
+    }
+  }
+
+  showAllPosts(posts) {
+    const edges = posts.map((edge, index) => {
+      if (!this.state.visiblePosts[index]) {
+        return Object.assign({ theme: 'invisible' }, edge);
+      }
+
+      return edge;
+    });
+
+    this.setState({
+      visiblePosts: edges,
+      hiddenPosts: [],
+      maxHeight: this.state.maxHeight + 1000,
+    });
+
+    setTimeout(() => {
+      this.setState({
+        visiblePosts: this.props.data.posts.edges,
+      });
+    }, 100);
   }
 
   render() {
@@ -130,26 +175,28 @@ class PostLoop extends React.Component {
     }
 
     return (
-      <div style={containerStyles}>
-        {recommendedText}
-        <div
-          id={this.id}
-          style={{ ...style.posts, maxHeight: this.state.maxHeight }}
-        >
-          {
-            this.state.posts.map(edge => (
-              <PostLoopItem
-                key={edge.node.id}
-                post={edge.node}
-                inverseColours={this.props.inverseColours}
-                theme={edge.theme}
-              />
-            ))
-          }
-        </div>
+      <WindowResize onWindowResize={this.onWindowResize} runOnMount={false}>
+        <div style={containerStyles}>
+          {recommendedText}
+          <div
+            id={this.id}
+            style={{ ...style.posts, maxHeight: this.state.maxHeight }}
+          >
+            {
+              this.state.visiblePosts.map(edge => (
+                <PostLoopItem
+                  key={edge.node.id}
+                  post={edge.node}
+                  inverseColours={this.props.inverseColours}
+                  theme={edge.theme}
+                />
+              ))
+            }
+          </div>
 
-        {showMore}
-      </div>
+          {showMore}
+        </div>
+      </WindowResize>
     );
   }
 }

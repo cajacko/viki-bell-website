@@ -23,7 +23,10 @@ class WindowResize extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
-    this.props.onWindowResize(this.state.width, this.state.height);
+
+    if (this.props.runOnMount) {
+      this.props.onWindowResize(this.state.width, this.state.height);
+    }
   }
 
   componentWillUnmount() {
@@ -49,6 +52,11 @@ class WindowResize extends React.Component {
 WindowResize.propTypes = {
   children: PropTypes.element.isRequired,
   onWindowResize: PropTypes.func.isRequired,
+  runOnMount: PropTypes.bool,
 };
+
+WindowResize.defaultProps = {
+  runOnMount: true,
+}
 
 export default WindowResize;

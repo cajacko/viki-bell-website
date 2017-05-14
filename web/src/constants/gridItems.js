@@ -5,41 +5,69 @@ const minWidth = 200;
 let mediaQuery;
 let width;
 
-let iterator = 1;
+let columns = 1;
 let currentWidth = 0;
-let gridItemsPerRow = 1;
-const windowWidth = window.innerWidth;
 
-const rowCountOverride = [4, 3];
-const defaultRows = 2;
-let rows = defaultRows;
+const fullWidthRows = 4;
+
+const rowWidthMap = [{
+  breakpoint: 0,
+  columns: 1,
+  columnWidth: 100,
+  rows: fullWidthRows,
+  postLoopItemsPerLoad: fullWidthRows,
+}];
 
 while (currentWidth <= 3000) {
-  iterator += 1;
-  currentWidth = minWidth * iterator;
+  columns += 1;
 
-  mediaQuery = `@media (min-width: ${currentWidth}px)`;
-  width = Math.round((100 / iterator) * 100) / 100;
+  currentWidth = minWidth * columns;
+  width = Math.round((100 / columns) * 100) / 100;
 
-  if (windowWidth > currentWidth) {
-    gridItemsPerRow = iterator;
+  const rowWidth = {
+    breakpoint: currentWidth,
+    columns,
+    columnWidth: width,
+    rows: 2,
+  };
 
-    const rowOverride = rowCountOverride[iterator - 1];
-
-    if (rowOverride) {
-      rows = rowOverride;
-    } else {
-      rows = defaultRows;
-    }
+  if (columns === 2) {
+    rowWidth.rows = 3;
   }
 
+  rowWidth.postLoopItemsPerLoad = rowWidth.rows * rowWidth.columns;
+  rowWidthMap.push(rowWidth);
+}
+
+rowWidthMap.forEach((rowWidth, index) => {
+  if (index === 0) {
+    return;
+  }
+
+  mediaQuery = `@media (min-width: ${rowWidth.breakpoint}px)`;
+
   mediaQueries[mediaQuery] = {
-    width: `${width}%`,
+    width: `${rowWidth.columnWidth}%`,
     maxWidth: '100%',
   };
+});
+
+function getRowWidthForWindow() {
+  const windowWidth = window.innerWidth;
+  let currentRowWidth;
+
+  rowWidthMap.forEach((rowWidth) => {
+    if (windowWidth > rowWidth.breakpoint) {
+      currentRowWidth = rowWidth;
+    }
+  });
+
+  return currentRowWidth;
 }
 
 export const MEDIA_QUERIES = mediaQueries;
-export const GRID_ITEMS_PER_ROW = gridItemsPerRow;
-export const MAIN_POST_LOOP_ROWS = rows;
-export const POST_LOOP_ITEMS_PER_LOAD = rows * gridItemsPerRow;
+
+export function getRowWidth() {
+  const rowWidth = getRowWidthForWindow();
+  return rowWidth;
+}
