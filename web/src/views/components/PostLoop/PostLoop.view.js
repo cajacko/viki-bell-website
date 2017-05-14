@@ -19,6 +19,7 @@ class PostLoop extends React.Component {
       visiblePosts: this.props.data.posts.edges,
       hiddenPosts: [],
       maxHeight: 5000,
+      hasMore: this.props.relay.hasMore(),
     };
 
     this.temp = true;
@@ -43,19 +44,29 @@ class PostLoop extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const hasMore = this.props.relay.hasMore();
+
     if (this.props.data.posts.edges !== nextProps.data.posts.edges) {
-      this.showAllPosts(nextProps.data.posts.edges);
+      this.showAllPosts(
+        nextProps.data.posts.edges,
+        null,
+        hasMore,
+      );
+    } else if (this.state.hasMore !== hasMore) {
+      this.setState({ hasMore });
     }
   }
 
   onWindowResize() {
-    let state = { maxHeight: 'none' };
+    const state = { maxHeight: 'none' };
 
     const { visiblePosts, hiddenPosts } = this.splitVisibleHiddenPosts();
+    const visibleCount = visiblePosts.length;
+    const visibleStateCount = this.state.visiblePosts.length;
 
     if (visiblePosts.length === 0 && !this.state.loading) {
       this.getMorePosts(true);
-    } else if (visiblePosts.length !== this.state.visiblePosts.length && !this.state.loading) {
+    } else if (visibleCount !== visibleStateCount && !this.state.loading) {
       this.setState({ ...state, visiblePosts, hiddenPosts });
     } else if (this.state.maxHeight !== 'none') {
       this.setState(state);
@@ -76,7 +87,7 @@ class PostLoop extends React.Component {
   }
 
   getMorePosts(ranOutOfPosts) {
-    if (!this.props.relay.hasMore() || this.props.relay.isLoading()) {
+    if (this.props.relay.isLoading()) {
       return;
     }
 
@@ -86,15 +97,19 @@ class PostLoop extends React.Component {
 
     if (ranOutOfPosts) {
       moreCount = postLoopItemsPerLoad * 2;
-      this.setState(state);
     } else {
-      this.setActualHeight(true, state);
       moreCount = postLoopItemsPerLoad - this.state.hiddenPosts.length;
     }
 
     if (moreCount === 0) {
       this.showAllPosts(this.props.data.posts.edges);
-    } else {
+    } else if (this.props.relay.hasMore()) {
+      if (ranOutOfPosts) {
+        this.setState(state);
+      } else {
+        this.setActualHeight(true, state);
+      }
+
       this.props.relay.loadMore(
         moreCount,
         (e) => {
@@ -137,11 +152,19 @@ class PostLoop extends React.Component {
     return { visiblePosts, hiddenPosts };
   }
 
-  showAllPosts(posts, itemsPerRow) {
+  showAllPosts(posts, itemsPerRow, hasMoreParam) {
     const {
       visiblePosts,
       hiddenPosts,
     } = this.splitVisibleHiddenPosts(itemsPerRow, posts);
+
+    let hasMore;
+
+    if (hasMoreParam) {
+      hasMore = hasMoreParam;
+    } else {
+      hasMore = this.state.hasMore;
+    }
 
     const edges = visiblePosts.map((edge, index) => {
       if (!this.state.visiblePosts[index]) {
@@ -155,6 +178,7 @@ class PostLoop extends React.Component {
       visiblePosts: edges,
       hiddenPosts,
       maxHeight: this.state.maxHeight + 1000,
+      hasMore,
     });
 
     setTimeout(() => {
@@ -169,7 +193,6 @@ class PostLoop extends React.Component {
   }
 
   render() {
-
     let containerStyles;
     let containerPadding;
     let recommendedText = false;
@@ -188,6 +211,9 @@ class PostLoop extends React.Component {
 
       if (this.state.loading) {
         showMoreText = 'Loading';
+        theme = 'loading';
+      } else if (!this.state.hasMore) {
+        showMoreText = 'That\'s all folks!';
         theme = 'loading';
       } else {
         showMoreText = 'Show More Posts';
