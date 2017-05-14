@@ -22,7 +22,7 @@ while (currentWidth <= 3000) {
   columns += 1;
 
   currentWidth = minWidth * columns;
-  width = Math.round((100 / columns) * 100) / 100;
+  width = Math.floor((100 / columns) * 10) / 10;
 
   const rowWidth = {
     breakpoint: currentWidth,
