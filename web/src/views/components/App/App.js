@@ -5,6 +5,7 @@ import {
 } from 'react-relay';
 import environment from 'views/relayEnvironment';
 import PostLoop from 'components/PostLoop/PostLoop';
+import { POST_LOOP_ITEMS_PER_LOAD } from 'constants/gridItems';
 
 const App = () => (
   <QueryRenderer
@@ -20,7 +21,7 @@ const App = () => (
     `}
 
     variables={{
-      count: 3,
+      count: POST_LOOP_ITEMS_PER_LOAD,
     }}
 
     render={({ error, props }) => {

@@ -21,6 +21,24 @@ const posts = [
   'Woo yeah',
   'Using habitica for your habits',
   'Yeah buddy',
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+  'Using habitica for your habits',
+  'Yeah buddy',
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+  'Using habitica for your habits',
+  'Yeah buddy',
+  'My guide to secret cinema',
+  'Yeah yeah yeah',
+  'How\'s-it',
+  'Woo yeah',
+  'Using habitica for your habits',
+  'Yeah buddy',
 ].map((title, i) => {
   const post = new Post();
   post.title = `${i} ${title}`;
@@ -50,6 +68,6 @@ export function getPost(id) {
 
 export function getPosts() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(posts), 1500);
+    setTimeout(() => resolve(posts), 1000);
   });
 }

@@ -4,6 +4,7 @@ import Radium from 'radium';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
+import { POST_LOOP_ITEMS_PER_LOAD } from 'constants/gridItems';
 
 let postLoopId = 0;
 
@@ -73,7 +74,7 @@ class PostLoop extends React.Component {
     this.setState({ loading: true });
 
     this.props.relay.loadMore(
-      3,
+      POST_LOOP_ITEMS_PER_LOAD,
       (e) => {
         let error = false;
 
