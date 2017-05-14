@@ -43,11 +43,14 @@ class PostsLoopItem extends React.Component {
 
   render() {
     let articleStyles;
+    let containerStyles;
 
-    if (this.props.post.inverseColours) {
+    if (this.props.inverseColours) {
       articleStyles = { ...style.article, ...style.articleInverse };
+      containerStyles = { ...style.container, ...style.containerInverse };
     } else {
       articleStyles = { ...style.article, ...style.articleDefault };
+      containerStyles = { ...style.container, ...style.containerDefault };
     }
 
     if (this.props.theme === 'invisible') {
@@ -59,7 +62,7 @@ class PostsLoopItem extends React.Component {
     return (
       <WindowResize onWindowResize={this.onWindowResize}>
         <article style={articleStyles}>
-          <div style={style.container}>
+          <div style={containerStyles}>
             <a href={this.state.postRoute} style={style.imageLink}>
               <img alt={this.props.post.imageAlt} src={this.props.post.image} />
             </a>

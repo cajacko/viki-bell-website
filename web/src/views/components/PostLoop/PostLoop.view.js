@@ -15,11 +15,16 @@ class PostLoop extends React.Component {
   constructor(props) {
     super(props);
 
+    const {
+      visiblePosts,
+      hiddenPosts,
+    } = this.splitVisibleHiddenPosts(null, this.props.data.posts.edges);
+
     this.state = {
       loading: props.relay.isLoading(),
       error: false,
-      visiblePosts: this.props.data.posts.edges,
-      hiddenPosts: [],
+      visiblePosts,
+      hiddenPosts,
       maxHeight: 5000,
       hasMore: this.props.relay.hasMore(),
     };
@@ -70,7 +75,9 @@ class PostLoop extends React.Component {
     const visibleStateCount = this.state.visiblePosts.length;
     const minNumberofPosts = rowWidth.postLoopItemsPerLoad;
 
-    if (visiblePosts.length < minNumberofPosts && !this.state.loading) {
+    const tooFewPosts = visiblePosts.length < minNumberofPosts;
+
+    if (tooFewPosts && !this.state.loading && !this.props.recommendedPosts) {
       this.getMorePosts(true);
     } else if (visibleCount !== visibleStateCount && !this.state.loading) {
       this.setState({ ...state, visiblePosts, hiddenPosts });
@@ -149,8 +156,24 @@ class PostLoop extends React.Component {
       );
     }
 
-    const hiddenCount = allPosts.length % itemsPerRow;
-    const visibleCount = allPosts.length - hiddenCount;
+    let visibleCount;
+    let hiddenCount;
+
+    if (this.props.recommendedPosts) {
+      switch (itemsPerRow) {
+        case 1:
+          visibleCount = 2;
+          break;
+        case 2:
+          visibleCount = 4;
+          break;
+        default:
+          visibleCount = itemsPerRow;
+      }
+    } else {
+      hiddenCount = allPosts.length % itemsPerRow;
+      visibleCount = allPosts.length - hiddenCount;
+    }
 
     const visiblePosts = allPosts.splice(0, visibleCount);
     const hiddenPosts = allPosts; // As previous splice alters original array

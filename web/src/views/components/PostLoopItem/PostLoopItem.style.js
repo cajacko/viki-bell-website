@@ -1,4 +1,4 @@
-import BORDER from 'constants/borders';
+import { WIDTH, STYLE, COLOUR } from 'constants/borders';
 import { FONT_FAMILY, FONT_SIZES, FONT_COLOURS } from 'constants/fonts';
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
 import { WHITE, LIGHT_GREY } from 'constants/colours';
@@ -24,11 +24,20 @@ export default {
   },
 
   container: {
-    ...BORDER,
+    borderWidth: WIDTH,
+    borderStyle: STYLE,
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+  },
+
+  containerDefault: {
+    borderColor: COLOUR.DEFAULT,
+  },
+
+  containerInverse: {
+    borderColor: COLOUR.DARK,
   },
 
   imageLink: {

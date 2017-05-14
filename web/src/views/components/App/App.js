@@ -7,39 +7,51 @@ import environment from 'views/relayEnvironment';
 import PostLoop from 'components/PostLoop/PostLoop';
 import { getRowWidth } from 'constants/gridItems';
 
-const App = () => (
-  <QueryRenderer
-    environment={environment}
+const App = () => {
+  let count;
+  const recommended = true;
+  const inverse = true;
 
-    query={graphql`
-      query AppQuery(
-        $count: Int!
-        $after: String
-      ) {
-        ...PostLoop_data
-      }
-    `}
+  if (recommended) {
+    count = 12; // Number that's always more than 1 row
+  } else {
+    count = getRowWidth().postLoopItemsPerLoad;
+  }
 
-    variables={{
-      count: getRowWidth().postLoopItemsPerLoad,
-    }}
+  return (
+    <QueryRenderer
+      environment={environment}
 
-    render={({ error, props }) => {
-      if (error) {
-        return <div>{error.message}</div>;
-      } else if (props) {
-        document.getElementById('loading').remove();
-        return (
-          <div>
-            <PostLoop data={props} />
-            <PostLoop data={props} inverseColours recommendedPosts />
-          </div>
-        );
-      }
+      query={graphql`
+        query AppQuery(
+          $count: Int!
+          $after: String
+        ) {
+          ...PostLoop_data
+        }
+      `}
 
-      return null; // Is loading
-    }}
-  />
-);
+      variables={{ count }}
+
+      render={({ error, props }) => {
+        if (error) {
+          return <div>{error.message}</div>;
+        } else if (props) {
+          document.getElementById('loading').remove();
+
+          return (
+            <PostLoop
+              data={props}
+              inverseColours={inverse}
+              recommendedPosts={recommended}
+            />
+          );
+        }
+
+        return null; // Is loading
+      }}
+    />
+  );
+}
 
 export default App;
