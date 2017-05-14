@@ -54,7 +54,7 @@ class PostLoop extends React.Component {
         null,
         hasMore,
       );
-    } else if (this.state.hasMore !== hasMore) {
+    } else {
       this.setState({ hasMore });
     }
   }
@@ -166,7 +166,7 @@ class PostLoop extends React.Component {
 
     let hasMore;
 
-    if (hasMoreParam) {
+    if (hasMoreParam === true || hasMoreParam === false) {
       hasMore = hasMoreParam;
     } else {
       hasMore = this.state.hasMore;
