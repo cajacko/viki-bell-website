@@ -49,5 +49,7 @@ export function getPost(id) {
 }
 
 export function getPosts() {
-  return posts;
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(posts), 3000);
+  });
 }

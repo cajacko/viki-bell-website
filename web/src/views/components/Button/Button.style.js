@@ -1,5 +1,5 @@
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
-import { TURQOISE, DARK_TURQOISE } from 'constants/colours';
+import { TURQOISE, DARK_TURQOISE, DARK_GREY } from 'constants/colours';
 import {
   FONT_FAMILY,
   FONT_SIZES,
@@ -15,19 +15,29 @@ export default {
     margin: '0 auto',
     ...MEDIA_QUERIES,
     appearance: 'none',
-    background: TURQOISE,
     border: 0,
     padding: 8,
     lineHeight: FONT_LINE_HEIGHTS.NONE,
-    color: FONT_COLOURS.WHITE,
     fontFamily: FONT_FAMILY,
     fontSize: FONT_SIZES.MEDIUM,
     textTransform: 'uppercase',
+    outline: 'none',
+  },
+
+  defaultColor: {
+    background: TURQOISE,
+    color: FONT_COLOURS.WHITE,
     cursor: 'pointer',
 
     ':hover': {
       background: DARK_TURQOISE,
       textDecoration: 'underline',
     },
+  },
+
+  loading: {
+    background: DARK_GREY,
+    color: FONT_COLOURS.WHITE,
+    cursor: 'progress',
   },
 };

@@ -9,6 +9,7 @@ class PostLoop extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { loading: props.relay.isLoading(), error: false };
     this.getMorePosts = this.getMorePosts.bind(this);
   }
 
@@ -17,11 +18,20 @@ class PostLoop extends React.Component {
       return;
     }
 
+    this.setState({ loading: true });
+
     this.props.relay.loadMore(
       2,
       (e) => {
-        // eslint-disable-next-line
-        console.warn('Could not get more posts', e);
+        let error = false;
+
+        if (e) {
+          // eslint-disable-next-line
+          console.warn('Could not get more posts', e);
+          error = e;
+        }
+
+        this.setState({ loading: false, error });
       },
     );
   }
@@ -40,7 +50,24 @@ class PostLoop extends React.Component {
       );
     } else {
       containerPadding = style.container;
-      showMore = <Button action={this.getMorePosts}>Show More Posts</Button>;
+      let showMoreText;
+      let theme;
+
+      if (this.state.loading) {
+        showMoreText = 'Loading';
+        theme = 'loading';
+      } else {
+        showMoreText = 'Show More Posts';
+      }
+
+      showMore = (
+        <Button
+          action={this.getMorePosts}
+          theme={theme}
+        >
+          {showMoreText}
+        </Button>
+      );
     }
 
     if (this.props.inverseColours) {

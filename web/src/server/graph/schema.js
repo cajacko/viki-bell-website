@@ -8,7 +8,7 @@ import {
 import {
   connectionArgs,
   connectionDefinitions,
-  connectionFromArray,
+  connectionFromPromisedArray,
   fromGlobalId,
   globalIdField,
   nodeDefinitions,
@@ -120,7 +120,7 @@ const Query = new GraphQLObjectType({
         ...connectionArgs,
       },
       resolve: (obj, { queryType, queryTerm, ...args }) =>
-        connectionFromArray(getPosts(queryType, queryTerm, args), args),
+        connectionFromPromisedArray(getPosts(queryType, queryTerm, args), args),
     },
   }),
 });
