@@ -28,6 +28,7 @@ const App = () => (
       if (error) {
         return <div>{error.message}</div>;
       } else if (props) {
+        document.getElementById('loading').remove();
         return (
           <div>
             <PostLoop data={props} />
@@ -36,7 +37,7 @@ const App = () => (
         );
       }
 
-      return <div>Loading</div>;
+      return null; // Is loading
     }}
   />
 );
