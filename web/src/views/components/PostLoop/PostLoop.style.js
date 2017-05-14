@@ -7,7 +7,7 @@ export default {
     paddingBottom: ARTICLE_MARGIN,
   },
 
-  containerRecommended: {
+  paddingTop: {
     paddingTop: ARTICLE_MARGIN,
   },
 
@@ -27,7 +27,12 @@ export default {
     overflow: 'hidden',
   },
 
-  recommendedText: {
+  noMorePosts: {
+    paddingTop: ARTICLE_MARGIN,
+    paddingBottom: 0,
+  },
+
+  heading: {
     paddingBottom: ARTICLE_MARGIN,
     margin: '0 auto',
     textAlign: 'center',

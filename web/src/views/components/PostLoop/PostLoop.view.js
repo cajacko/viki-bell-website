@@ -205,10 +205,10 @@ class PostLoop extends React.Component {
     let showMore = false;
 
     if (this.props.recommendedPosts) {
-      containerPadding = { ...style.container, ...style.containerRecommended };
+      containerPadding = { ...style.container, ...style.paddingTop };
 
       recommendedText = (
-        <p style={style.recommendedText}>More posts you may like</p>
+        <p style={style.heading}>More posts you may like</p>
       );
     } else {
       containerPadding = style.container;
@@ -230,9 +230,18 @@ class PostLoop extends React.Component {
       containerStyles = { ...containerPadding, ...style.containerDefault };
     }
 
-    return (
-      <WindowResize onWindowResize={this.onWindowResize} runOnMount={false}>
-        <div style={containerStyles}>
+    let content;
+
+    if (this.props.data.posts.edges.length === 0) {
+      containerStyles = { ...containerStyles, ...style.noMorePosts };
+      content = (
+        <p style={style.heading}>
+          Oh no, I haven&apos;t written any posts for this page yet.
+        </p>
+      );
+    } else {
+      content = (
+        <div>
           {recommendedText}
           <div
             id={this.id}
@@ -251,6 +260,14 @@ class PostLoop extends React.Component {
           </div>
 
           {showMore}
+        </div>
+      );
+    }
+
+    return (
+      <WindowResize onWindowResize={this.onWindowResize} runOnMount={false}>
+        <div style={containerStyles}>
+          {content}
         </div>
       </WindowResize>
     );
