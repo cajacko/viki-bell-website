@@ -4,9 +4,6 @@ import {
 } from 'react-relay';
 import PostLoop from 'components/PostLoop/PostLoop.view';
 
-// eslint-disable-next-line
-console.log('loaded');
-
 export default createPaginationContainer(
   PostLoop,
   {
@@ -33,21 +30,13 @@ export default createPaginationContainer(
     `,
   },
   {
-    // direction: 'forward',
-    // getConnectionFromProps: props => props.data.posts,
     getFragmentVariables(prevVars, totalCount) {
-      // eslint-disable-next-line
-      console.log('getFragmentVariables', prevVars, totalCount);
-
       return {
         ...prevVars,
         count: totalCount,
       };
     },
-    getVariables(props, { count, cursor }, fragmentVariables) {
-      // eslint-disable-next-line
-      console.log('getVariables', props, count, cursor, fragmentVariables);
-
+    getVariables(props, { count, cursor }) {
       return {
         count,
         after: cursor,

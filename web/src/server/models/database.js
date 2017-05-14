@@ -48,19 +48,6 @@ export function getPost(id) {
   return selectedPost;
 }
 
-// eslint-disable-next-line
-export function getPosts(queryType, queryTerm, args) {
-  console.log(queryType);
-  console.log(queryTerm);
-  console.log(args);
-
-  let returnPosts = posts;
-
-  // if (args.first) {
-  //   returnPosts = returnPosts.slice(0, args.first)
-  // }
-  //
-  // console.log(returnPosts.length);
-
-  return returnPosts;
+export function getPosts() {
+  return posts;
 }

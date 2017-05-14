@@ -13,27 +13,15 @@ class PostLoop extends React.Component {
   }
 
   getMorePosts() {
-    // eslint-disable-next-line
-    console.log('get more posts', this.props);
-
-    if (!this.props.relay.hasMore()) {
-      // eslint-disable-next-line
-      console.log('Does not have more');
-      return;
-    } else if (this.props.relay.isLoading()) {
-      // eslint-disable-next-line
-      console.log('Is already loading');
+    if (!this.props.relay.hasMore() || this.props.relay.isLoading()) {
       return;
     }
-
-    // eslint-disable-next-line
-    console.log('Load load');
 
     this.props.relay.loadMore(
       2,
       (e) => {
         // eslint-disable-next-line
-        console.log('Loading more', e);
+        console.warn('Could not get more posts', e);
       },
     );
   }

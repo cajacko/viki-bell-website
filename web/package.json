@@ -7,7 +7,7 @@
     "start:windows": "babel-node scripts/watch.js",
     "precommit": "npm run start:production && npm run test:production",
     "test": "npm run lint",
-    "lint": "eslint **/*.{js,jsx}",
+    "lint": "eslint src",
     "eslint": "eslint",
     "build-graph-relay": "npm run update-schema && npm run relay",
     "start:production": "node dist/server/index.js",
@@ -84,6 +84,7 @@
     "redux-thunk": "2.2.0",
     "rimraf": "2.6.1",
     "relay-compiler": "^1.0.0-a",
-    "react-relay": "^1.0.0-a"
+    "react-relay": "^1.0.0-a",
+    "relay-runtime": "1.0.0-rc.3"
   }
 }
