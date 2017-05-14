@@ -61,12 +61,16 @@ class PostLoop extends React.Component {
 
   onWindowResize() {
     const state = { maxHeight: 'none' };
-
-    const { visiblePosts, hiddenPosts } = this.splitVisibleHiddenPosts();
+    const rowWidth = getRowWidth();
+    const {
+      visiblePosts,
+      hiddenPosts,
+    } = this.splitVisibleHiddenPosts(rowWidth.columns);
     const visibleCount = visiblePosts.length;
     const visibleStateCount = this.state.visiblePosts.length;
+    const minNumberofPosts = rowWidth.postLoopItemsPerLoad;
 
-    if (visiblePosts.length === 0 && !this.state.loading) {
+    if (visiblePosts.length < minNumberofPosts && !this.state.loading) {
       this.getMorePosts(true);
     } else if (visibleCount !== visibleStateCount && !this.state.loading) {
       this.setState({ ...state, visiblePosts, hiddenPosts });
@@ -98,7 +102,7 @@ class PostLoop extends React.Component {
     const state = { loading: true };
 
     if (ranOutOfPosts) {
-      moreCount = postLoopItemsPerLoad * 2;
+      moreCount = postLoopItemsPerLoad;
     } else {
       moreCount = postLoopItemsPerLoad - this.state.hiddenPosts.length;
     }
