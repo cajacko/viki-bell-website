@@ -5,15 +5,7 @@ import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 
-/*
-set initial posts as visible
-when new posts are added set style to invisible
-after css animation timeout set all posts to visible
-*/
-
-// function setInitialPostsAsVisible(posts) {
-//   return posts.map(post => Object.assign({ theme: 'visible' }, post));
-// }
+let postLoopId = 0;
 
 class PostLoop extends React.Component {
   constructor(props) {
@@ -23,9 +15,23 @@ class PostLoop extends React.Component {
       loading: props.relay.isLoading(),
       error: false,
       posts: this.props.data.posts.edges,
+      maxHeight: 5000,
     };
 
+    this.id = `PostLoop-${postLoopId += 1}`;
+
     this.getMorePosts = this.getMorePosts.bind(this);
+    this.setActualHeight = this.setActualHeight.bind(this);
+  }
+
+  componentDidMount() {
+    this.element = document.getElementById(this.id);
+    this.setActualHeight();
+    this.element.addEventListener('transitionend', (args) => {
+      if (args.propertyName === 'max-height') {
+        this.setActualHeight();
+      }
+    }, true);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,10 +46,23 @@ class PostLoop extends React.Component {
 
       this.setState({
         posts: edges,
+        maxHeight: this.state.maxHeight + 1000,
       });
 
-      // Set timeout
+      setTimeout(() => {
+        this.setState({
+          posts: this.props.data.posts.edges,
+        });
+      }, 100);
     }
+  }
+
+  setActualHeight() {
+    setTimeout(() => {
+      this.setState({
+        maxHeight: this.element.offsetHeight,
+      });
+    }, 100);
   }
 
   getMorePosts() {
@@ -112,7 +131,10 @@ class PostLoop extends React.Component {
     return (
       <div style={containerStyles}>
         {recommendedText}
-        <div style={style.posts}>
+        <div
+          id={this.id}
+          style={{ ...style.posts, maxHeight: this.state.maxHeight }}
+        >
           {
             this.state.posts.map(edge => (
               <PostLoopItem

@@ -11,6 +11,7 @@ export default {
     maxWidth: MAX_WIDTH,
     marginBottom: ARTICLE_MARGIN,
     display: 'flex',
+    transition: 'opacity 0.5s',
     ...MEDIA_QUERIES,
   },
 

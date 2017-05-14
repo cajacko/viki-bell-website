@@ -3,26 +3,55 @@ import PropTypes from 'prop-types';
 import Radium from 'radium';
 import buttonStyles from 'components/Button/Button.style';
 
-const Button = ({ action, children, style, theme }) => {
-  let buttonStyle;
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
 
-  switch (theme) {
-    case 'loading':
-      buttonStyle = buttonStyles.loading;
-      break;
-
-    default:
-      buttonStyle = buttonStyles.defaultColor;
+    this.state = {
+      hover: false,
+      active: false,
+      focus: false,
+    };
   }
 
-  buttonStyle = { ...buttonStyles.default, ...buttonStyle, ...style };
+  componentWillReceiveProps(nextProps) {
+    // Radium hack as buttons think they are still hovered when clicked
+    if (nextProps.theme === 'loading') {
+      this.setState({
+        _radiumStyleState: {
+          main: {
+            ':hover': false,
+          },
+        },
+      });
+    }
+  }
 
-  return (
-    <button onClick={action} style={buttonStyle}>
-      {children}
-    </button>
-  );
-};
+  render() {
+    let buttonStyle;
+
+    switch (this.props.theme) {
+      case 'loading':
+        buttonStyle = buttonStyles.loading;
+        break;
+
+      default:
+        buttonStyle = buttonStyles.defaultColor;
+    }
+
+    buttonStyle = {
+      ...buttonStyles.default,
+      ...buttonStyle,
+      ...this.props.style,
+    };
+
+    return (
+      <button onClick={this.props.action} style={buttonStyle}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
 
 Button.propTypes = {
   action: PropTypes.func,

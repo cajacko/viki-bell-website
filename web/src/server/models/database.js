@@ -50,6 +50,6 @@ export function getPost(id) {
 
 export function getPosts() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(posts), 3000);
+    setTimeout(() => resolve(posts), 1500);
   });
 }

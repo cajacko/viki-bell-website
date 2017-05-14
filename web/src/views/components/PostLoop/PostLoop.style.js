@@ -23,6 +23,8 @@ export default {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    transition: 'max-height 1s',
+    overflow: 'hidden',
   },
 
   recommendedText: {
