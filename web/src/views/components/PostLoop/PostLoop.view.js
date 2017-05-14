@@ -6,6 +6,8 @@ import Button from 'components/Button/Button';
 import style from 'components/PostLoop/PostLoop.style';
 import { getRowWidth } from 'constants/gridItems';
 import WindowResize from 'components/WindowResize/WindowResize';
+import LoadingBar from 'components/LoadingBar/LoadingBar';
+import NoMorePosts from 'components/NoMorePosts/NoMorePosts';
 
 let postLoopId = 0;
 
@@ -206,27 +208,16 @@ class PostLoop extends React.Component {
       );
     } else {
       containerPadding = style.container;
-      let showMoreText;
-      let theme;
 
       if (this.state.loading) {
-        showMoreText = 'Loading';
-        theme = 'loading';
+        showMore = <LoadingBar />;
       } else if (!this.state.hasMore) {
-        showMoreText = 'That\'s all folks!';
-        theme = 'loading';
+        showMore = <NoMorePosts />;
       } else {
-        showMoreText = 'Show More Posts';
+        showMore = (
+          <Button action={() => this.getMorePosts()}>Show More Posts</Button>
+        );
       }
-
-      showMore = (
-        <Button
-          action={() => this.getMorePosts()}
-          theme={theme}
-        >
-          {showMoreText}
-        </Button>
-      );
     }
 
     if (this.props.inverseColours) {

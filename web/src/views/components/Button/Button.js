@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import buttonStyles from 'components/Button/Button.style';
+import LoadingBar from 'components/LoadingBar/LoadingBar';
 
 class Button extends React.Component {
   constructor(props) {
@@ -14,34 +15,10 @@ class Button extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Radium hack as buttons think they are still hovered when clicked
-    if (nextProps.theme === 'loading') {
-      this.setState({
-        _radiumStyleState: {
-          main: {
-            ':hover': false,
-          },
-        },
-      });
-    }
-  }
-
   render() {
-    let buttonStyle;
-
-    switch (this.props.theme) {
-      case 'loading':
-        buttonStyle = buttonStyles.loading;
-        break;
-
-      default:
-        buttonStyle = buttonStyles.defaultColor;
-    }
-
-    buttonStyle = {
+    const buttonStyle = {
       ...buttonStyles.default,
-      ...buttonStyle,
+      ...buttonStyles.defaultColor,
       ...this.props.style,
     };
 
@@ -61,7 +38,6 @@ Button.propTypes = {
   ]),
   // eslint-disable-next-line
   style: PropTypes.object,
-  theme: PropTypes.string,
 };
 
 Button.defaultProps = {

@@ -22,6 +22,9 @@ export default {
     fontSize: FONT_SIZES.MEDIUM,
     textTransform: 'uppercase',
     outline: 'none',
+    position: 'relative',
+    textAlign: 'center',
+    boxSizing: 'border-box',
   },
 
   defaultColor: {
@@ -35,9 +38,8 @@ export default {
     },
   },
 
-  loading: {
+  disabled: {
     background: DARK_GREY,
     color: FONT_COLOURS.WHITE,
-    cursor: 'progress',
   },
 };
