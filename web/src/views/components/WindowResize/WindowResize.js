@@ -57,6 +57,6 @@ WindowResize.propTypes = {
 
 WindowResize.defaultProps = {
   runOnMount: true,
-}
+};
 
 export default WindowResize;

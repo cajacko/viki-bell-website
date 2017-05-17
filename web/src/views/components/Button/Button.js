@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import buttonStyles from 'components/Button/Button.style';
-import LoadingBar from 'components/LoadingBar/LoadingBar';
 
 class Button extends React.Component {
   constructor(props) {

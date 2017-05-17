@@ -7,10 +7,26 @@ import environment from 'views/relayEnvironment';
 import PostLoop from 'components/PostLoop/PostLoop';
 import { getRowWidth } from 'constants/gridItems';
 
+class Loading extends React.Component {
+  componentDidMount() {
+    const loading = document.getElementById('loading');
+
+    loading.classList.remove('loading');
+
+    loading.addEventListener('transitionend', () => {
+      loading.remove();
+    }, true);
+  }
+
+  render() {
+    return <PostLoop {...this.props} />;
+  }
+}
+
 const App = () => {
   let count;
-  const recommended = true;
-  const inverse = true;
+  const recommended = false;
+  const inverse = false;
 
   if (recommended) {
     count = 12; // Number that's always more than 1 row
@@ -37,10 +53,8 @@ const App = () => {
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
-          document.getElementById('loading').remove();
-
           return (
-            <PostLoop
+            <Loading
               data={props}
               inverseColours={inverse}
               recommendedPosts={recommended}
@@ -52,6 +66,6 @@ const App = () => {
       }}
     />
   );
-}
+};
 
 export default App;
