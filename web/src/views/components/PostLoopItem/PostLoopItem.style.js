@@ -30,6 +30,7 @@ export default {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    maxWidth: '100%',
   },
 
   containerDefault: {
@@ -46,6 +47,12 @@ export default {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  image: {
+    flexShrink: 0,
+    minWidth: '100%',
+    minHeight: '100%',
   },
 
   textContainer: {

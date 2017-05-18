@@ -64,7 +64,11 @@ class PostsLoopItem extends React.Component {
         <article style={articleStyles}>
           <div style={containerStyles}>
             <a href={this.state.postRoute} style={style.imageLink}>
-              <img alt={this.props.post.imageAlt} src={this.props.post.image} />
+              <img
+                style={style.image}
+                alt={this.props.post.imageAlt}
+                src={this.props.post.image}
+              />
             </a>
 
             <div style={style.textContainer}>
