@@ -18,13 +18,16 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        background: #2597a1;
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         z-index: 9999999;
+      }
+
+      .background {
+        background: #2597a1;
       }
 
       .loadingDiv.loading {
@@ -80,7 +83,10 @@
   </head>
   <body>
     <div id="app"></div>
-    <div id="loading" class="loadingDiv loading">
+    <div id="loading" class="loadingDiv loading background">
+      <script>
+        document.getElementById('loading').classList.remove('background');
+      </script>
       <div id="spinner" class="spinner noJavascript">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -89,12 +95,19 @@
 
       <div id="noJavascript">
         <script>
-          window.startTime = Math.floor(Date.now());
           var noJavascript = document.getElementById('noJavascript');
           noJavascript.remove();
+          window.noLoading = true;
 
-          var noJavascriptClass = document.querySelector('.noJavascript');
-          noJavascriptClass.classList.remove('noJavascript');
+          setTimeout(function() {
+            if (!window.initialRender) {
+              window.startTime = Math.floor(Date.now());
+              window.noLoading = false;
+              document.getElementById('loading').classList.add('background');
+              var noJavascriptClass = document.querySelector('.noJavascript');
+              noJavascriptClass.classList.remove('noJavascript');
+            }
+          }, 500);
         </script>
         <div>
           <h1>VikiBell.com requires JavaScript to be enabled to work</h1>
