@@ -26,6 +26,10 @@
         z-index: 9999999;
       }
 
+      .hide {
+        display: none;
+      }
+
       .background {
         background: #2597a1;
       }
@@ -95,19 +99,7 @@
 
       <div id="noJavascript">
         <script>
-          var noJavascript = document.getElementById('noJavascript');
-          noJavascript.remove();
-          window.noLoading = true;
-
-          setTimeout(function() {
-            if (!window.initialRender) {
-              window.startTime = Math.floor(Date.now());
-              window.noLoading = false;
-              document.getElementById('loading').classList.add('background');
-              var noJavascriptClass = document.querySelector('.noJavascript');
-              noJavascriptClass.classList.remove('noJavascript');
-            }
-          }, 500);
+          document.getElementById('noJavascript').classList.add('hide');
         </script>
         <div>
           <h1>VikiBell.com requires JavaScript to be enabled to work</h1>
@@ -121,6 +113,20 @@
           </ul>
         </div>
       </div>
+      <script>
+        document.getElementById('noJavascript').remove();
+        window.noLoading = true;
+
+        setTimeout(function() {
+          if (!window.initialRender) {
+            window.startTime = Math.floor(Date.now());
+            window.noLoading = false;
+            document.getElementById('loading').classList.add('background');
+            var noJavascriptClass = document.querySelector('.noJavascript');
+            noJavascriptClass.classList.remove('noJavascript');
+          }
+        }, 500);
+      </script>
     </div>
     <script type="text/javascript"><%- manifest %></script>
     <script type="text/javascript" src="/<%= vendor %>"></script>

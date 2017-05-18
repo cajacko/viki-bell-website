@@ -11,8 +11,11 @@ class Loading extends React.Component {
   componentDidMount() {
     window.initialRender = true;
     const now = Math.floor(Date.now());
+    const loading = document.getElementById('loading');
 
-    if (!window.noLoading) {
+    if (window.noLoading) {
+      loading.remove();
+    } else {
       const loadingTime = now - window.startTime;
 
       // Otherwise looks like flash of content
@@ -24,8 +27,6 @@ class Loading extends React.Component {
       }
 
       setTimeout(() => {
-        const loading = document.getElementById('loading');
-
         loading.classList.remove('loading');
 
         loading.addEventListener('transitionend', () => {
