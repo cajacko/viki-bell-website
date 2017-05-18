@@ -143,9 +143,11 @@ class PostLoop extends React.Component {
   splitVisibleHiddenPosts(columns, posts) {
     let itemsPerRow = columns;
     let allPosts;
+    const rowWidth = getRowWidth();
+    const postLoopItemsPerLoad = rowWidth.postLoopItemsPerLoad;
 
     if (!itemsPerRow) {
-      itemsPerRow = getRowWidth().columns;
+      itemsPerRow = rowWidth.columns;
     }
 
     if (posts) {
@@ -173,6 +175,10 @@ class PostLoop extends React.Component {
     } else {
       hiddenCount = allPosts.length % itemsPerRow;
       visibleCount = allPosts.length - hiddenCount;
+    }
+
+    if (visibleCount < postLoopItemsPerLoad) {
+      visibleCount = postLoopItemsPerLoad;
     }
 
     const visiblePosts = allPosts.splice(0, visibleCount);
