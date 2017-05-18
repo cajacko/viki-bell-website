@@ -10,7 +10,6 @@ export default createFragmentContainer(PostsLoopItem, {
       id
       postId
       title
-      excerpt
       date
       image
       category

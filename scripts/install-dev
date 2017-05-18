@@ -5,5 +5,4 @@ set -e
 ./scripts/support/run-mysql
 ./scripts/support/run-wordpress-dev
 ./scripts/support/dev-permissions
-./scripts/update-node
-./scripts/support/log-ip
+./scripts/update-node-dev

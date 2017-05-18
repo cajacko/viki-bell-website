@@ -4,11 +4,11 @@ import express from 'express';
 import compression from 'compression';
 import path from 'path';
 import graphqlHTTP from 'express-graphql';
-import './dotenv';
-import port from '../constants/port';
-import home from './routes/home';
-import listenLog from '../constants/listenLog';
-import schema from './graph/schema';
+import 'server/dotenv';
+import port from 'constants/port';
+import home from 'server/routes/home';
+import listenLog from 'constants/listenLog';
+import schema from 'graph/schema';
 
 const app = express();
 

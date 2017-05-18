@@ -18,7 +18,7 @@ import {
   Post,
   getPost,
   getPosts,
-} from '../models/database';
+} from 'models/post';
 
 const { nodeInterface, nodeField } = nodeDefinitions(
   (globalId) => {
@@ -54,11 +54,6 @@ const GraphQLPost = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The title of the post',
       resolve: obj => obj.title,
-    },
-    excerpt: {
-      type: GraphQLString,
-      description: 'The post excerpt',
-      resolve: obj => obj.excerpt,
     },
     date: {
       type: GraphQLInt,

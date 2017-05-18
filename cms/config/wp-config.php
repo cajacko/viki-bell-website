@@ -87,7 +87,9 @@ define('WP_SITEURL', $server_url . '/admin');
 define('WP_HOME', $server_url);
 define('WP_CONTENT_DIR', dirname(__FILE__) . '/content');
 define('WP_CONTENT_URL', $server_url . '/content');
-define( 'WP_DEFAULT_THEME', 'charlie-jackson' );
+define('WP_DEFAULT_THEME', 'charlie-jackson');
+
+define('WP_ALLOW_REPAIR', true);
 
 /**
  * For developers: WordPress debugging mode.
