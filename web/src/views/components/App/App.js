@@ -9,13 +9,29 @@ import { getRowWidth } from 'constants/gridItems';
 
 class Loading extends React.Component {
   componentDidMount() {
-    const loading = document.getElementById('loading');
+    const now = Math.floor(Date.now());
+    const loadingTime = now - window.startTime;
 
-    loading.classList.remove('loading');
+    // Otherwise looks like flash of content
+    const minimumLoadTime = 1000;
 
-    loading.addEventListener('transitionend', () => {
-      loading.remove();
-    }, true);
+    // For browser to sort itself out
+    const minimumBufferForAdditionalRender = 500;
+    let additionalLoadTime = minimumLoadTime - loadingTime;
+
+    if (additionalLoadTime < minimumBufferForAdditionalRender) {
+      additionalLoadTime = minimumBufferForAdditionalRender;
+    }
+
+    setTimeout(() => {
+      const loading = document.getElementById('loading');
+
+      loading.classList.remove('loading');
+
+      loading.addEventListener('transitionend', () => {
+        loading.remove();
+      }, true);
+    }, additionalLoadTime);
   }
 
   render() {
