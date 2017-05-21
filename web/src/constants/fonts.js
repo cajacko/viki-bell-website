@@ -6,7 +6,7 @@ import {
   WHITE,
 } from 'constants/colours';
 
-export const FONT_FAMILY = 'lato';
+export const FONT_FAMILY = 'lato, helvetica, sans-serif';
 
 export const FONT_SIZES = {
   SMALL: 12,

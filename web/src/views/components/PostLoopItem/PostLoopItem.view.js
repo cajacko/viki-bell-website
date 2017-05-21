@@ -6,6 +6,7 @@ import style from 'components/PostLoopItem/PostLoopItem.style';
 import propTypes from 'components/PostLoopItem/PostLoopItem.propTypes';
 import WindowResize from 'components/WindowResize/WindowResize';
 import TextLink from 'components/TextLink/TextLink';
+import Image from 'components/Image/Image';
 
 class PostsLoopItem extends React.Component {
   constructor(props) {
@@ -64,10 +65,9 @@ class PostsLoopItem extends React.Component {
         <article style={articleStyles}>
           <div style={containerStyles}>
             <a href={this.state.postRoute} style={style.imageLink}>
-              <img
+              <Image
                 style={style.image}
-                alt={this.props.post.imageAlt}
-                src={this.props.post.image}
+                image={this.props.post.image}
               />
             </a>
 

@@ -4,9 +4,8 @@ export default {
   post: PropTypes.shape({
     title: PropTypes.string,
     date: PropTypes.number,
-    image: PropTypes.string,
+    image: PropTypes.object,
     category: PropTypes.string,
-    imageAlt: PropTypes.string,
     postSlug: PropTypes.string,
     categorySlug: PropTypes.string,
     inverseColours: PropTypes.bool,

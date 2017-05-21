@@ -14,11 +14,15 @@ import {
   nodeDefinitions,
 } from 'graphql-relay';
 
-import {
-  Post,
-  getPost,
-  getPosts,
-} from 'models/post';
+import Post from 'models/post';
+import getPosts from 'models/getPosts';
+import getPost from 'models/getPost';
+
+class Image {}
+
+function getImage() {
+  return new Image();
+}
 
 const { nodeInterface, nodeField } = nodeDefinitions(
   (globalId) => {
@@ -26,6 +30,8 @@ const { nodeInterface, nodeField } = nodeDefinitions(
 
     if (type === 'Post') {
       return getPost(id);
+    } else if (type === 'Image') {
+      return getImage(id);
     }
 
     return null;
@@ -34,11 +40,48 @@ const { nodeInterface, nodeField } = nodeDefinitions(
     if (obj instanceof Post) {
       // eslint-disable-next-line
       return GraphQLPost;
+    } else if (obj instanceof Image) {
+      // eslint-disable-next-line
+      return GraphQLImage;
     }
 
     return null;
   },
 );
+
+const GraphQLImage = new GraphQLObjectType({
+  name: 'Image',
+  description: 'An image',
+  fields: () => ({
+    id: globalIdField('Image'),
+    imageId: {
+      type: GraphQLString,
+      description: 'The image ID',
+      resolve: obj => obj.postId,
+    },
+    src: {
+      type: GraphQLString,
+      description: 'The image src',
+      resolve: obj => obj.src,
+    },
+    alt: {
+      type: GraphQLString,
+      description: 'The image alt text',
+      resolve: obj => obj.alt,
+    },
+    originalHeight: {
+      type: GraphQLInt,
+      description: 'The images original height',
+      resolve: obj => obj.originalHeight,
+    },
+    originalWidth: {
+      type: GraphQLInt,
+      description: 'The images original width',
+      resolve: obj => obj.originalWidth,
+    },
+  }),
+  interfaces: [nodeInterface],
+});
 
 const GraphQLPost = new GraphQLObjectType({
   name: 'Post',
@@ -61,7 +104,7 @@ const GraphQLPost = new GraphQLObjectType({
       resolve: obj => obj.date,
     },
     image: {
-      type: GraphQLString,
+      type: GraphQLImage,
       description: 'The posts featured image',
       resolve: obj => obj.image,
     },
@@ -69,11 +112,6 @@ const GraphQLPost = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The main post category',
       resolve: obj => obj.category,
-    },
-    imageAlt: {
-      type: GraphQLString,
-      description: 'The posts featured image alt tag',
-      resolve: obj => obj.imageAlt,
     },
     postSlug: {
       type: GraphQLString,
