@@ -4,4 +4,5 @@ set -e
 
 cd viki-bell-website
 
+chown -R www-data:www-data data/uploads
 ./scripts/install

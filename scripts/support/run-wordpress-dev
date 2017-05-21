@@ -4,4 +4,4 @@ set -e
 
 ./scripts/support/build-wordpress
 
-docker run -v $(pwd)/cms/plugins:/var/www/html/content/plugins -v $(pwd)/cms/theme:/var/www/html/content/themes/charlie-jackson -v $(pwd)/cms/config/wp-config.php:/var/www/html/wp-config.php --link viki-bell-website-mysql:viki-bell-website-mysql -p 3005:80 -d --name viki-bell-website-wordpress --env-file ./.env viki-bell-website-wordpress
+docker run -v $(pwd)/cms/plugins:/var/www/html/content/plugins -v $(pwd)/cms/theme:/var/www/html/content/themes/charlie-jackson -v $(pwd)/data/uploads:/var/www/html/content/uploads -v $(pwd)/cms/config/wp-config.php:/var/www/html/wp-config.php --link viki-bell-website-mysql:viki-bell-website-mysql -p 3005:80 -d --name viki-bell-website-wordpress --env-file ./.env viki-bell-website-wordpress
