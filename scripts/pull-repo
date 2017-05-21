@@ -7,4 +7,4 @@ set -e
 cd viki-bell-website
 git fetch
 git checkout $(git rev-list --remotes --max-count=1)
-git submodule update
+git submodule update --init --recursive
