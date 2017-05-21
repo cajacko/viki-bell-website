@@ -4,5 +4,7 @@ set -e
 
 cd viki-bell-website
 
+mkdir data
+mkdir data/uploads
 chown -R www-data:www-data data/uploads
 ./scripts/install
