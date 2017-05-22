@@ -14,8 +14,6 @@
  * @package WordPress
  */
 
-set_timeout_limit(3600);
-
 // Global DB config
 define('DB_NAME', $_ENV['MYSQL_DATABASE']);
 define('DB_USER', $_ENV['MYSQL_USER']);
