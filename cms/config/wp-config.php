@@ -65,7 +65,7 @@ $table_prefix  = $_ENV['TABLE_PREFIX'];
  */
 define('WPLANG', '');
 
-if ($_ENV['DEV']) {
+if ($_ENV['DEV'] === true || $_ENV['DEV'] === 'true') {
   $protocol = 'http';
 } else {
   $protocol = 'https';
@@ -98,7 +98,7 @@ define('WP_ALLOW_REPAIR', true);
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-if ($_ENV['DEV']) {
+if ($_ENV['DEV'] === true || $_ENV['DEV'] === 'true') {
 	define('WP_DEBUG', true);
 }
 
@@ -109,7 +109,7 @@ define( 'SAVEQUERIES', true );
 // iThemes Security Config Details: 2
 define( 'DISALLOW_FILE_EDIT', true ); // Disable File Editor - Security > Settings > WordPress Tweaks > File Editor
 
-if (!$_ENV['DEV']) {
+if ($_ENV['DEV'] === false || $_ENV['DEV'] === 'false') {
 	define( 'FORCE_SSL_LOGIN', true ); // Force SSL for Dashboard - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard
 	define( 'FORCE_SSL_ADMIN', true ); // Force SSL for Dashboard - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard
 	// END iThemes Security - Do not modify or remove this line
