@@ -4,4 +4,4 @@ set -e
 
 ./scripts/support/build-wordpress
 
-docker run --link viki-bell-website-mysql:viki-bell-website-mysql -p 2053:80 -v $(pwd)/data/uploads:/var/www/html/content/uploads -d --name viki-bell-website-wordpress --env-file ./.env viki-bell-website-wordpress
+docker run --link viki-bell-website-mysql:viki-bell-website-mysql -p 8080:80 -v $(pwd)/data/uploads:/var/www/html/content/uploads -d --name viki-bell-website-wordpress --env-file ./.env viki-bell-website-wordpress
