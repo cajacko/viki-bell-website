@@ -1,5 +1,14 @@
 #!/bin/sh
 
+docker stop proxy
+docker rm proxy
+docker stop viki-bell-website-proxy
+docker rm viki-bell-website-proxy
+docker stop viki-bell-website-node
+docker rm viki-bell-website-node
+docker stop viki-bell-website-wordpress
+docker rm viki-bell-website-wordpress
+
 set -e
 
 ./scripts/support/run-mysql

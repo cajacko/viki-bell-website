@@ -1,10 +1,7 @@
 #!/bin/sh
 
-docker stop viki-bell-website-node
-docker rm viki-bell-website-node
-
 set -e
 
 # docker build --no-cache -t viki-bell-website-node -f dockerfiles/node .
 docker build -t viki-bell-website-node -f dockerfiles/node .
-docker run --link viki-bell-website-mysql:viki-bell-website-mysql -p 80:5000 -d --name viki-bell-website-node -e VIRTUAL_HOST=dev.charliejackson.com --env-file ./.env viki-bell-website-node
+docker run --link viki-bell-website-mysql:viki-bell-website-mysql -p 3000:5000 -d --name viki-bell-website-node -e VIRTUAL_HOST=dev.charliejackson.com --env-file ./.env viki-bell-website-node
