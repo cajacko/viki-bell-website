@@ -7,4 +7,4 @@ set -e
 
 # docker build --no-cache -t viki-bell-website-node -f dockerfiles/node .
 docker build -t viki-bell-website-node -f dockerfiles/node .
-docker run --link viki-bell-website-mysql:viki-bell-website-mysql -v $(pwd)/web:/var/www/web -p 80:5000 -d --name viki-bell-website-node --env-file ./.env viki-bell-website-node npm start
+docker run --link viki-bell-website-mysql:viki-bell-website-mysql -v $(pwd)/web:/var/www/web -p 80:5000 -d --name viki-bell-website-node -e VIRTUAL_HOST=dev.charliejackson.com --env-file ./.env viki-bell-website-node npm start
