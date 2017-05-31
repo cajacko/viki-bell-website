@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-./scripts/support/run-wordpress
-./scripts/support/log-ip
