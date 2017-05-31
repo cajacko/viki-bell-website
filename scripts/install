@@ -1,7 +1,17 @@
 #!/bin/sh
 
+docker stop proxy
+docker rm proxy
+docker stop viki-bell-website-proxy
+docker rm viki-bell-website-proxy
+docker stop viki-bell-website-node
+docker rm viki-bell-website-node
+docker stop viki-bell-website-wordpress
+docker rm viki-bell-website-wordpress
+
 set -e
 
+docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --name viki-bell-website-proxy jwilder/nginx-proxy
 ./scripts/support/run-mysql
 ./scripts/support/run-wordpress
 ./scripts/update-node

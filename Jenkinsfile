@@ -7,25 +7,14 @@
 
 node {
     stage('Pull repo') {
-        git branch: 'develop', url: 'https://github.com/cajacko/viki-bell-website.git'
+        sh 'if cd scripts; then git fetch; else git clone https://github.com/cajacko/viki-bell-website.git .; fi'
+        sh 'git checkout $(git rev-list --remotes --max-count=1)'
     }
 
     stage('Setup .env') {
         writeFile file: '.env', text: env.env
         sh 'cat .env'
     }
-
-//     stage('Run Local') {
-//         sh 'sudo ./scripts/install'
-//     }
-
-//     stage('Testing Local') {
-//         sh 'sudo ./scripts/test'
-//     }
-
-//     stage('Cleanup') {
-//         sh 'sudo ./scripts/cleanup'
-//     }
 
     stage('Pull repo on server') {
         sh '''ssh -o StrictHostKeyChecking=no root@${dev_ip} 'bash -s' < ./scripts/pull-repo'''

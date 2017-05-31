@@ -12,9 +12,11 @@
         "components": "./src/views/components",
         "containers": "./src/views/containers",
         "constants": "./src/constants",
+        "models": "./src/server/models",
+        "server": "./src/server",
+        "graph": "./src/server/graph",
         "helpers": "./src/helpers",
         "routes": "./src/views/routes",
-        "views": "./src/views",
         "store": "./src/views/store",
         "reducers": "./src/views/reducers",
         "coverage": "./coverage/"

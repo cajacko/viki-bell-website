@@ -6,3 +6,4 @@ web/src/public
 web/**/__generated__/*
 web/src/server/graph/schema.graphql
 web/coverage
+data
