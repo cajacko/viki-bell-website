@@ -1,9 +1,4 @@
-web/node_modules
+node_modules
 .env
-web/npm-debug.log
-web/dist
-web/src/public
-web/**/__generated__/*
-web/src/server/graph/schema.graphql
-web/coverage
+npm-debug.log
 data
