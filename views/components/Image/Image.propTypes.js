@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 
 export default {
-  image: PropTypes.shape({
-    originalHeight: PropTypes.number,
-    originalWidth: PropTypes.number,
-    src: PropTypes.string,
-    alt: PropTypes.string,
-  }).isRequired,
+  originalHeight: PropTypes.number.isRequired,
+  originalWidth: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 };
