@@ -15,6 +15,7 @@
         "helpers": "./views/helpers",
         "routes": "./views/routes",
         "store": "./views/store",
+        "actions": "./views/actions",
         "reducers": "./views/reducers",
       },
       "extensions": [".js", ".jsx"]

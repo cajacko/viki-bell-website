@@ -1,18 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import PostLoop from 'components/PostLoop/PostLoop';
+import { getMorePosts } from 'actions/posts';
+import Query from 'containers/Query/Query';
 
-const PostLoopContainer = () => {
-  const theme = 'invisible';
+class PostLoopContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getMorePosts = this.getMorePosts.bind(this);
+  }
 
-  const posts = [
-    { id: 1, theme },
-    { id: 2, theme },
-    { id: 3, theme },
-    { id: 4, theme },
-    { id: 5, theme },
-  ];
+  getMorePosts(numberToGet, offset) {
+    this.props.dispatch(getMorePosts(this.props.query, numberToGet, offset));
+  }
 
-  return <PostLoop posts={posts} hasMore={false} />;
+  render() {
+    return (
+      <Query
+        element={PostLoop}
+        query={this.props.query}
+        getMorePosts={this.getMorePosts}
+        itemsAs="posts"
+      />
+    );
+  }
+}
+
+PostLoopContainer.propTypes = {
+  query: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default PostLoopContainer;
+export default connect()(PostLoopContainer);
