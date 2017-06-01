@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A node/express website for vikibell.com, running react on the front end and using Wordpress as a headless CMS.",
   "scripts": {
-    "start": "webpack --colors --progress --watch",
+    "start": "./scripts/run-development && webpack --colors --progress --watch",
     "test": "npm run lint",
     "lint": "eslint src",
     "eslint": "eslint",
