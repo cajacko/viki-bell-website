@@ -1,7 +1,7 @@
 import React from 'react';
 import TextLink from 'components/TextLink/TextLink';
-import IconLink from 'components/IconLink/IconLink';
 import IconButton from 'components/IconButton/IconButton';
+import IconList from 'components/IconList/IconList';
 
 const SiteNav = () => (
   <nav>
@@ -15,12 +15,7 @@ const SiteNav = () => (
       <li><TextLink href="" colour="white">Travel</TextLink></li>
     </ul>
 
-    <ul>
-      <li><IconLink href="" colour="white" title="Twitter" /></li>
-      <li><IconLink href="" colour="white" title="Instagram" /></li>
-      <li><IconLink href="" colour="white" title="Facebook" /></li>
-    </ul>
-
+    <IconList />
     <IconButton icon="more" />
   </nav>
 );

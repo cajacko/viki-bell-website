@@ -2,6 +2,7 @@ import React from 'react';
 import PostLoopContainer from 'containers/PostLoop/PostLoop';
 import SiteNav from 'components/SiteNav/SiteNav';
 import SiteHeader from 'components/SiteHeader/SiteHeader';
+import About from 'components/About/About';
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class App extends React.Component {
         <SiteNav />
         <SiteHeader />
         <PostLoopContainer query="/" />
+        <About />
       </div>
     );
   }
