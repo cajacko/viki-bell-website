@@ -5,6 +5,7 @@ import SiteHeader from 'components/SiteHeader/SiteHeader';
 import About from 'components/About/About';
 import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 import Instagram from 'components/Instagram/Instagram';
+import Disclaimer from 'components/Disclaimer/Disclaimer';
 
 class App extends React.Component {
   componentDidMount() {
@@ -44,6 +45,7 @@ class App extends React.Component {
         <About />
         <CategoryLoop />
         <Instagram />
+        <Disclaimer />
       </div>
     );
   }
