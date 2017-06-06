@@ -1,6 +1,7 @@
 import React from 'react';
 import PostLoopContainer from 'containers/PostLoop/PostLoop';
 import SiteNav from 'components/SiteNav/SiteNav';
+import SiteHeader from 'components/SiteHeader/SiteHeader';
 
 class App extends React.Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class App extends React.Component {
     return (
       <div>
         <SiteNav />
+        <SiteHeader />
         <PostLoopContainer query="/" />
       </div>
     );

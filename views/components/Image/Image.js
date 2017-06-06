@@ -145,4 +145,11 @@ class Image extends React.Component {
 
 Image.propTypes = propTypes;
 
+Image.defaultProps = {
+  originalHeight: 500,
+  originalWidth: 500,
+  src: 'https://unsplash.it/500/500',
+  alt: 'Dummy Image',
+};
+
 export default Radium(Image);
