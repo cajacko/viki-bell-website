@@ -3,6 +3,7 @@ import PostLoopContainer from 'containers/PostLoop/PostLoop';
 import SiteNav from 'components/SiteNav/SiteNav';
 import SiteHeader from 'components/SiteHeader/SiteHeader';
 import About from 'components/About/About';
+import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 
 class App extends React.Component {
   componentDidMount() {
@@ -40,6 +41,7 @@ class App extends React.Component {
         <SiteHeader />
         <PostLoopContainer query="/" />
         <About />
+        <CategoryLoop />
       </div>
     );
   }
