@@ -1,6 +1,5 @@
+// eslint-disable-next-line
 export function getMorePosts(query, numberToGet, offset) {
-  console.warn('getMorePosts');
-
   return (dispatch) => {
     dispatch({
       type: 'GET_POSTS_INIT',
@@ -19,7 +18,7 @@ export function getMorePosts(query, numberToGet, offset) {
           numberToGet,
           offset,
         },
-      })
+      });
     }, 3000);
-  }
+  };
 }

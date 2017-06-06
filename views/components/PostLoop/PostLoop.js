@@ -1,3 +1,4 @@
+/* eslint max-lines: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';

@@ -1,3 +1,4 @@
+/* eslint max-lines: 0 */
 import React from 'react';
 import Radium from 'radium';
 import style from 'components/Image/Image.style';
@@ -95,10 +96,14 @@ class Image extends React.Component {
     let showWrapper = true;
     let textStyle = style.text;
 
+    const loaded = this.state.loaded;
+    const positioned = this.state.positioned;
+    const opacity = this.state.wrapperStyle.opacity;
+
     if (this.state.error) {
       loading = <span>Oh no! Could not load this image!</span>;
       showWrapper = false;
-    } else if (!this.state.loaded || !this.state.positioned || this.state.wrapperStyle.opacity === 0) {
+    } else if (!loaded || !positioned || opacity === 0) {
       wrapperStyle = { ...wrapperStyle, ...style.wrapperHide };
     } else {
       textStyle = { ...textStyle, opacity: 0 };

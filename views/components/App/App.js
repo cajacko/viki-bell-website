@@ -1,5 +1,6 @@
 import React from 'react';
 import PostLoopContainer from 'containers/PostLoop/PostLoop';
+import SiteNav from 'components/SiteNav/SiteNav';
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,7 +32,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <PostLoopContainer query="/" />;
+    return (
+      <div>
+        <SiteNav />
+        <PostLoopContainer query="/" />
+      </div>
+    );
   }
 }
 

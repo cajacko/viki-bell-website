@@ -5,7 +5,7 @@
   "scripts": {
     "start": "./scripts/run-development && webpack --colors --progress --watch",
     "test": "npm run lint",
-    "lint": "eslint src",
+    "lint": "eslint views",
     "eslint": "eslint",
     "start:production": "node dist/server/index.js",
     "build:production": "npm run build-graph-relay && babel-node scripts/build.js --env.production"

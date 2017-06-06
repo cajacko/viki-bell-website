@@ -45,6 +45,7 @@ TextLink.propTypes = {
   colour: PropTypes.oneOf([
     'black',
     'turqoise',
+    'white',
   ]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.string,
