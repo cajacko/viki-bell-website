@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "es2015",
+    "stage-2",
+    "react"
+  ],
+  "plugins": [
+    "relay",
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "components": "./views/components",
+        "containers": "./views/containers",
+        "constants": "./views/constants",
+        "helpers": "./views/helpers",
+        "routes": "./views/routes",
+        "store": "./views/store",
+        "actions": "./views/actions",
+        "reducers": "./views/reducers",
+      },
+      "extensions": [".js", ".jsx"]
+      }
+    ]
+  ]
+}

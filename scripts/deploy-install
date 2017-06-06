@@ -6,4 +6,4 @@ cd viki-bell-website
 
 mkdir data/uploads -p
 chown -R www-data:www-data data/uploads
-./scripts/install
+./scripts/run-production
