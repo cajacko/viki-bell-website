@@ -6,6 +6,7 @@ import About from 'components/About/About';
 import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 import Instagram from 'components/Instagram/Instagram';
 import Disclaimer from 'components/Disclaimer/Disclaimer';
+import Twitter from 'components/Twitter/Twitter';
 
 class App extends React.Component {
   componentDidMount() {
@@ -44,6 +45,7 @@ class App extends React.Component {
         <PostLoopContainer query="/" />
         <About />
         <CategoryLoop />
+        <Twitter />
         <Instagram />
         <Disclaimer />
       </div>
