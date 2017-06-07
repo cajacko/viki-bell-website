@@ -10,7 +10,7 @@ const About = () => (
     <div>
       <Heading level={1} content="Hi Its Viki" />
       <p><Text content="Lorem Ipsum" /></p>
-      <IconList />
+      <IconList size={20} />
     </div>
   </div>
 );

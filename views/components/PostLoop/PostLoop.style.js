@@ -1,6 +1,6 @@
 import { LIGHT_GREY, WHITE } from 'constants/colours';
 import { ARTICLE_MARGIN } from 'components/PostLoopItem/PostLoopItem.style';
-import { FONT_FAMILY, FONT_SIZES, FONT_COLOURS } from 'constants/fonts';
+import { FONT_FAMILY, font } from 'constants/fonts';
 
 export default {
   container: {
@@ -37,7 +37,6 @@ export default {
     margin: '0 auto',
     textAlign: 'center',
     fontFamily: FONT_FAMILY,
-    fontSize: FONT_SIZES.LARGE,
-    color: FONT_COLOURS.BLACK,
+    ...font({ fontSize: 'LARGE' }),
   },
 };

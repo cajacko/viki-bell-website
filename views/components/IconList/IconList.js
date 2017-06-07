@@ -1,12 +1,31 @@
 import React from 'react';
-import IconLink from 'components/IconLink/IconLink';
+import PropTypes from 'prop-types';
+import IconButton from 'components/IconButton/IconButton';
+import style from 'components/IconList/IconList.style';
 
-const IconList = () => (
-  <ul>
-    <li><IconLink href="" colour="white" title="Twitter" /></li>
-    <li><IconLink href="" colour="white" title="Instagram" /></li>
-    <li><IconLink href="" colour="white" title="Facebook" /></li>
-  </ul>
-);
+const IconList = ({ size, listItemStyle }) => {
+  const listItemStyleObject = {
+    ...listItemStyle,
+    ...style.listItem,
+  };
+
+  return (
+    <ul style={style.list}>
+      <li style={listItemStyleObject}><IconButton href="" colour="white" hoverColour="grey" title="Twitter" size={size} icon="twitter" /></li>
+      <li style={listItemStyleObject}><IconButton href="" colour="white" hoverColour="grey" title="Instagram" size={size} icon="instagram" /></li>
+      <li style={listItemStyleObject}><IconButton href="" colour="white" hoverColour="grey" title="Facebook" size={size} icon="facebook" /></li>
+    </ul>
+  );
+};
+
+IconList.propTypes = {
+  size: PropTypes.number.isRequired,
+  // eslint-disable-next-line
+  listItemStyle: PropTypes.object,
+};
+
+IconList.defaultProps = {
+  listItemStyle: {},
+}
 
 export default IconList;

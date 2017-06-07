@@ -15,21 +15,25 @@ const TextLink = ({ href, colour, children, style }) => {
       colourStyle = textLinkStyle.turqoise;
       break;
 
+    case 'white':
+      colourStyle = textLinkStyle.white;
+      break;
+
     default:
       colourStyle = textLinkStyle.turqoise;
       break;
   }
 
   const hover = {
-    ...style[':hover'],
-    ...colourStyle[':hover'],
     ...textLinkStyle.style[':hover'],
+    ...colourStyle[':hover'],
+    ...style[':hover'],
   };
 
   const linkStyle = {
-    ...style,
-    ...colourStyle,
     ...textLinkStyle.style,
+    ...colourStyle,
+    ...style,
     ':hover': hover,
   };
 

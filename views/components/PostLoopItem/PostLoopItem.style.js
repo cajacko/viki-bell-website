@@ -1,5 +1,5 @@
 import { WIDTH, STYLE, COLOUR } from 'constants/borders';
-import { FONT_FAMILY, FONT_SIZES, FONT_COLOURS } from 'constants/fonts';
+import { FONT_LINE_HEIGHTS, FONT_COLOURS, font } from 'constants/fonts';
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
 import { WHITE, LIGHT_GREY } from 'constants/colours';
 
@@ -65,9 +65,7 @@ export default {
 
   date: {
     textAlign: 'center',
-    fontFamily: FONT_FAMILY,
-    fontSize: FONT_SIZES.SMALL,
-    color: FONT_COLOURS.GREY,
+    ...font({ fontSize: 'SMALL', color: 'GREY' }),
     margin: 0,
   },
 
@@ -78,8 +76,7 @@ export default {
 
   title: {
     textAlign: 'center',
-    fontFamily: FONT_FAMILY,
-    fontSize: FONT_SIZES.LARGE,
+    ...font({ fontSize: 'LARGE', lineHeight: 'NONE' }),
     textTransform: 'uppercase',
     margin: '12px 0px',
   },
@@ -87,7 +84,6 @@ export default {
   category: {
     textAlign: 'center',
     display: 'block',
-    fontFamily: FONT_FAMILY,
-    fontSize: FONT_SIZES.SMALL,
+    lineHeight: FONT_LINE_HEIGHTS.NONE,
   },
 };

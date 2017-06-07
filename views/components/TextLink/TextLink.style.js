@@ -1,9 +1,10 @@
-import { FONT_COLOURS } from 'constants/fonts';
+import { FONT_COLOURS, font } from 'constants/fonts';
 
 export default {
   style: {
     textDecoration: 'none',
     cursor: 'pointer',
+    ...font(),
 
     ':hover': {
       textDecoration: 'underline',
@@ -23,6 +24,14 @@ export default {
 
     ':hover': {
       color: FONT_COLOURS.BLACK_HOVER,
+    },
+  },
+
+  white: {
+    color: FONT_COLOURS.WHITE,
+
+    ':hover': {
+      color: FONT_COLOURS.WHITE_HOVER,
     },
   },
 };
