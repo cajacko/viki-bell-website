@@ -60,9 +60,9 @@ class IconButton extends React.Component {
 }
 
 IconButton.propTypes = {
-  size: PropTypes.number.isRequired,
-  colour: PropTypes.string.isRequired,
-  hoverColour: PropTypes.string.isRequired,
+  size: PropTypes.oneOf([20]).isRequired,
+  colour: PropTypes.oneOf(['white', 'grey']).isRequired,
+  hoverColour: PropTypes.oneOf(['white', 'grey']).isRequired,
   icon: PropTypes.string.isRequired,
   button: PropTypes.bool,
   // eslint-disable-next-line

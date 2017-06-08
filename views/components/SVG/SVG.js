@@ -30,8 +30,8 @@ const SVG = (props) => {
 };
 
 SVG.propTypes = {
-  size: PropTypes.number.isRequired,
-  colour: PropTypes.string.isRequired,
+  size: PropTypes.oneOf([20]).isRequired,
+  colour: PropTypes.oneOf(['white', 'grey']).isRequired,
   // icon: PropTypes.string.isRequired,
 };
 

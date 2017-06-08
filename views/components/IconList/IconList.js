@@ -19,13 +19,13 @@ const IconList = ({ size, listItemStyle }) => {
 };
 
 IconList.propTypes = {
-  size: PropTypes.number.isRequired,
+  size: PropTypes.oneOf([20]).isRequired,
   // eslint-disable-next-line
   listItemStyle: PropTypes.object,
 };
 
 IconList.defaultProps = {
   listItemStyle: {},
-}
+};
 
 export default IconList;
