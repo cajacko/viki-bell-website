@@ -1,6 +1,6 @@
-import { LIGHT_GREY, WHITE } from 'constants/colours';
 import { ARTICLE_MARGIN } from 'components/PostLoopItem/PostLoopItem.style';
 import { FONT_FAMILY, font } from 'constants/fonts';
+import { DEFAULT, INVERSE } from 'constants/sectionColours';
 
 export default {
   container: {
@@ -12,11 +12,11 @@ export default {
   },
 
   containerDefault: {
-    backgroundColor: LIGHT_GREY,
+    backgroundColor: INVERSE,
   },
 
   containerInverse: {
-    backgroundColor: WHITE,
+    backgroundColor: DEFAULT,
   },
 
   posts: {

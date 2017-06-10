@@ -1,7 +1,7 @@
 import { WIDTH, STYLE, COLOUR } from 'constants/borders';
 import { FONT_LINE_HEIGHTS, FONT_COLOURS, font } from 'constants/fonts';
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
-import { WHITE, LIGHT_GREY } from 'constants/colours';
+import { DEFAULT, INVERSE } from 'constants/sectionColours';
 
 export const ARTICLE_MARGIN = 40;
 
@@ -16,11 +16,11 @@ export default {
   },
 
   articleDefault: {
-    backgroundColor: WHITE,
+    backgroundColor: DEFAULT,
   },
 
   articleInverse: {
-    backgroundColor: LIGHT_GREY,
+    backgroundColor: INVERSE,
   },
 
   container: {
