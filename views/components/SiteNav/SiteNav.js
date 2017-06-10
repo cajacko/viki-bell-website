@@ -49,6 +49,6 @@ const SiteNav = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default SiteNav;
