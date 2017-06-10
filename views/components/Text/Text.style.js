@@ -1,4 +1,4 @@
-import { font } from 'constants/fonts';
+import { font, FONT_SIZES } from 'constants/fonts';
 
 export default {
   style: {
@@ -7,5 +7,17 @@ export default {
 
   center: {
     textAlign: 'center',
+  },
+
+  small: {
+    fontSize: FONT_SIZES.SMALL,
+  },
+
+  medium: {
+    fontSize: FONT_SIZES.MEDIUM,
+  },
+
+  large: {
+    fontSize: FONT_SIZES.LARGE,
   },
 };

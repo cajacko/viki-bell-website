@@ -1,7 +1,7 @@
 import { WIDTH, STYLE, COLOUR } from 'constants/borders';
 import { FONT_LINE_HEIGHTS, FONT_COLOURS, font } from 'constants/fonts';
 import { MAX_WIDTH, MEDIA_QUERIES } from 'constants/gridItems';
-import { DEFAULT, INVERSE } from 'constants/sectionColours';
+import { DEFAULT, INVERSE } from 'constants/section';
 
 export const ARTICLE_MARGIN = 40;
 

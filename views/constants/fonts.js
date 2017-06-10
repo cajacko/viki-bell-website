@@ -12,7 +12,7 @@ export const FONT_FAMILY = 'lato, helvetica, sans-serif';
 export const FONT_SIZES = {
   SMALL: 12,
   MEDIUM: 14,
-  LARGE: 16,
+  LARGE: 20,
 };
 
 export const FONT_COLOURS = {
@@ -30,11 +30,17 @@ export const FONT_LINE_HEIGHTS = {
   NORMAL: 1.5,
 };
 
+export const FONT_WEIGHTS = {
+  LIGHT: 100,
+  MEDIUM: 300,
+  BOLD: 600,
+};
+
 export function font(options) {
   let fontFamily = FONT_FAMILY;
   let color = FONT_COLOURS.BLACK;
-  let lineHeight = FONT_LINE_HEIGHTS.NORMAL;
   let fontSize = FONT_SIZES.MEDIUM;
+  let fontWeight = FONT_WEIGHTS.MEDIUM;
 
   if (options && options.fontFamily) {
     fontFamily = options.fontFamily;
@@ -44,13 +50,13 @@ export function font(options) {
     color = FONT_COLOURS[options.color];
   }
 
-  if (options && options.lineHeight) {
-    lineHeight = FONT_LINE_HEIGHTS[options.lineHeight];
-  }
-
   if (options && options.fontSize) {
     fontSize = FONT_SIZES[options.fontSize];
   }
 
-  return { fontFamily, color, lineHeight, fontSize };
+  if (options && options.fontWeight) {
+    fontWeight = FONT_WEIGHTS[options.fontWeight];
+  }
+
+  return { fontFamily, color, fontSize, fontWeight };
 }

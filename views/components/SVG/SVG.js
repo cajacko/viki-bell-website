@@ -11,7 +11,7 @@ import Search from 'components/SVG/Search';
 import Menu from 'components/SVG/Menu';
 import ChevronRight from 'components/SVG/ChevronRight';
 import More from 'components/SVG/More';
-import { WHITE, GREY } from 'constants/colours';
+import { WHITE, GREY, TURQOISE, DARK_TURQOISE } from 'constants/colours';
 
 const SVG = ({ size, colour, icon }) => {
   let SVGstyle;
@@ -23,6 +23,14 @@ const SVG = ({ size, colour, icon }) => {
 
     case 'grey':
       SVGstyle = GREY;
+      break;
+
+    case 'turqoise':
+      SVGstyle = TURQOISE;
+      break;
+
+    case 'turqoise-dark':
+      SVGstyle = DARK_TURQOISE;
       break;
 
     default:
@@ -59,7 +67,7 @@ const SVG = ({ size, colour, icon }) => {
 
 SVG.propTypes = {
   size: PropTypes.oneOf([20]).isRequired,
-  colour: PropTypes.oneOf(['white', 'grey']).isRequired,
+  colour: PropTypes.oneOf(['white', 'grey', 'turqoise', 'turqoise-dark']).isRequired,
   icon: PropTypes.oneOf([
     'facebook',
     'twitter',

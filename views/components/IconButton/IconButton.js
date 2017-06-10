@@ -61,8 +61,8 @@ class IconButton extends React.Component {
 
 IconButton.propTypes = {
   size: PropTypes.oneOf([20]).isRequired,
-  colour: PropTypes.oneOf(['white', 'grey']).isRequired,
-  hoverColour: PropTypes.oneOf(['white', 'grey']).isRequired,
+  colour: PropTypes.oneOf(['white', 'grey', 'turqoise']).isRequired,
+  hoverColour: PropTypes.oneOf(['white', 'grey', 'turqoise-dark']).isRequired,
   icon: PropTypes.oneOf([
     'facebook',
     'twitter',

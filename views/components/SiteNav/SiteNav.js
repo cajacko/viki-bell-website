@@ -35,7 +35,7 @@ const SiteNav = () => {
         </div>
 
         <div style={style.rightContainer}>
-          <IconList size={size} listItemStyle={style.verticalSpacing} />
+          <IconList size={size} listItemStyle={style.verticalSpacing} theme="white" />
 
           <IconButton
             icon="more"

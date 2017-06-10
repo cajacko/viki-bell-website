@@ -1,6 +1,7 @@
 import { TURQOISE } from 'constants/colours';
 import spacing from 'constants/spacing';
 import { FONT_LINE_HEIGHTS } from 'constants/fonts';
+import { MAX_WIDTH } from 'constants/section';
 
 export default {
   container: {
@@ -10,7 +11,7 @@ export default {
   },
 
   wrapper: {
-    maxWidth: 600,
+    maxWidth: MAX_WIDTH,
     margin: '0 auto',
     display: 'flex',
     justifyContent: 'space-between',

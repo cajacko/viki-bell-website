@@ -1,6 +1,6 @@
 import { ARTICLE_MARGIN } from 'components/PostLoopItem/PostLoopItem.style';
 import { FONT_FAMILY, font } from 'constants/fonts';
-import { DEFAULT, INVERSE } from 'constants/sectionColours';
+import { DEFAULT, INVERSE } from 'constants/section';
 
 export default {
   container: {
