@@ -17,7 +17,7 @@ const SiteNav = () => {
       <div style={style.wrapper}>
         <div style={style.leftContainer}>
           <IconButton
-            icon="burgerMenu"
+            icon="menu"
             colour="white"
             size={size}
             hoverColour="grey"
