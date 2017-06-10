@@ -8,14 +8,22 @@ const SiteHeader = () => (
   <div style={style.container}>
     <div style={style.backgroundImageContainer}>
       <div style={{ ...style.backgroundImage, ...style.backgroundImageLeft }}>
-        <Image />
+        <Image
+          originalWidth={930}
+          originalHeight={700}
+          src="https://vignette2.wikia.nocookie.net/howtotrainyourdragon/images/e/e8/Dragons_bod_nightmare_background_sketch-1-.png/revision/latest?cb=20121006135612"
+        />
       </div>
     </div>
 
     <div style={style.wrapper}>
       <div>
         <div style={style.logo}>
-          <Image />
+          <Image
+            originalWidth={930}
+            originalHeight={700}
+            src="https://vignette2.wikia.nocookie.net/howtotrainyourdragon/images/e/e8/Dragons_bod_nightmare_background_sketch-1-.png/revision/latest?cb=20121006135612"
+          />
         </div>
         <Heading level={1} content="" />
       </div>
@@ -25,7 +33,11 @@ const SiteHeader = () => (
 
     <div style={style.backgroundImageContainer}>
       <div style={{ ...style.backgroundImage, ...style.backgroundImageRight }}>
-        <Image />
+        <Image
+          originalWidth={930}
+          originalHeight={700}
+          src="https://vignette2.wikia.nocookie.net/howtotrainyourdragon/images/e/e8/Dragons_bod_nightmare_background_sketch-1-.png/revision/latest?cb=20121006135612"
+        />
       </div>
     </div>
   </div>
