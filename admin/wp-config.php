@@ -39,7 +39,7 @@ define('BITLY_CLIENT_ID', 'xxx');
 define('BITLY_CLIENT_SECRET', 'xxx');
 define('BITLY_REDIRECT', 'xxx');
 
-define('LIVE_BLOG_URL', 'xxx');
+define('LIVE_BLOG_URL', $_ENV['LIVE_BLOG_URL']);
 define('DISABLE_WP_CRON', 'true');
 
 define('WP_HOME', $_ENV['WP_HOME']);
