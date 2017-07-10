@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -22,16 +22,16 @@ function get_tweets() {
     }
   }
 
-  require_once('../helpers/get_date_diff.php');  
+  require_once('../helpers/get_date_diff.php');
 
   $connection = new TwitterOAuth(
-    $config['twitter']['consumerKey'], 
-    $config['twitter']['consumerSecret'], 
-    $config['twitter']['accessToken'], 
-    $config['twitter']['accessTokenSecret']
+    $_ENV['TWITTER_CONSUMER_KEY'],
+    $_ENV['TWITTER_CONSUMER_SECRET'],
+    $_ENV['TWITTER_ACCESS_TOKEN'],
+    $_ENV['TWITTER_TOKEN_SECRET']
   );
-          
-  $tweet_response = $connection->get( "statuses/user_timeline", array( "user_id" => $config['twitter']['userId'], "count" => 100, 'exclude_replies' => TRUE ) );   
+
+  $tweet_response = $connection->get( "statuses/user_timeline", array( "user_id" => $_ENV['TWITTER_USER_ID'], "count" => 100, 'exclude_replies' => TRUE ) );
 
   $count = 0;
   $tweets = array();
@@ -39,11 +39,11 @@ function get_tweets() {
   foreach($tweet_response as $tweet) {
     $text = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $tweet->text);
     $text = preg_replace('/(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9]+)/', '<a href="http://twitter.com/$1" target="_blank">@$1</a>', $text);
-    $text = preg_replace('/(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9]+)/', '<a href="http://twitter.com/hashtag/$1" target="_blank">#$1</a>', $text); 
+    $text = preg_replace('/(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9]+)/', '<a href="http://twitter.com/hashtag/$1" target="_blank">#$1</a>', $text);
 
     $tweet_array = array(
       'date' => array(
-        'text' => get_date_diff(strtotime($tweet->created_at)), 
+        'text' => get_date_diff(strtotime($tweet->created_at)),
         'dateTime' => date('Y-m-d H:i:s', strtotime($tweet->created_at)),
       ),
       'tweetLink' => 'http://twitter.com/Vikiibell',

@@ -1,7 +1,7 @@
 <?php
 
 // Temp functions for loading dummy data during dev
-require_once('../models/temp.php'); 
+require_once('../models/temp.php');
 
 // Setup the redirect home url depending on our local environment
 if($config['environment']['dev']) {
@@ -52,6 +52,7 @@ $vars = array(
   'icons' => file_get_contents('../icons/icons.svg'),
   'staticPublic' => $static_public,
   'config' => $config,
+  'googleTagID' => $_ENV['GOOGLE_TAG_ID'],
   'nav' => $site_navigation,
   'socialNav' => $social_navigation,
   'bunting' => $bunting,
@@ -166,7 +167,7 @@ if(isset($request[0])) {
       case 'drafts':
         require_once('drafts.php');
         break;
-      
+
       default:
         require_once('page.php');
         break;

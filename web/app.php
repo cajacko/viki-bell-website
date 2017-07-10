@@ -2,7 +2,7 @@
 date_default_timezone_set('Europe/London');
 
 // Setup config
-$config = parse_ini_file('config.ini', true);
+$config = array();
 
 $json_config = file_get_contents('../config.json');
 $json_config = json_decode($json_config, true);
@@ -26,8 +26,8 @@ if($config['environment']['dev']) {
   error_reporting(E_ALL);
 }
 
-require_once('models/global.php'); 
-require_once('models/database.php'); 
+require_once('models/global.php');
+require_once('models/database.php');
 
 if($config['cdn']['enabled']) {
   $static_public = $config['cdn']['staticContent'] . $config['cdn']['staticPublic'];
@@ -40,7 +40,7 @@ if($config['cdn']['enabled']) {
 require_once('../helpers/process_image_meta.php');
 
 // Get composer dependencies
-require_once('vendor/autoload.php'); 
+require_once('vendor/autoload.php');
 
 // Load twig templating engine
 Twig_Autoloader::register();

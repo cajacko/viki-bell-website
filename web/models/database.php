@@ -3,10 +3,10 @@
 global $db;
 
 $db = new mysqli(
-  $config['database']['host'], 
-  $config['database']['user'], 
-  $config['database']['password'], 
-  $config['database']['database']
+  $_ENV['MYSQL_HOST'],
+  $_ENV['MYSQL_USER'],
+  $_ENV['MYSQL_PASSWORD'],
+  $_ENV['MYSQL_DATABASE']
 );
 
-$db->set_charset('utf8mb4'); 
+$db->set_charset('utf8mb4');

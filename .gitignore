@@ -1,5 +1,9 @@
-# node_modules
-# wp-content/uploads/
-# wp-config.php
+admin/wp-content/uploads/
 .env
 dev-data.sql
+
+web/vendor
+config.json
+sitemap.xml
+robots.txt
+web/cache/*
