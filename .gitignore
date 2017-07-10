@@ -1,0 +1,5 @@
+# node_modules
+# wp-content/uploads/
+# wp-config.php
+.env
+dev-data.sql

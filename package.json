@@ -1,0 +1,31 @@
+{
+  "name": "viki-bell-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:wordpress": "docker build -t viki-bell-website-wordpress -f Dockerfile.wordpress .",
+    "run:wordpress": "docker run -v $(pwd)/admin:/var/www/html --link viki-bell-website-mysql:viki-bell-website-mysql -p 80:80 -d --env-file .env --name viki-bell-website-wordpress viki-bell-website-wordpress",
+    "bash:wordpress": "docker exec -i -t viki-bell-website-wordpress /bin/bash",
+    "run:mysql": "docker run -d --name viki-bell-website-mysql -v viki-bell-website:/var/lib/mysql -p 3306:3306 --env-file .env mysql:5.7",
+    "run:mysql2": "docker run -d --name viki-bell-website-mysql -v ./dev-data.sql:/docker-entrypoint-initdb.d/data-dump.sql -v viki-bell-website:/var/lib/mysql -p 3306:3306 --env-file .env mysql:5.7",
+    "remove:wordpress": "docker stop viki-bell-website-wordpress && docker rm viki-bell-website-wordpress",
+    "remove:mysql": "docker stop viki-bell-website-mysql && docker rm viki-bell-website-mysql",
+    "remove:all": "npm run remove:wordpress && npm run remove:mysql",
+    "remove:volumes": "docker volume rm viki-bell-website",
+    "run:all": "npm run run:mysql && npm run run:wordpress",
+    "run:phpmyadmin": "docker run --name viki-bell-website-phpmyadmin -d --link viki-bell-website-mysql:db -p 8080:80 phpmyadmin/phpmyadmin",
+    "backup:mysql": "docker exec viki-bell-website-mysql sh -c 'exec mysqldump --all-databases -uroot -p\"$MYSQL_ROOT_PASSWORD\"' > ./dev-data.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cajacko/viki-bell-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cajacko/viki-bell-website/issues"
+  },
+  "homepage": "https://github.com/cajacko/viki-bell-website#readme"
+}
