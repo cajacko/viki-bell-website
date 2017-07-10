@@ -1,7 +1,7 @@
 {
   "twitterScriptId": "TwitterScript",
   "environment": {
-    "dev": true,
+    "dev": false,
     "url": "http://vikibell-blog.local.com",
     "localUploads": "http://vikibell.com/wp-content/uploads"
   },

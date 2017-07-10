@@ -1,6 +1,6 @@
 admin/wp-content/uploads/
 .env
-dev-data.sql
+data.sql
 
 web/vendor
 config.json
