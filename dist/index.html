@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en-GB" class="Html"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="profile" href="http://gmpg.org/xfn/11"><link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"><link rel="stylesheet" href="/assets/styles/lib.css"><link rel="stylesheet" href="/assets/styles/style.min.css"><style>svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .loadingDiv {
+        opacity: 0;
+        transition: 1s opacity;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999999;
+      }
+      .hide {
+        display: none;
+      }
+      .background {
+        background: #f3f3f3;
+      }
+      .loadingDiv.loading {
+        opacity: 1;
+      }
+      .noJavascript {
+        display: none;
+      }
+      .noJsText {
+        font-family: 'helvetica', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+      }
+      .spinner {
+        margin: 100px auto 0;
+        width: 100%;
+        text-align: center;
+      }
+      .spinner > div {
+        width: 40px;
+        height: 40px;
+        background-color: black;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+      .spinner .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+      .spinner .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+      }
+      @-webkit-keyframes sk-bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0) }
+        40% { -webkit-transform: scale(1.0) }
+      }
+      @keyframes sk-bouncedelay {
+        0%, 80%, 100% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        } 40% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+        }
+      }</style></head><body class="Body"><div id="app"></div><div id="loading" class="loadingDiv loading background"><script>document.getElementById('loading').classList.remove('background');</script><div id="spinner" class="spinner noJavascript"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div><div id="noJavascript"><script>document.getElementById('noJavascript').classList.add('hide');</script><div><h1 class="noJsText">charliejackson.com requires JavaScript to be enabled to work</h1></div></div><script>Element.prototype.remove = function() {
+            this.parentElement.removeChild(this);
+        }
+        NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+          for(var i = this.length - 1; i >= 0; i--) {
+              if(this[i] && this[i].parentElement) {
+                  this[i].parentElement.removeChild(this[i]);
+              }
+          }
+        }
+        document.getElementById('noJavascript').remove();
+        window.noLoading = true;
+        setTimeout(function() {
+          if (!window.initialRender) {
+            window.startTime = Math.floor(Date.now());
+            window.noLoading = false;
+            document.getElementById('loading').classList.add('background');
+            var noJavascriptClass = document.querySelector('.noJavascript');
+            noJavascriptClass.classList.remove('noJavascript');
+          }
+        }, 500);</script></div><script>!function(e){function __webpack_require__(r){if(_[r])return _[r].exports;var t=_[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,__webpack_require__),t.l=!0,t.exports}var r=window.webpackJsonp;window.webpackJsonp=function(_,n,o){for(var c,i,a,u=0,p=[];u<_.length;u++)i=_[u],t[i]&&p.push(t[i][0]),t[i]=0;for(c in n)Object.prototype.hasOwnProperty.call(n,c)&&(e[c]=n[c]);for(r&&r(_,n,o);p.length;)p.shift()();if(o)for(u=0;u<o.length;u++)a=__webpack_require__(__webpack_require__.s=o[u]);return a};var _={},t={2:0};__webpack_require__.e=function(e){function onScriptComplete(){o.onerror=o.onload=null,clearTimeout(c);var r=t[e];0!==r&&(r&&r[1](new Error("Loading chunk "+e+" failed.")),t[e]=void 0)}var r=t[e];if(0===r)return new Promise(function(e){e()});if(r)return r[2];var _=new Promise(function(_,n){r=t[e]=[_,n]});r[2]=_;var n=document.getElementsByTagName("head")[0],o=document.createElement("script");o.type="text/javascript",o.charset="utf-8",o.async=!0,o.timeout=12e4,__webpack_require__.nc&&o.setAttribute("nonce",__webpack_require__.nc),o.src=__webpack_require__.p+""+{0:"8ada18d8888364be5607",1:"b19890314e9b1ac17706"}[e]+"."+e+".js";var c=setTimeout(onScriptComplete,12e4);return o.onerror=o.onload=onScriptComplete,n.appendChild(o),_},__webpack_require__.m=e,__webpack_require__.c=_,__webpack_require__.i=function(e){return e},__webpack_require__.d=function(e,r,_){__webpack_require__.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:_})},__webpack_require__.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return __webpack_require__.d(r,"a",r),r},__webpack_require__.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},__webpack_require__.p="http://localhost:8081/",__webpack_require__.oe=function(e){throw console.error(e),e}}([]);
+//# sourceMappingURL=d41d8cd98f00b204e980.manifest.js.map</script><script src="/assets/scripts/8ada18d8888364be5607.vendor.js"></script><script src="/assets/scripts/b19890314e9b1ac17706.main.js"></script></body></html>
