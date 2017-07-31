@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -e
-
-docker exec viki-bell-website-wordpress chown -R www-data:www-data /var/www/html

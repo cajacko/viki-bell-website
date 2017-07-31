@@ -1,4 +1,9 @@
-node_modules
+admin/wp-content/uploads/
 .env
-npm-debug.log
-data
+data.sql
+
+web/vendor
+config.json
+sitemap.xml
+robots.txt
+web/cache/*

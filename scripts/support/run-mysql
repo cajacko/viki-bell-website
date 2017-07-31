@@ -1,8 +1,0 @@
-#!/bin/sh
-
-docker stop viki-bell-website-mysql
-docker rm viki-bell-website-mysql
-
-set -e
-
-docker run -d --name viki-bell-website-mysql -v $(pwd)/data/mysql:/var/lib/mysql -p 3306:3306 --env-file ./.env mysql:5.7

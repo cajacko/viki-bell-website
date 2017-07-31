@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-./scripts/support/build-wordpress
-
-docker run -v $(pwd)/cms/plugins:/var/www/html/content/plugins -v $(pwd)/cms/theme:/var/www/html/content/themes/charlie-jackson -v $(pwd)/data/uploads:/var/www/html/content/uploads -v $(pwd)/cms/config/wp-config.php:/var/www/html/wp-config.php --link viki-bell-website-mysql:viki-bell-website-mysql -p 80:80 -d --name viki-bell-website-wordpress -e VIRTUAL_HOST=dev1.charliejackson.com --env-file ./.env viki-bell-website-wordpress
