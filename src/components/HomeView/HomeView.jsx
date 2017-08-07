@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from 'components/Banner/Banner';
 import SiteNav from 'components/SiteNav/SiteNav';
 import Bunting from 'components/Bunting/Bunting';
+import PostLoop from 'components/PostLoop/PostLoop';
 
 const HomeView = () => (
   <div itemScope="" itemType="http://schema.org/WebPage">
@@ -26,6 +27,14 @@ const HomeView = () => (
     <Banner />
     <SiteNav />
     <Bunting />
+
+    <div className="Content u-wrap">
+      <div className="Content--wrap">
+        <main className="Main">
+          <PostLoop />
+        </main>
+      </div>
+    </div>
   </div>
 );
 
