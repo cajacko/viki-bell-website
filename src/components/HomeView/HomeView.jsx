@@ -3,6 +3,7 @@ import Banner from 'components/Banner/Banner';
 import SiteNav from 'components/SiteNav/SiteNav';
 import Bunting from 'components/Bunting/Bunting';
 import PostLoop from 'components/PostLoop/PostLoop';
+import SideBar from 'components/SideBar/SideBar';
 
 const HomeView = () => (
   <div itemScope="" itemType="http://schema.org/WebPage">
@@ -33,6 +34,7 @@ const HomeView = () => (
         <main className="Main">
           <PostLoop />
         </main>
+        <SideBar />
       </div>
     </div>
   </div>

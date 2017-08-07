@@ -1,7 +1,7 @@
 import React from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 
-const posts = [{}, {}, {}];
+const posts = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 const PostLoop = () => (
   <div
@@ -10,8 +10,8 @@ const PostLoop = () => (
     itemType="http://schema.org/Blog"
   >
     {
-      posts.map(() => (
-        <PostLoopItem />
+      posts.map(({ id }) => (
+        <PostLoopItem key={id} />
       ))
     }
   </div>
