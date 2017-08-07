@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import HomeView from 'components/HomeView/HomeView';
-import ScrollToTop from 'containers/ScrollToTop/ScrollToTop';
+import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
 import removeLoading from 'helpers/removeLoading';
 
 removeLoading();
