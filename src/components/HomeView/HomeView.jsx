@@ -25,10 +25,8 @@ const HomeView = () => (
     </div>
     <Banner />
     <SiteNav />
+    <Bunting />
   </div>
 );
-
-// <Bunting />
-// <script src="/assets/static/script.min.js" />
 
 export default HomeView;
