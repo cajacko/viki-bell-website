@@ -6,7 +6,7 @@ export default function (limit, skip = 0) {
     dispatch({ type: 'CONTENTFUL_INIT' });
 
     contentful.getEntries({
-      content_type: 'project',
+      content_type: 'post',
       include: 10,
       limit,
       skip,

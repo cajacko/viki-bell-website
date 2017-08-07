@@ -25,7 +25,7 @@ const html = template({
     manifest: `${webpackUrl}manifest.js`,
   },
   css: {
-    lib: `${webpackUrl}assets/styles/lib.css`,
+    fontAwesome: `${webpackUrl}assets/styles/font-awesome.min.css`,
     style: `${webpackUrl}assets/styles/style.min.css`,
   },
   htmlData: {},
@@ -36,7 +36,6 @@ const app = express();
 app.get('/data', data);
 
 app.get('*', (req, res) => {
-  console.log('here');
   res.send(html);
 });
 

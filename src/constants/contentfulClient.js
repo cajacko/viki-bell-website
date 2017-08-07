@@ -1,7 +1,7 @@
 import { createClient } from 'contentful';
 
 export default createClient({
-  space: '1gvc9x9hfuhs',
-  accessToken: 'eacffced48e4564b4183e1b557821f37e57f864ffc3ed4e914734bacbb66a9ea',
+  space: '3ctegf19trkf',
+  accessToken: '1a1adde074b51811a0a7fb589859083b9ef6f92fda09d5306f8ebc778209c0b6',
   resolveLinks: false,
 });
