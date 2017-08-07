@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-export function getProjectsFromItems(items) {
+export function getPostsFromItems(items) {
   const projects = [];
 
   Object.keys(items).forEach((id) => {
     const { contentType } = items[id];
 
-    if (contentType === 'project') {
+    if (contentType === 'post') {
       projects.push(id);
     }
   });
@@ -14,11 +14,11 @@ export function getProjectsFromItems(items) {
   return projects;
 }
 
-export function getProjectDisplayDateUnix({ displayDate }) {
+export function getPostDisplayDateUnix({ displayDate }) {
   return moment(displayDate).unix();
 }
 
-export function sortProjects(projects, items) {
+export function sortPosts(projects, items) {
   if (projects.length <= 1) {
     return projects;
   }
@@ -26,8 +26,8 @@ export function sortProjects(projects, items) {
   projects.sort((a, b) => {
     const projectA = items[a];
     const projectB = items[b];
-    const dateA = getProjectDisplayDateUnix(projectA);
-    const dateB = getProjectDisplayDateUnix(projectB);
+    const dateA = getPostDisplayDateUnix(projectA);
+    const dateB = getPostDisplayDateUnix(projectB);
     return dateB - dateA;
   });
 
@@ -35,6 +35,6 @@ export function sortProjects(projects, items) {
 }
 
 export function getSortedProjectsFromItems(items) {
-  const projects = getProjectsFromItems(items);
-  return sortProjects(projects, items);
+  const projects = getPostsFromItems(items);
+  return sortPosts(projects, items);
 }
