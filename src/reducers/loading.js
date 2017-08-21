@@ -1,11 +1,11 @@
 export default (state = true, { type }) => {
   switch (type) {
-    case 'CONTENTFUL_SUCCESS':
-    case 'CONTENTFUL_ERROR': {
+    case 'GET_GLOBAL_SUCCESS':
+    case 'GET_GLOBAL_ERROR': {
       return false;
     }
 
-    case 'CONTENTFUL_INIT':
+    case 'GET_GLOBAL_INIT':
       return true;
 
     default:

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import equal from 'deep-equal';
-import componentMap from 'constants/typeComponentMap';
 import { getItemProps, getProps, getPassedProps } from 'helpers/getProps';
 
 class Item extends Component {
@@ -35,14 +34,6 @@ class Item extends Component {
 
     if (this.props.element) {
       Element = this.props.element;
-    } else if (itemProps.contentType) {
-      if (componentMap[itemProps.contentType]) {
-        Element = componentMap[itemProps.contentType];
-      } else {
-        // eslint-disable-next-line
-        console.warn('No component map for', itemProps.contentType);
-        return null;
-      }
     } else {
       // eslint-disable-next-line
       console.warn('Could not get an element for this item');

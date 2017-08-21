@@ -8,7 +8,12 @@ const Image = ({
   width,
   height,
   fill,
+  noItem,
 }) => {
+  if (noItem) {
+    return null;
+  }
+
   let imageHeight = file.details.image.height;
   let imageWidth = file.details.image.width;
 
@@ -65,13 +70,13 @@ Image.propTypes = {
         width: PropTypes.number,
       }),
     }),
-  }).isRequired,
+  }),
   className: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.bool,
   title: PropTypes.string,
-  stretchWidth: PropTypes.number,
+  noItem: PropTypes.bool,
 };
 
 Image.defaultProps = {
@@ -81,6 +86,8 @@ Image.defaultProps = {
   fill: true,
   title: 'Content editor has not supplied alt text',
   stretchWidth: null,
+  noItem: false,
+  file: null,
 };
 
 export default Image;

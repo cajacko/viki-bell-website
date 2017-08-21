@@ -1,5 +1,5 @@
 import React from 'react';
-import Template from 'components/Template/Template';
+import Template from 'components/Template/Template.component.jsx';
 
 const FourOhFourView = () => (
   <Template

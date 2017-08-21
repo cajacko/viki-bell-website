@@ -1,6 +1,6 @@
 export default (state = {}, { type, payload }) => {
   switch (type) {
-    case 'CONTENTFUL_SUCCESS': {
+    case 'GET_GLOBAL_SUCCESS': {
       return Object.assign({}, state, payload.items);
     }
 

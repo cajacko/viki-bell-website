@@ -26,7 +26,7 @@ const Template = ({ components }) => {
       </div>
 
       <div>
-        {
+        {components &&
           components.map((props) => {
             id += 1;
 

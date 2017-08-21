@@ -3,10 +3,10 @@ import transform from 'helpers/transformApiResponse';
 
 export default function () {
   return (dispatch) => {
-    dispatch({ type: 'CONTENTFUL_INIT' });
-    
+    dispatch({ type: 'GET_GLOBAL_INIT' });
+
     contentful.getEntries({
-      'sys.contentType.sys.id[in]': 'routes,pageTemplate',
+      'sys.contentType.sys.id[in]': 'fullWidthBanner,siteNav,sideBar',
       include: 10,
     })
       .then((response) => {
@@ -23,12 +23,12 @@ export default function () {
 
         if (success) {
           dispatch({
-            type: 'CONTENTFUL_SUCCESS',
+            type: 'GET_GLOBAL_SUCCESS',
             payload,
           });
         } else {
           dispatch({
-            type: 'CONTENTFUL_ERROR',
+            type: 'GET_GLOBAL_ERROR',
           });
         }
       })
@@ -38,7 +38,7 @@ export default function () {
         console.warn(err);
 
         dispatch({
-          type: 'CONTENTFUL_ERROR',
+          type: 'GET_GLOBAL_ERROR',
           payload: err,
         });
       });

@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from 'components/Banner/Banner';
+import Banner from 'components/Banner/Banner.container';
 import SiteNav from 'components/SiteNav/SiteNav';
 import Bunting from 'components/Bunting/Bunting';
 import PostLoop from 'components/PostLoop/PostLoop';
