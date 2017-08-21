@@ -10,6 +10,7 @@ import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import MainWrap from 'components/MainWrap/MainWrap';
 import FourOhFour from 'components/FourOhFour/FourOhFour';
 import TaxonomyTitle from 'components/TaxonomyTitle/TaxonomyTitle';
+import Sitemap from 'components/Sitemap/Sitemap';
 
 const componentMap = {
   banner: Banner,
@@ -23,6 +24,7 @@ const componentMap = {
   mainWrap: MainWrap,
   fourOhFour: FourOhFour,
   taxonomyTitle: TaxonomyTitle,
+  sitemap: Sitemap,
 };
 
 const Component = (props) => {

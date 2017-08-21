@@ -1,7 +1,7 @@
 import React from 'react';
 import Template from 'components/Template/Template';
 
-const FourOhFourView = () => (
+const SitemapView = () => (
   <Template
     components={[
       { component: 'banner' },
@@ -15,7 +15,7 @@ const FourOhFourView = () => (
             components: [
               { component: 'taxonomyTitle' },
               { component: 'breadcrumbs' },
-              { component: 'fourOhFour' },
+              { component: 'sitemap' },
             ],
           },
           { component: 'sideBar' },
@@ -25,4 +25,4 @@ const FourOhFourView = () => (
   />
 );
 
-export default FourOhFourView;
+export default SitemapView;
