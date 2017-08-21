@@ -6,6 +6,7 @@ import HomeView from 'components/HomeView/HomeView';
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
 import removeLoading from 'helpers/removeLoading';
 import PostsView from 'components/PostsView/PostsView';
+import FourOhFourView from 'components/FourOhFourView/FourOhFourView';
 
 removeLoading();
 
@@ -15,7 +16,9 @@ const App = ({ Router, store, location, context }) => (
       <ScrollToTop>
         <div>
           <Route path="/" exact component={HomeView} />
-          <Route path="/posts" component={PostsView} />
+          <Route path="/posts" exact component={PostsView} />
+          <Route path="/posts/:slug" component={PostsView} />
+          <Route component={FourOhFourView} />
         </div>
       </ScrollToTop>
     </Router>

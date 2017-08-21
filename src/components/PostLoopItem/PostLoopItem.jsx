@@ -1,6 +1,7 @@
 import React from 'react';
+import SharePost from 'components/SharePost/SharePost';
 
-const PostLoopItem = () => (
+const PostLoopItem = ({ share }) => (
   <article className="Post u-clearFix" itemProp="blogPost" itemScope="" itemType="http://schema.org/BlogPosting" itemRef="MicroData-person MicroData-organization">
     <header>
       <time className="Post-date" dateTime="2017-08-06 16:45:54" itemProp="datePublished">06.08</time>
@@ -26,6 +27,7 @@ const PostLoopItem = () => (
     <footer>
       <meta className="Post-dateModified" content="2016-01-01 12:12:12" itemProp="dateModified" />
       <meta className="Post-description" itemProp="description" content="My July Highlights | via vikibell.com" />
+      {share && <SharePost />}
     </footer>
   </article>
 );

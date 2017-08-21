@@ -8,6 +8,8 @@ import ContentWrap from 'components/ContentWrap/ContentWrap';
 import SinglePost from 'components/SinglePost/SinglePost';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import MainWrap from 'components/MainWrap/MainWrap';
+import FourOhFour from 'components/FourOhFour/FourOhFour';
+import TaxonomyTitle from 'components/TaxonomyTitle/TaxonomyTitle';
 
 const componentMap = {
   banner: Banner,
@@ -19,6 +21,8 @@ const componentMap = {
   singlePost: SinglePost,
   breadcrumbs: Breadcrumbs,
   mainWrap: MainWrap,
+  fourOhFour: FourOhFour,
+  taxonomyTitle: TaxonomyTitle,
 };
 
 const Component = (props) => {
