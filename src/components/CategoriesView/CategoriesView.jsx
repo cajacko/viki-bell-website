@@ -1,7 +1,7 @@
 import React from 'react';
 import Template from 'components/Template/Template';
 
-const PostsView = () => (
+const CategoriesView = () => (
   <Template
     components={[
       { component: 'banner' },
@@ -13,8 +13,9 @@ const PostsView = () => (
           {
             component: 'mainWrap',
             components: [
+              { component: 'taxonomyTitle' },
               { component: 'breadcrumbs' },
-              { component: 'postLoop' },
+              { component: 'categoryLoop' },
             ],
           },
           { component: 'sideBar' },
@@ -24,4 +25,4 @@ const PostsView = () => (
   />
 );
 
-export default PostsView;
+export default CategoriesView;

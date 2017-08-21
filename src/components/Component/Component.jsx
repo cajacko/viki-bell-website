@@ -11,6 +11,7 @@ import MainWrap from 'components/MainWrap/MainWrap';
 import FourOhFour from 'components/FourOhFour/FourOhFour';
 import TaxonomyTitle from 'components/TaxonomyTitle/TaxonomyTitle';
 import Sitemap from 'components/Sitemap/Sitemap';
+import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 
 const componentMap = {
   banner: Banner,
@@ -25,6 +26,7 @@ const componentMap = {
   fourOhFour: FourOhFour,
   taxonomyTitle: TaxonomyTitle,
   sitemap: Sitemap,
+  categoryLoop: CategoryLoop,
 };
 
 const Component = (props) => {

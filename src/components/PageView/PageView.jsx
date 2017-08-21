@@ -12,10 +12,7 @@ const PostsView = () => (
         components: [
           {
             component: 'mainWrap',
-            components: [
-              { component: 'breadcrumbs' },
-              { component: 'postLoop' },
-            ],
+            components: [{ component: 'singlePost' }],
           },
           { component: 'sideBar' },
         ],
