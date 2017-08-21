@@ -1,7 +1,7 @@
 import React from 'react';
 import Template from 'components/Template/Template';
 
-const HomeView = () => (
+const PostsView = () => (
   <Template
     components={[
       { component: 'banner' },
@@ -12,7 +12,10 @@ const HomeView = () => (
         components: [
           {
             component: 'mainWrap',
-            components: [{ component: 'postLoop' }],
+            components: [
+              { component: 'breadcrumbs' },
+              { component: 'singlePost' },
+            ],
           },
           { component: 'sideBar' },
         ],
@@ -21,4 +24,4 @@ const HomeView = () => (
   />
 );
 
-export default HomeView;
+export default PostsView;

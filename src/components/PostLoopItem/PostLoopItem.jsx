@@ -20,6 +20,7 @@ const PostLoopItem = () => (
         <h2 className="Post-title" itemProp="headline">My July Highlights</h2>
       </a>
     </header>
+
     <div className="Post-content" itemProp="articleBody">Content</div>
 
     <footer>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticRouter as Router } from 'react-router-dom';
 import configureStore from 'store/configureStore';
-import App from 'containers/App/App';
+import App from 'components/App/App';
 
 const Server = ({ location, context, state }) => {
   const store = configureStore(state);

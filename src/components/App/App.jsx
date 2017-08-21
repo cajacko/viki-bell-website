@@ -5,21 +5,23 @@ import { Route } from 'react-router-dom';
 import HomeView from 'components/HomeView/HomeView';
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
 import removeLoading from 'helpers/removeLoading';
+import PostsView from 'components/PostsView/PostsView';
 
 removeLoading();
 
-// eslint-disable-next-line
 const App = ({ Router, store, location, context }) => (
   <Provider store={store}>
     <Router location={location} context={context}>
       <ScrollToTop>
-        <Route path="/" component={HomeView} />
+        <div>
+          <Route path="/" exact component={HomeView} />
+          <Route path="/posts" component={PostsView} />
+        </div>
       </ScrollToTop>
     </Router>
   </Provider>
 );
 
-// <Route path="/posts" component={PostsView} />
 // <Route path="/categories" component={CategoriesView} />
 // <Route path="/posts/:slug" component={PostView} />
 // <Route path="/categories/:slug" component={CategoryView} />
