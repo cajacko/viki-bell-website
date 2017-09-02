@@ -36,16 +36,6 @@ const SideBar = () => (
           </ul>
         </div>
 
-        <div itemScope="" itemType="http://schema.org/WebSite">
-          <meta itemProp="url" content="https://vikibell.com" />
-          <form className="SearchForm" action="/search" method="GET" itemProp="potentialAction" itemScope="" itemType="http://schema.org/SearchAction">
-            <meta itemProp="target" content="https://vikibell.com/search?s={s}" />
-            <label className="u-hide" htmlFor="SearchInput">Search</label>
-            <input id="SearchInput" className="SearchForm-input" type="text" placeholder="Search" itemProp="query-input" name="s" required="" />
-            <input className="u-hide" type="submit" />
-          </form>
-        </div>
-
         <div className="TweetLoop">
           <header>
             <a className="TweetLoop-headerLink" target="_blank" rel="noopener noreferrer" href="http://twitter.com/Vikiibell">
