@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
 import SiteNavItem from 'components/SiteNavItem/SiteNavItem';
 
@@ -7,7 +7,7 @@ const Banner = () => (
   <nav className="SiteNav">
     <ul className="SiteNav-list u-clearFix u-wrap">
       <li className="SiteTitle SiteNav-item">
-        <a id="MicroData-person" className="SiteTitle-link SiteNav-link" href="/" itemProp="author" itemScope="" itemType="https://schema.org/Person">
+        <Link id="MicroData-person" className="SiteTitle-link SiteNav-link" to="/" itemProp="author" itemScope="" itemType="https://schema.org/Person">
           <h1 className="SiteTitle-text" itemProp="name">Viki Bell</h1>
           <meta itemProp="familyName" content="Bell" />
           <meta itemProp="givenName" content="Viki" />
@@ -18,12 +18,12 @@ const Banner = () => (
           <link itemProp="sameAs" href="https://twitter.com/Vikiibell/" />
           <link itemProp="sameAs" href="https://www.pinterest.com/vikiibell/" />
           <link itemProp="sameAs" href="https://www.linkedin.com/in/vikibell" />
-        </a>
+        </Link>
       </li>
 
-      <SiteNavItem icon="instagram" url="https://www.instagram.com/vikibell/" title="Instagram" mobile />
-      <SiteNavItem icon="twitter" url="https://twitter.com/Vikiibell/" title="Twitter" mobile />
-      <SiteNavItem url="http://www.bloglovin.com/blog/14308057/?claim=zjrf4gtjazv" title="Follow my blog with Bloglovin" mobile hidden />
+      <SiteNavItem icon="instagram" to="https://www.instagram.com/vikibell/" title="Instagram" mobile />
+      <SiteNavItem icon="twitter" to="https://twitter.com/Vikiibell/" title="Twitter" mobile />
+      <SiteNavItem to="http://www.bloglovin.com/blog/14308057/?claim=zjrf4gtjazv" title="Follow my blog with Bloglovin" mobile hidden />
 
       <li>
         <div className="SiteNav-item SiteNav-item--mobile">
@@ -33,19 +33,19 @@ const Banner = () => (
         </div>
         <ul id="MobileNav" className="SiteNavMain SiteNav-list u-clearFix" aria-hidden="false" aria-expanded="true">
           <li className="SiteNav-item SiteNavMain-item u-hasDropDown">
-            <a className="SiteNavMain-link SiteNav-link u-controlsDropdown u-clearFix" href="/about-me" aria-controls="SiteNav-subNav--1" aria-expanded="false">
+            <Link className="SiteNavMain-link SiteNav-link u-controlsDropdown u-clearFix" to="/about-me" aria-controls="SiteNav-subNav--1" aria-expanded="false">
               <Icon icon="female" className="SiteNav-icon" />
               <span className="SiteNav-title">About</span>
-            </a>
+            </Link>
             <ul id="SiteNav-subNav--1" className="SiteNav-subNav SiteNav-list" aria-hidden="true" aria-expanded="false" style={{ display: 'none' }}>
               <li className="SiteNav-subItem">
-                <a className="SiteNavMain-link SiteNav-link SiteNav-sublink" href="/about-me">About</a>
+                <Link className="SiteNavMain-link SiteNav-link SiteNav-sublink" to="/about-me">About</Link>
               </li>
               <li className="SiteNav-subItem">
-                <a className="SiteNavMain-link SiteNav-link SiteNav-sublink" href="/contact">Contact</a>
+                <Link className="SiteNavMain-link SiteNav-link SiteNav-sublink" to="/contact">Contact</Link>
               </li>
               <li className="SiteNav-subItem">
-                <a className="SiteNavMain-link SiteNav-link SiteNav-sublink" href="/sitemap">Sitemap</a>
+                <Link className="SiteNavMain-link SiteNav-link SiteNav-sublink" to="/sitemap">Sitemap</Link>
               </li>
             </ul>
           </li>
@@ -61,10 +61,10 @@ const Banner = () => (
             </a>
             <ul id="SiteNav-subNav--2" className="SiteNav-subNav SiteNav-list" aria-hidden="true" aria-expanded="false" style={{ display: 'none' }}>
               <li className="SiteNav-subItem">
-                <a className="SiteNavMain-link SiteNav-link SiteNav-sublink" href="/categories/recipes">Recipes</a>
+                <Link className="SiteNavMain-link SiteNav-link SiteNav-sublink" to="/categories/recipes">Recipes</Link>
               </li>
               <li className="SiteNav-subItem">
-                <a className="SiteNavMain-link SiteNav-link SiteNav-sublink" href="/categories/restaurants">Restaurants</a>
+                <Link className="SiteNavMain-link SiteNav-link SiteNav-sublink" to="/categories/restaurants">Restaurants</Link>
               </li>
             </ul>
           </li>
