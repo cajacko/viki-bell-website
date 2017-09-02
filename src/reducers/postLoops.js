@@ -23,7 +23,7 @@ export default (state = defaultState, { type, payload }) => {
       const postLoop = newState[payload.query];
       postLoop.loading = false;
       postLoop.error = false;
-      postLoop.posts = [1, 2, 3, 4, 5];
+      postLoop.posts = postLoop.posts.concat(payload.loop);
       newState[payload.query] = postLoop;
       return newState;
     }

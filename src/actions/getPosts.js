@@ -5,6 +5,7 @@ import queryFromTaxValue from 'helpers/queryFromTaxValue';
 export default function (taxonomy, value, skip = 0, limit = 20) {
   return (dispatch) => {
     const query = queryFromTaxValue(taxonomy, value);
+
     dispatch({
       type: 'GET_POSTS_INIT',
       payload: { query },
@@ -16,7 +17,7 @@ export default function (taxonomy, value, skip = 0, limit = 20) {
         include: 10,
         limit,
         skip,
-        // order: '-fields.displayDate',
+        order: '-fields.postDate',
       })
       .then((response) => {
         let success = true;
