@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 
 class PostLoop extends Component {
+  constructor(props) {
+    super(props);
+
+    this.getPosts = this.getPosts.bind(this);
+  }
+
   componentDidMount() {
-    this.props.getPosts();
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.props.getPosts(this.props.posts.length);
   }
 
   render() {
