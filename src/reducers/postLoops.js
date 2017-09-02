@@ -1,8 +1,9 @@
-const defaultPostLoop = {
+export const defaultPostLoop = {
   noMorePosts: false,
   posts: [],
   loading: true,
   error: false,
+  init: true,
 };
 
 const defaultState = { home: defaultPostLoop };
@@ -14,6 +15,7 @@ export default (state = defaultState, { type, payload }) => {
       const postLoop = newState[payload.query] || defaultPostLoop;
       postLoop.loading = true;
       postLoop.error = false;
+      postLoop.init = false;
       newState[payload.query] = postLoop;
       return newState;
     }
@@ -23,6 +25,7 @@ export default (state = defaultState, { type, payload }) => {
       const postLoop = newState[payload.query];
       postLoop.loading = false;
       postLoop.error = false;
+      postLoop.init = false;
       postLoop.posts = postLoop.posts.concat(payload.loop);
       newState[payload.query] = postLoop;
       return newState;
@@ -32,6 +35,7 @@ export default (state = defaultState, { type, payload }) => {
       const newState = Object.assign({}, state);
       const postLoop = newState[payload.query];
       postLoop.loading = false;
+      postLoop.init = false;
       postLoop.error = payload.err || true;
       newState[payload.query] = postLoop;
       return newState;

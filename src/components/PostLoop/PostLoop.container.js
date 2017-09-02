@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 import getPosts from 'actions/getPosts';
 import PostLoop from 'components/PostLoop/PostLoop.component';
 import queryFromTaxValue from 'helpers/queryFromTaxValue';
+import { defaultPostLoop } from 'reducers/postLoops';
 
 const mapStateToProps = ({ postLoops }, { taxonomy, value }) => {
-  const defaultValue = {
-    posts: [],
-    noMorePosts: false,
-    loading: true,
-    error: false,
-  };
+  const defaultValue = Object.assign({}, defaultPostLoop);
+  defaultValue.loading = true;
 
   if (!postLoops) {
     return defaultValue;

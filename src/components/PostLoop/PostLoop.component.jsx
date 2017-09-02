@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
+import Item from 'components/Item/Item';
 
 class PostLoop extends Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class PostLoop extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
+    if (this.props.init) {
+      this.getPosts();
+    }
   }
 
   getPosts() {
@@ -25,7 +28,7 @@ class PostLoop extends Component {
       >
         {this.props.posts &&
           this.props.posts.map(id => (
-            <PostLoopItem key={id} />
+            <Item key={id} element={PostLoopItem} itemId={id} />
           ))
         }
       </div>
