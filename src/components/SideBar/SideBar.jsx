@@ -1,6 +1,7 @@
 /* eslint max-lines: 0 */
 
 import React from 'react';
+import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
 
 const SideBar = () => (
@@ -9,39 +10,37 @@ const SideBar = () => (
       <div className="Sidebar-main u-clearFix">
         <ul className="Profile">
           <li className="Profile-item"><img className="Profile-image" src="https://admin.vikibell.com/wp-content/uploads/2016/05/profile.jpg" alt="Alt text" /></li>
-          <li className="Profile-item"><img className="Profile-image" src="https://admin.vikibell.com/wp-content/uploads/2016/05/profile.jpg" alt="Alt text" /></li>
-          <li className="Profile-item"><img className="Profile-image" src="https://admin.vikibell.com/wp-content/uploads/2016/05/profile.jpg" alt="Alt text" /></li>
         </ul>
 
         <div className="Sidebar-social">
           <ul className="Sidebar-socialWrap">
             <li className="Sidebar-socialItem--twitter Sidebar-socialItem">
-              <a className="Sidebar-socialLink" href="https://twitter.com/Vikiibell/">
+              <Link className="Sidebar-socialLink" to="https://twitter.com/Vikiibell/">
                 <Icon className="Sidebar-socialIcon" icon="twitter" title="Twitter" />
                 <span className="u-hide">Twitter</span>
-              </a>
+              </Link>
             </li>
             <li className="Sidebar-socialItem--instagram Sidebar-socialItem">
-              <a className="Sidebar-socialLink" href="https://www.instagram.com/vikibell/">
+              <Link className="Sidebar-socialLink" to="https://www.instagram.com/vikibell/">
                 <Icon className="Sidebar-socialIcon" icon="instagram" title="Instagram" />
                 <span className="u-hide">Instagram</span>
-              </a>
+              </Link>
             </li>
             <li className="Sidebar-socialItem--pinterest Sidebar-socialItem">
-              <a className="Sidebar-socialLink" href="https://www.pinterest.com/vikiibell/">
+              <Link className="Sidebar-socialLink" to="https://www.pinterest.com/vikiibell/">
                 <Icon className="Sidebar-socialIcon" icon="pinterest" title="Pinterest" />
                 <span className="u-hide">Pinterest</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="TweetLoop">
           <header>
-            <a className="TweetLoop-headerLink" target="_blank" rel="noopener noreferrer" href="http://twitter.com/Vikiibell">
+            <Link className="TweetLoop-headerLink" to="http://twitter.com/Vikiibell">
               <Icon className="TweetLoop-headerIcon" icon="twitter" title="Twitter" />
               <span className="u-hide">Twitter</span>
-            </a>
+            </Link>
           </header>
 
           <div>
@@ -90,7 +89,7 @@ const SideBar = () => (
           </div>
 
           <footer>
-            <a className="TweetLoop-follow" href="http://twitter.com/Vikiibell" target="_blank" rel="noopener noreferrer">Follow @vikibell</a>
+            <Link className="TweetLoop-follow" to="http://twitter.com/Vikiibell">Follow @vikibell</Link>
           </footer>
         </div>
       </div>
