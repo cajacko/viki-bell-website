@@ -7,10 +7,10 @@ const MainWrap = ({ components }) => {
   return (
     <main className="Main">
       {components &&
-        components.map(({ component }) => {
+        components.map((props) => {
           id += 1;
 
-          return <Component key={id} component={component} />;
+          return <Component key={id} component={props.component} {...props} />;
         })
       }
     </main>

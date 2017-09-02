@@ -1,23 +1,30 @@
 import contentful from 'constants/contentfulClient';
 import transform from 'helpers/transformApiResponse';
+import queryFromTaxValue from 'helpers/queryFromTaxValue';
 
-export default function (limit, skip = 0) {
+export default function (taxonomy, value, skip = 0, limit = 20) {
   return (dispatch) => {
-    dispatch({ type: 'CONTENTFUL_INIT' });
+    const query = queryFromTaxValue(taxonomy, value);
+    dispatch({
+      type: 'GET_POSTS_INIT',
+      payload: { query },
+    });
 
-    contentful.getEntries({
-      content_type: 'post',
-      include: 10,
-      limit,
-      skip,
-      order: '-fields.displayDate',
-    })
+    contentful
+      .getEntries({
+        content_type: 'post',
+        include: 10,
+        limit,
+        skip,
+        // order: '-fields.displayDate',
+      })
       .then((response) => {
         let success = true;
         let payload;
 
         try {
           payload = transform(response, limit);
+          payload.query = query;
         } catch (err) {
           // eslint-disable-next-line
           console.warn(err);
@@ -26,23 +33,24 @@ export default function (limit, skip = 0) {
 
         if (success) {
           dispatch({
-            type: 'CONTENTFUL_SUCCESS',
+            type: 'GET_POSTS_SUCCESS',
             payload,
           });
         } else {
           dispatch({
-            type: 'CONTENTFUL_ERROR',
+            type: 'GET_POSTS_ERROR',
+            payload: { query },
           });
         }
       })
       // eslint-disable-next-line
-      .catch((err) => {
+      .catch(err => {
         // eslint-disable-next-line
         console.warn(err);
 
         dispatch({
-          type: 'CONTENTFUL_ERROR',
-          payload: err,
+          type: 'GET_POSTS_ERROR',
+          payload: { query, err },
         });
       });
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Template from 'components/Template/Template.component.jsx';
+import Template from 'components/Template/Template.component';
 
 const HomeView = () => (
   <Template
@@ -12,7 +12,7 @@ const HomeView = () => (
         components: [
           {
             component: 'mainWrap',
-            components: [{ component: 'postLoop' }],
+            components: [{ component: 'postLoop', taxonomy: null, value: null }],
           },
           { component: 'sideBar' },
         ],
