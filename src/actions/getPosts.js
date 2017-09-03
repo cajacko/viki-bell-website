@@ -11,14 +11,25 @@ export default function (taxonomy, value, skip = 0, limit = 20) {
       payload: { query },
     });
 
+    const params = {
+      content_type: 'post',
+      include: 10,
+      limit,
+      skip,
+      order: '-fields.postDate',
+    };
+
+    if (taxonomy && value) {
+      if (taxonomy === 'category') {
+        params['fields.categories.sys.contentType.sys.id'] = 'category';
+        params['fields.categories.fields.slug'] = value;
+      }
+    }
+
+    console.warn(params);
+
     contentful
-      .getEntries({
-        content_type: 'post',
-        include: 10,
-        limit,
-        skip,
-        order: '-fields.postDate',
-      })
+      .getEntries(params)
       .then((response) => {
         let success = true;
         let payload;

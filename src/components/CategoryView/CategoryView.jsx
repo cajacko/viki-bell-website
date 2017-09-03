@@ -1,7 +1,7 @@
 import React from 'react';
-import Template from 'components/Template/Template.component.jsx';
+import Template from 'components/Template/Template.component';
 
-const CategoryView = () => (
+const CategoryView = ({ match }) => (
   <Template
     components={[
       { component: 'banner' },
@@ -15,7 +15,11 @@ const CategoryView = () => (
             components: [
               { component: 'taxonomyTitle' },
               { component: 'breadcrumbs' },
-              { component: 'postLoop' },
+              {
+                component: 'postLoop',
+                taxonomy: 'category',
+                value: match.params.slug,
+              },
             ],
           },
           { component: 'sideBar' },

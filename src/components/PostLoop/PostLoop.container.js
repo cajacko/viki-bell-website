@@ -15,13 +15,10 @@ const mapStateToProps = ({ postLoops }, { taxonomy, value }) => {
   }
 
   const query = queryFromTaxValue(taxonomy, value);
-  const postLoop = Object.assign({}, postLoops[query]);
 
-  if (postLoop) {
-    return postLoop;
-  }
-
-  return defaultValue;
+  return postLoops[query]
+    ? Object.assign({}, postLoops[query])
+    : defaultValue;
 };
 
 const mapDispatchToProps = (dispatch, { taxonomy, value }) => ({
