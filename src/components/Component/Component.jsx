@@ -5,7 +5,7 @@ import Bunting from 'components/Bunting/Bunting';
 import PostLoop from 'components/PostLoop/PostLoop.container';
 import SideBar from 'components/SideBar/SideBar';
 import ContentWrap from 'components/ContentWrap/ContentWrap';
-import SinglePost from 'components/SinglePost/SinglePost';
+import SinglePost from 'components/SinglePost/SinglePost.container';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import MainWrap from 'components/MainWrap/MainWrap';
 import FourOhFour from 'components/FourOhFour/FourOhFour';

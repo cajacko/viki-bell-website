@@ -15,7 +15,13 @@ const PostLoopItem = (props) => {
     postSlug,
     updatedAt,
     featuredImage,
+    noItem,
   } = props;
+
+  if (noItem) {
+    return null;
+  }
+
   const date = new Moment(postDate);
   const url = postUrlFromSlug(postSlug);
 

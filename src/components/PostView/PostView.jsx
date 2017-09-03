@@ -1,7 +1,7 @@
 import React from 'react';
-import Template from 'components/Template/Template.component.jsx';
+import Template from 'components/Template/Template.component';
 
-const PostsView = () => (
+const PostsView = ({ match }) => (
   <Template
     components={[
       { component: 'banner' },
@@ -14,7 +14,7 @@ const PostsView = () => (
             component: 'mainWrap',
             components: [
               { component: 'breadcrumbs' },
-              { component: 'singlePost' },
+              { component: 'singlePost', slug: match.params.slug },
             ],
           },
           { component: 'sideBar' },
