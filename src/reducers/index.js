@@ -5,6 +5,7 @@ import noMorePosts from 'reducers/noMorePosts';
 import banner from 'reducers/banner';
 import postLoops from 'reducers/postLoops';
 import postsBySlug from 'reducers/postsBySlug';
+import tweets from 'reducers/tweets';
 
 export default combineReducers({
   items,
@@ -13,4 +14,5 @@ export default combineReducers({
   banner,
   postLoops,
   postsBySlug,
+  tweets,
 });
