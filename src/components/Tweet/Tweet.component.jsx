@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
 
+const dateFormat = 'dd MMM DD HH:mm:ss ZZ YYYY';
+
 function tweetContent(tweet) {
   const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
   const replaceMap = [];
@@ -42,19 +44,21 @@ class Tweet extends Component {
   }
 
   componentDidMount() {
-    console.warn(this.props);
-
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState({ timeAgo: this.timeAgo() });
     }, 5000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   timeAgo() {
-    return new Moment(this.props.created_at).fromNow();
+    return new Moment(this.props.created_at, dateFormat, 'en').fromNow();
   }
 
   render() {
-    const date = new Moment(this.props.created_at);
+    const date = new Moment(this.props.created_at, dateFormat, 'en');
     const profileUrl = `http://twitter.com/${this.props.user.screen_name}`;
     const html = tweetContent(this.props);
 

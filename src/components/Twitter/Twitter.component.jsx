@@ -22,13 +22,17 @@ class Twitter extends Component {
   componentDidMount() {
     this.props.getTweets();
 
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.props.getTweets();
     }, 1000 * 60);
   }
 
   componentWillReceiveProps(props) {
     this.setState({ tweets: spliceTweets(props.tweets) })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

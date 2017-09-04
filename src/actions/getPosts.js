@@ -26,8 +26,6 @@ export default function (taxonomy, value, skip = 0, limit = 20) {
       }
     }
 
-    console.warn(params);
-
     contentful
       .getEntries(params)
       .then((response) => {
