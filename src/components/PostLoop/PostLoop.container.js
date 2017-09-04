@@ -6,8 +6,11 @@ import PostLoop from 'components/PostLoop/PostLoop.component';
 import queryFromTaxValue from 'helpers/queryFromTaxValue';
 import { defaultPostLoop } from 'reducers/postLoops';
 
-const mapStateToProps = ({ postLoops }, { taxonomy, value }) => {
-  const defaultValue = Object.assign({}, defaultPostLoop);
+const mapStateToProps = (
+  { postLoops, categoriesBySlug },
+  { taxonomy, value },
+) => {
+  const defaultValue = Object.assign({ categoriesBySlug }, defaultPostLoop);
   defaultValue.loading = true;
 
   if (!postLoops) {
@@ -17,12 +20,13 @@ const mapStateToProps = ({ postLoops }, { taxonomy, value }) => {
   const query = queryFromTaxValue(taxonomy, value);
 
   return postLoops[query]
-    ? Object.assign({}, postLoops[query])
+    ? Object.assign({ categoriesBySlug }, postLoops[query])
     : defaultValue;
 };
 
 const mapDispatchToProps = (dispatch, { taxonomy, value }) => ({
-  getPosts: (skip = 0) => dispatch(getPosts(taxonomy, value, skip)),
+  getPosts: (taxonomyId, skip = 0) =>
+    dispatch(getPosts(taxonomy, value, taxonomyId, skip)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostLoop);

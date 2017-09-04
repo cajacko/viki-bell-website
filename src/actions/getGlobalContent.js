@@ -6,7 +6,7 @@ export default function () {
     dispatch({ type: 'GET_GLOBAL_INIT' });
 
     contentful.getEntries({
-      'sys.contentType.sys.id[in]': 'fullWidthBanner',
+      'sys.contentType.sys.id[in]': 'fullWidthBanner,category',
       include: 10,
     })
       .then((response) => {

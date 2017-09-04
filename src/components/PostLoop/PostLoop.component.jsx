@@ -11,12 +11,28 @@ class PostLoop extends Component {
 
   componentDidMount() {
     if (this.props.init) {
-      this.getPosts();
+      this.getPosts(this.props);
     }
   }
 
-  getPosts() {
-    this.props.getPosts(this.props.posts.length);
+  componentWillReceiveProps(props) {
+    if (props.init) {
+      this.getPosts(props);
+    }
+  }
+
+  getPosts(props) {
+    let taxonomyId;
+
+    if (props.taxonomy && props.value) {
+      taxonomyId = props.categoriesBySlug[props.value];
+
+      if (!taxonomyId) {
+        return;
+      }
+    }
+
+    this.props.getPosts(taxonomyId, props.posts.length);
   }
 
   render() {

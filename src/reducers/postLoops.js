@@ -12,7 +12,9 @@ export default (state = defaultState, { type, payload }) => {
   switch (type) {
     case 'GET_POSTS_INIT': {
       const newState = Object.assign({}, state);
-      const postLoop = newState[payload.query] || defaultPostLoop;
+      const postLoop = newState[payload.query]
+        ? Object.assign({}, newState[payload.query])
+        : Object.assign({}, defaultPostLoop);
       postLoop.loading = true;
       postLoop.error = false;
       postLoop.init = false;
@@ -22,7 +24,7 @@ export default (state = defaultState, { type, payload }) => {
 
     case 'GET_POSTS_SUCCESS': {
       const newState = Object.assign({}, state);
-      const postLoop = newState[payload.query];
+      const postLoop = Object.assign({}, newState[payload.query]);
       postLoop.loading = false;
       postLoop.error = false;
       postLoop.init = false;
@@ -33,7 +35,7 @@ export default (state = defaultState, { type, payload }) => {
 
     case 'GET_POSTS_ERROR': {
       const newState = Object.assign({}, state);
-      const postLoop = newState[payload.query];
+      const postLoop = Object.assign({}, newState[payload.query]);
       postLoop.loading = false;
       postLoop.init = false;
       postLoop.error = payload.err || true;

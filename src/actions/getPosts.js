@@ -2,7 +2,7 @@ import contentful from 'constants/contentfulClient';
 import transform from 'helpers/transformApiResponse';
 import queryFromTaxValue from 'helpers/queryFromTaxValue';
 
-export default function (taxonomy, value, skip = 0, limit = 20) {
+export default function (taxonomy, value, valueId, skip = 0, limit = 20) {
   return (dispatch) => {
     const query = queryFromTaxValue(taxonomy, value);
 
@@ -21,8 +21,7 @@ export default function (taxonomy, value, skip = 0, limit = 20) {
 
     if (taxonomy && value) {
       if (taxonomy === 'category') {
-        params['fields.categories.sys.contentType.sys.id'] = 'category';
-        params['fields.categories.fields.slug'] = value;
+        params['fields.categories.sys.id'] = valueId;
       }
     }
 
