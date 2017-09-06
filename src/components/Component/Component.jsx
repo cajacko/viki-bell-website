@@ -12,6 +12,7 @@ import FourOhFour from 'components/FourOhFour/FourOhFour';
 import TaxonomyTitle from 'components/TaxonomyTitle/TaxonomyTitle';
 import Sitemap from 'components/Sitemap/Sitemap';
 import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
+import Posts from 'components/Posts/Posts.container';
 
 const componentMap = {
   banner: Banner,
@@ -27,6 +28,7 @@ const componentMap = {
   taxonomyTitle: TaxonomyTitle,
   sitemap: Sitemap,
   categoryLoop: CategoryLoop,
+  posts: Posts,
 };
 
 const Component = (props) => {

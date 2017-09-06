@@ -8,14 +8,16 @@ import mkdirp from 'mkdirp';
 // import Main from 'views/server';
 import manifest from 'dist/assets/scripts/manifest.json';
 import configureStore from 'store/configureStore.prod';
-import getProjects from 'actions/getProjects';
 
 const file = readFileSync(join(__dirname, '../src/index.html'), 'utf8');
 const template = Handlebars.compile(file);
-const manifestContent = readFileSync(join(__dirname, `../dist/assets/scripts/${manifest['manifest.js']}`), 'utf8');
+const manifestContent = readFileSync(
+  join(__dirname, `../dist/assets/scripts/${manifest['manifest.js']}`),
+  'utf8',
+);
 
 // eslint-disable-next-line
-function renderPage(location, htmlData, reactData, state) {
+function renderPage(location, htmlData, reactData) {
   let url = location;
 
   if (url === '/') {
@@ -29,7 +31,6 @@ function renderPage(location, htmlData, reactData, state) {
   const originalHtml = template({
     // react: page,
     manifest: manifestContent,
-    state: JSON.stringify(state).replace(/</g, '\\u003c'),
     js: {
       main: `/assets/scripts/${manifest['main.js']}`,
       vendor: `/assets/scripts/${manifest['vendor.js']}`,
@@ -69,14 +70,6 @@ function getPages() {
 
 const pages = getPages();
 
-const store = configureStore({});
-
-store.subscribe(() => {
-  const state = store.getState();
-
-  pages.forEach(({ url, htmlData, reactData }) => {
-    renderPage(url, htmlData, reactData, state);
-  });
+pages.forEach(({ url, htmlData, reactData }) => {
+  renderPage(url, htmlData, reactData);
 });
-
-store.dispatch(getProjects());

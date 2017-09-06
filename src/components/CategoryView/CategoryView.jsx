@@ -13,10 +13,8 @@ const CategoryView = ({ match }) => (
           {
             component: 'mainWrap',
             components: [
-              { component: 'taxonomyTitle' },
-              { component: 'breadcrumbs' },
               {
-                component: 'postLoop',
+                component: 'posts',
                 taxonomy: 'category',
                 value: match.params.slug,
               },
