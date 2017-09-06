@@ -3,4 +3,4 @@ npm-debug.log
 firebase-debug.log
 .env
 dist
-scripts/data.xml
+scripts/migration/data.xml

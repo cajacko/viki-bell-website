@@ -4,26 +4,34 @@ import htmlToMarkdown from './htmlToMarkdown';
 
 export default function (xml) {
   const items = {};
+  const posts = {};
+  const pages = {};
+  const categories = {};
+  const images = {};
+  const tags = {};
 
   xml.rss.channel[0].item.forEach((entry) => {
     const item = {};
 
     switch (entry['wp:post_type'][0]) {
       case 'post':
-        item.contentType = 'project';
+        item.contentType = 'post';
         item.id = entry['wp:post_id'][0];
         item.title = entry.title[0];
-        item.slug = entry['wp:post_name'][0];
-        item.displayDate = entry['wp:post_date'][0];
-        item.content = htmlToMarkdown(entry['content:encoded'][0]);
-        item.excerpt = htmlToMarkdown(entry['excerpt:encoded'][0]);
+        item.postSlug = entry['wp:post_name'][0];
+        item.postDate = entry['wp:post_date'][0];
+        item.wordpressContent = htmlToMarkdown(entry['content:encoded'][0]);
         item.status = entry['wp:status'][0];
         item.categories = [];
         item.tags = [];
 
         entry['wp:postmeta'].forEach((meta) => {
-          if (meta['wp:meta_key'][0] === '_thumbnail_id') {
-            item.thumbnailImage = meta['wp:meta_value'][0];
+          switch (meta['wp:meta_key'][0]) {
+            case '_thumbnail_id':
+              item.featuredImage = meta['wp:meta_value'][0];
+              break;
+            default:
+              break;
           }
         });
 
@@ -32,8 +40,10 @@ export default function (xml) {
 
           if (category.$.domain === 'category') {
             type = 'categories';
+            categories[category.$.nicename] = category._;
           } else {
             type = 'tags';
+            tags[category.$.nicename] = category._;
           }
 
           item[type].push({
@@ -41,6 +51,20 @@ export default function (xml) {
             slug: category.$.nicename,
           });
         });
+
+        posts[item.id] = item;
+
+        // console.log('\n\n\n');
+        // console.log(item);
+        break;
+      case 'page':
+        item.contentType = 'page';
+        item.id = entry['wp:post_id'][0];
+        item.title = entry.title[0];
+        item.pageSlug = entry['wp:post_name'][0];
+        item.wordpressContent = htmlToMarkdown(entry['content:encoded'][0]);
+
+        pages[item.id] = item;
 
         // console.log('\n\n\n');
         // console.log(item);
@@ -71,6 +95,7 @@ export default function (xml) {
         item.extension = extension;
         item.mimeType = mimeType;
 
+        images[item.id] = item;
         break;
       }
 
@@ -91,5 +116,5 @@ export default function (xml) {
     }
   });
 
-  return items;
+  return { posts, pages, categories, images, tags };
 }

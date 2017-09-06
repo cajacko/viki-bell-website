@@ -16,7 +16,7 @@
     "dev:build":
       "webpack --progress --colors --env.production && npm run dev:copyStatic && npm run dev:pages",
     "dev:pages": "babel-node ./scripts/buildPages.jsx",
-    "dev:migrate": "babel-node ./scripts/migration/saveProjects.js",
+    "dev:migrate": "babel-node ./scripts/migrateData.js",
     "dev:sitemap": "babel-node ./scripts/buildSitemap.js",
     "dev:copyStatic": "copyfiles -f src/styles/*.css dist/assets/styles"
   },
