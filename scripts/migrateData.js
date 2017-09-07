@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 
 import { parseString } from 'xml2js';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFile } from 'fs';
 import { join } from 'path';
 import parseWordpressXml from './migration/parseWordpressXml';
 
@@ -14,9 +14,14 @@ parseString(xml, (err, result) => {
 
   const items = parseWordpressXml(result);
 
-  Object.keys(items.posts).forEach((id) => {
-    const post = items.posts[id];
+  console.log(items);
 
-    console.log(post);
-  });
+  writeFile('items.json', JSON.stringify(items, null, 2), 'utf8', (err) => {});
+
+  // save content with no references - categories, images, tags
+  // Make sure we have json reference files for these
+  // Save posts and pages, whilst replacing linked content with contentful resources
+  // For each post and page, get the html from the website and save in new field
+  // Replace the images in these fields with contentful images
+  // All good :)
 });

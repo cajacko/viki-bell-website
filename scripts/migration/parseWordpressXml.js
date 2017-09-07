@@ -30,6 +30,32 @@ export default function (xml) {
             case '_thumbnail_id':
               item.featuredImage = meta['wp:meta_value'][0];
               break;
+            case '_yoast_wpseo_metadesc':
+              item.seoDescription = meta['wp:meta_value'][0];
+              break;
+            case '_yoast_wpseo_title':
+              item.seoTitle = meta['wp:meta_value'][0];
+              break;
+            case '_wp_desired_post_slug':
+            case '_wp_trash_meta_time':
+            case '_wp_trash_meta_status':
+            case '_edit_last':
+            case '_encloseme':
+            case '_pingme':
+            case '_yoast_wpseo_primary_category':
+            case '_yoast_wpseo_linkdex':
+            case '_yoast_wpseo_focuskw':
+            case '_yoast_wpseo_focuskw_text_input':
+            case '_wp_old_slug':
+            case 'admin_tweet_meta':
+            case 'auto_tweet_scheduled':
+            case 'auto_tweet_tweeted':
+            case '_yoast_wpseo_meta-robots-nofollow':
+            case '_wpas_done_all':
+            case '_wpas_mess':
+            case '_publicize_twitter_user':
+            case 'bitly':
+              break;
             default:
               break;
           }

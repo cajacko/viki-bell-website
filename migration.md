@@ -22,7 +22,16 @@ For each content type, create a json array file of each one, with references to 
 
 
 - category x
-- page x 
-- post
+- page x
+- post x
 - tag x
 - image x
+
+// save all and store in json, { [wpID]: contentfulID };
+categories
+tags
+images
+
+
+pages
+posts
