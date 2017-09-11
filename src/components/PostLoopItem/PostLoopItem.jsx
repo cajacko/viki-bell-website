@@ -10,7 +10,7 @@ const PostLoopItem = (props) => {
   const {
     share,
     title,
-    wordpressContent,
+    wordpressRender,
     postDate,
     postSlug,
     updatedAt,
@@ -52,7 +52,7 @@ const PostLoopItem = (props) => {
       <div
         className="Post-content"
         itemProp="articleBody"
-        dangerouslySetInnerHTML={{ __html: wordpressContent }}
+        dangerouslySetInnerHTML={{ __html: wordpressRender }}
       />
 
       <footer>
