@@ -2,13 +2,13 @@ import contentful from 'constants/contentfulClient';
 import transform from 'helpers/transformApiResponse';
 
 export default function (slug) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({
       type: 'GET_POST_INIT',
       payload: { slug },
     });
 
-    contentful
+    contentful(getState().preview)
       .getEntries({
         content_type: 'post',
         'fields.postSlug': slug,

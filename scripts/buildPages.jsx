@@ -7,7 +7,6 @@ import { minify } from 'html-minifier';
 import mkdirp from 'mkdirp';
 // import Main from 'views/server';
 import manifest from 'dist/assets/scripts/manifest.json';
-import configureStore from 'store/configureStore.prod';
 
 const file = readFileSync(join(__dirname, '../src/index.html'), 'utf8');
 const template = Handlebars.compile(file);

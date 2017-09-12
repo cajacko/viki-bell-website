@@ -3,7 +3,7 @@ import transform from 'helpers/transformApiResponse';
 import queryFromTaxValue from 'helpers/queryFromTaxValue';
 
 export default function (taxonomy, value, valueId, skip = 0, limit = 20) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const query = queryFromTaxValue(taxonomy, value);
 
     dispatch({
@@ -25,7 +25,7 @@ export default function (taxonomy, value, valueId, skip = 0, limit = 20) {
       }
     }
 
-    contentful
+    contentful(getState().preview)
       .getEntries(params)
       .then((response) => {
         let success = true;

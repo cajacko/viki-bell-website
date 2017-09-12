@@ -2,13 +2,14 @@ import contentful from 'constants/contentfulClient';
 import transform from 'helpers/transformApiResponse';
 
 export default function () {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({ type: 'GET_GLOBAL_INIT' });
 
-    contentful.getEntries({
-      'sys.contentType.sys.id[in]': 'fullWidthBanner,category',
-      include: 10,
-    })
+    contentful(getState().preview)
+      .getEntries({
+        'sys.contentType.sys.id[in]': 'fullWidthBanner,category',
+        include: 10,
+      })
       .then((response) => {
         let success = true;
         let payload;
@@ -33,7 +34,7 @@ export default function () {
         }
       })
       // eslint-disable-next-line
-      .catch((err) => {
+      .catch(err => {
         // eslint-disable-next-line
         console.warn(err);
 
