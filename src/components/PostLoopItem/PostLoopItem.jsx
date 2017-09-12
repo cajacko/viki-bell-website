@@ -5,12 +5,14 @@ import Link from 'components/Link/Link';
 import postUrlFromSlug from 'helpers/postUrlFromSlug';
 import Item from 'components/Item/Item';
 import FeaturedImageLink from 'components/FeaturedImageLink/FeaturedImageLink';
+import Content from 'components/Content/Content';
 
 const PostLoopItem = (props) => {
   const {
     share,
     title,
     wordpressRender,
+    content,
     postDate,
     postSlug,
     updatedAt,
@@ -49,11 +51,17 @@ const PostLoopItem = (props) => {
         </Link>
       </header>
 
-      <div
-        className="Post-content"
-        itemProp="articleBody"
-        dangerouslySetInnerHTML={{ __html: wordpressRender }}
-      />
+      {content ? (
+        <div className="Post-content" itemProp="articleBody">
+          <Content content={content} />
+        </div>
+      ) : (
+        <div
+          className="Post-content"
+          itemProp="articleBody"
+          dangerouslySetInnerHTML={{ __html: wordpressRender }}
+        />
+      )}
 
       <footer>
         <meta
