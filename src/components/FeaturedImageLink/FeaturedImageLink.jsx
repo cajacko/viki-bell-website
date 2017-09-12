@@ -4,6 +4,11 @@ import Image from 'components/Image/Image';
 
 const FeaturedImageLink = (props) => {
   const { url, file } = props;
+
+  if (!file || !file.details || !file.details.image) {
+    return null;
+  }
+
   const sizes = file.details.image;
 
   return (
