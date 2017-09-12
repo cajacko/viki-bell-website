@@ -12,6 +12,7 @@ export default function (slug) {
       .getEntries({
         content_type: 'post',
         'fields.postSlug': slug,
+        include: 10,
       })
       .then((response) => {
         let success = true;
