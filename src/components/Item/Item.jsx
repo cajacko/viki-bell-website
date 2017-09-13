@@ -46,10 +46,7 @@ class Item extends Component {
 
 Item.propTypes = {
   // eslint-disable-next-line
-  element: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
+  element: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   // eslint-disable-next-line
   items: PropTypes.object.isRequired,
   itemId: PropTypes.string,
@@ -60,8 +57,8 @@ Item.defaultProps = {
   itemId: null,
 };
 
-function mapStateToProps({ items, assets }) {
-  return { items, assets };
+function mapStateToProps({ items }) {
+  return { items };
 }
 
 export default connect(mapStateToProps)(Item);
