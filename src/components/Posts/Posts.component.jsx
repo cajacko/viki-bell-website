@@ -7,9 +7,9 @@ import Item from 'components/Item/Item';
 const Posts = ({ taxonomy, value, categoriesBySlug }) => (
   <div>
     <Item element={TaxonomyTitle} itemId={categoriesBySlug[value]} />
-    <Breadcrumbs taxonomy={taxonomy} value={value} />
+    <Item element={Breadcrumbs} itemId={categoriesBySlug[value]} />
     <PostLoop taxonomy={taxonomy} value={value} />
   </div>
-  );
+);
 
 export default Posts;

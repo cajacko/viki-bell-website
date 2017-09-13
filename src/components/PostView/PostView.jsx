@@ -12,10 +12,7 @@ const PostsView = ({ match }) => (
         components: [
           {
             component: 'mainWrap',
-            components: [
-              { component: 'breadcrumbs' },
-              { component: 'singlePost', slug: match.params.slug },
-            ],
+            components: [{ component: 'singlePost', slug: match.params.slug }],
           },
           { component: 'sideBar' },
         ],
