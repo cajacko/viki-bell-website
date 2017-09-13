@@ -13,6 +13,7 @@ import TaxonomyTitle from 'components/TaxonomyTitle/TaxonomyTitle';
 import Sitemap from 'components/Sitemap/Sitemap';
 import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 import Posts from 'components/Posts/Posts.container';
+import Page from 'components/Page/Page.container';
 
 const componentMap = {
   banner: Banner,
@@ -29,6 +30,7 @@ const componentMap = {
   sitemap: Sitemap,
   categoryLoop: CategoryLoop,
   posts: Posts,
+  page: Page,
 };
 
 const Component = (props) => {

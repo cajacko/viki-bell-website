@@ -8,6 +8,7 @@ import postsBySlug from 'reducers/postsBySlug';
 import tweets from 'reducers/tweets';
 import categoriesBySlug from 'reducers/categoriesBySlug';
 import preview from 'reducers/preview';
+import pagesBySlug from 'reducers/pagesBySlug';
 
 export default combineReducers({
   items,
@@ -16,6 +17,7 @@ export default combineReducers({
   banner,
   postLoops,
   postsBySlug,
+  pagesBySlug,
   tweets,
   categoriesBySlug,
   preview,
