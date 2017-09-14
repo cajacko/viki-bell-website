@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaxonomyTitle = ({ contentType, title }) => {
+const TaxonomyTitle = ({ contentType, title, noItem }) => {
   let string = '404: Page not found';
 
   if (contentType && title) {
@@ -9,8 +9,12 @@ const TaxonomyTitle = ({ contentType, title }) => {
         string = `Category: ${title}`;
         break;
       default:
-        break;
+        return null;
     }
+  }
+
+  if (noItem) {
+    return null;
   }
 
   return <h2 className="Title">{string}</h2>;
