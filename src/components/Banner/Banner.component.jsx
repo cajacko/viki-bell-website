@@ -9,6 +9,7 @@ const Banner = ({ image }) => (
       element={Image}
       itemId={image}
       fill
+      fillContainer
       className="Banner-image u-fitToParent u-fittedToParent"
     />
   </Link>
