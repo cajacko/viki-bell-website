@@ -10,7 +10,7 @@ export default (state = {}, { type, payload }) => {
   switch (type) {
     case 'GET_POST_INIT': {
       const newState = Object.assign({}, state);
-      const post = newState[payload.slug] || defaultPost;
+      const post = newState[payload.slug] || Object.assign({}, defaultPost);
       post.loading = true;
       post.init = false;
       newState[payload.slug] = post;
@@ -25,7 +25,7 @@ export default (state = {}, { type, payload }) => {
           const { contentType, postSlug } = payload.items[id];
 
           if (contentType === 'post') {
-            const post = defaultPost;
+            const post = Object.assign({}, defaultPost);
             post.id = id;
             post.init = false;
             post.loading = false;
@@ -48,7 +48,7 @@ export default (state = {}, { type, payload }) => {
         const { contentType, postSlug } = payload.items[id];
 
         if (contentType === 'post') {
-          const post = defaultPost;
+          const post = Object.assign({}, defaultPost);
           post.id = id;
           post.init = false;
           post.loading = false;
@@ -61,7 +61,7 @@ export default (state = {}, { type, payload }) => {
 
     case 'GET_POST_ERROR': {
       const newState = Object.assign({}, state);
-      const post = newState[payload.slug] || defaultPost;
+      const post = newState[payload.slug] || Object.assign({}, defaultPost);
       post.loading = false;
       post.init = false;
       post.error = payload.err || true;

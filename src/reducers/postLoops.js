@@ -6,7 +6,7 @@ export const defaultPostLoop = {
   init: true,
 };
 
-const defaultState = { home: defaultPostLoop };
+const defaultState = { home: Object.assign({}, defaultPostLoop) };
 
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
