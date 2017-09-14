@@ -12,6 +12,7 @@ import SitemapView from 'components/SitemapView/SitemapView';
 import CategoriesView from 'components/CategoriesView/CategoriesView';
 import CategoryView from 'components/CategoryView/CategoryView';
 import PageView from 'components/PageView/PageView';
+import AppError from 'components/AppError/AppError';
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +32,10 @@ class App extends Component {
   render() {
     if (this.props.status === 'loading') {
       return null;
+    }
+
+    if (this.props.status === 'error') {
+      return <AppError />;
     }
 
     const Router = this.props.Router;
