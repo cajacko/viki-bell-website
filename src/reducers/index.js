@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import items from 'reducers/items';
-import loading from 'reducers/loading';
+import globalStatus from 'reducers/globalStatus';
 import noMorePosts from 'reducers/noMorePosts';
 import banner from 'reducers/banner';
 import postLoops from 'reducers/postLoops';
@@ -12,7 +12,7 @@ import pagesBySlug from 'reducers/pagesBySlug';
 
 export default combineReducers({
   items,
-  loading,
+  globalStatus,
   noMorePosts,
   banner,
   postLoops,

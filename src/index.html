@@ -91,8 +91,8 @@
 
     <div id="loading" class="loadingDiv loading background">
       <script>
-        document.getElementById('loading').classList.remove('background');
-      </script>
+      document.getElementById('loading').classList.remove('background');
+</script>
       <div id="spinner" class="spinner noJavascript">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -101,35 +101,35 @@
 
       <div id="noJavascript">
         <script>
-          document.getElementById('noJavascript').classList.add('hide');
-        </script>
+        document.getElementById('noJavascript').classList.add('hide');
+</script>
         <div>
-          <h1 class="noJsText">charliejackson.com requires JavaScript to be enabled to work</h1>
+          <h1 class="noJsText">vikibell.com requires JavaScript to be enabled to work</h1>
         </div>
       </div>
       <script>
-        Element.prototype.remove = function() {
-            this.parentElement.removeChild(this);
-        }
-        NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-          for(var i = this.length - 1; i >= 0; i--) {
-              if(this[i] && this[i].parentElement) {
-                  this[i].parentElement.removeChild(this[i]);
-              }
-          }
-        }
-        document.getElementById('noJavascript').remove();
-        window.noLoading = true;
-        setTimeout(function() {
-          if (!window.initialRender) {
-            window.startTime = Math.floor(Date.now());
-            window.noLoading = false;
-            document.getElementById('loading').classList.add('background');
-            var noJavascriptClass = document.querySelector('.noJavascript');
-            noJavascriptClass.classList.remove('noJavascript');
-          }
-        }, 500);
-      </script>
+      Element.prototype.remove = function () {
+  this.parentElement.removeChild(this);
+};
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+  for (let i = this.length - 1; i >= 0; i--) {
+    if (this[i] && this[i].parentElement) {
+      this[i].parentElement.removeChild(this[i]);
+    }
+  }
+};
+document.getElementById('noJavascript').remove();
+window.noLoading = true;
+setTimeout(() => {
+  if (!window.initialRender) {
+    window.startTime = Math.floor(Date.now());
+    window.noLoading = false;
+    document.getElementById('loading').classList.add('background');
+    const noJavascriptClass = document.querySelector('.noJavascript');
+    noJavascriptClass.classList.remove('noJavascript');
+  }
+}, 500);
+</script>
     </div>
 
     {{#if manifest}}

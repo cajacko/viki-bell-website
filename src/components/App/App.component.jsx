@@ -13,8 +13,6 @@ import CategoriesView from 'components/CategoriesView/CategoriesView';
 import CategoryView from 'components/CategoryView/CategoryView';
 import PageView from 'components/PageView/PageView';
 
-removeLoading();
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +22,17 @@ class App extends Component {
     this.props.getGlobalContent();
   }
 
+  componentWillReceiveProps(props) {
+    if (this.props.status === 'loading' && props.status !== 'loading') {
+      removeLoading();
+    }
+  }
+
   render() {
+    if (this.props.status === 'loading') {
+      return null;
+    }
+
     const Router = this.props.Router;
 
     return (
