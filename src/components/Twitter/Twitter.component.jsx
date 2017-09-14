@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Tweet from 'components/Tweet/Tweet.component';
 import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
+import Loading from 'components/Loading/Loading';
 
 function spliceTweets(tweets) {
   const arr = Object.assign([], tweets);
@@ -28,7 +29,7 @@ class Twitter extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ tweets: spliceTweets(props.tweets) })
+    this.setState({ tweets: spliceTweets(props.tweets) });
   }
 
   componentWillUnmount() {
@@ -39,18 +40,33 @@ class Twitter extends Component {
     return (
       <div className="TweetLoop">
         <header>
-          <Link className="TweetLoop-headerLink" to="http://twitter.com/Vikiibell">
-            <Icon className="TweetLoop-headerIcon" icon="twitter" title="Twitter" />
+          <Link
+            className="TweetLoop-headerLink"
+            to="http://twitter.com/Vikiibell"
+          >
+            <Icon
+              className="TweetLoop-headerIcon"
+              icon="twitter"
+              title="Twitter"
+            />
             <span className="u-hide">Twitter</span>
           </Link>
         </header>
+
+        {this.state.tweets.length === 0 && (
+          <div style={{ margin: '30px 0' }}>
+            <Loading noMargin />
+          </div>
+        )}
 
         <div>
           {this.state.tweets.map(tweet => <Tweet key={tweet.id} {...tweet} />)}
         </div>
 
         <footer>
-          <Link className="TweetLoop-follow" to="http://twitter.com/Vikiibell">Follow @vikibell</Link>
+          <Link className="TweetLoop-follow" to="http://twitter.com/Vikiibell">
+            Follow @vikibell
+          </Link>
         </footer>
       </div>
     );
