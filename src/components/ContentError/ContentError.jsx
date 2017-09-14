@@ -1,11 +1,11 @@
 import React from 'react';
 
 const ContentError = () => (
-  <div style={{ background: 'white', padding: 15, marginTop: 20 }}>
-    <h2>
+  <div className="Post ErrorPage">
+    <p>
       Oh no! There was an error getting the content. Please refresh the page to
       try again.
-    </h2>
+    </p>
   </div>
 );
 

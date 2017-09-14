@@ -3,10 +3,13 @@ import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Item from 'components/Item/Item';
 import Loading from 'components/Loading/Loading';
 import ContentError from 'components/ContentError/ContentError';
+import FourOhFour from 'components/FourOhFour/FourOhFour';
 
 class PostLoop extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { fourOhFour: false };
 
     this.getPosts = this.getPosts.bind(this);
     this.onScroll = this.onScroll.bind(this);
@@ -41,15 +44,22 @@ class PostLoop extends Component {
       taxonomyId = props.categoriesBySlug[props.value];
 
       if (!taxonomyId) {
+        this.setState({ fourOhFour: true });
         return;
       }
     }
 
+    this.setState({ fourOhFour: false });
     this.props.getPosts(taxonomyId, props.posts.length);
   }
 
   onScroll() {
-    if (this.props.noMorePosts || this.props.loading || this.props.error) {
+    if (
+      this.props.noMorePosts ||
+      this.props.loading ||
+      this.props.error ||
+      this.state.fourOhFour
+    ) {
       return;
     }
 
@@ -75,6 +85,10 @@ class PostLoop extends Component {
   }
 
   render() {
+    if (this.state.fourOhFour) {
+      return <FourOhFour />;
+    }
+
     return (
       <div className="PostLoop" itemScope="" itemType="http://schema.org/Blog">
         {this.props.posts &&

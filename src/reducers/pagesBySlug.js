@@ -20,17 +20,23 @@ export default (state = {}, { type, payload }) => {
     case 'GET_PAGE_SUCCESS': {
       const newState = Object.assign({}, state);
 
-      Object.keys(payload.items).forEach((id) => {
-        const { contentType, postSlug } = payload.items[id];
+      if (Object.keys(payload.items).length) {
+        Object.keys(payload.items).forEach((id) => {
+          const { contentType, postSlug } = payload.items[id];
 
-        if (contentType === 'page') {
-          const post = defaultPost;
-          post.id = id;
-          post.init = false;
-          post.loading = false;
-          newState[postSlug] = post;
-        }
-      });
+          if (contentType === 'page') {
+            const post = defaultPost;
+            post.id = id;
+            post.init = false;
+            post.loading = false;
+            newState[postSlug] = post;
+          }
+        });
+      } else if (payload.slug) {
+        newState[payload.slug].fourOhFour = true;
+        newState[payload.slug].loading = false;
+        newState[payload.slug].error = false;
+      }
 
       return newState;
     }

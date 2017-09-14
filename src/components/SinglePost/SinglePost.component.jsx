@@ -3,6 +3,7 @@ import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Item from 'components/Item/Item';
 import Loading from 'components/Loading/Loading';
 import ContentError from 'components/ContentError/ContentError';
+import FourOhFour from 'components/FourOhFour/FourOhFour';
 
 class SinglePost extends Component {
   componentDidMount() {
@@ -14,6 +15,10 @@ class SinglePost extends Component {
   render() {
     if (this.props.loading) {
       return <Loading />;
+    }
+
+    if (this.props.fourOhFour) {
+      return <FourOhFour />;
     }
 
     if (this.props.error) {
