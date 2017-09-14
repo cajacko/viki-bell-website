@@ -82,7 +82,7 @@ class PostLoop extends Component {
             <Item key={id} element={PostLoopItem} itemId={id} />
           ))}
 
-        {this.props.error || <ContentError error={this.props.error} />}
+        {this.props.error && <ContentError error={this.props.error} />}
         {this.props.loading && <Loading />}
       </div>
     );
