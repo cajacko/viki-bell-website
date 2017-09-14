@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Item from 'components/Item/Item';
 import Loading from 'components/Loading/Loading';
+import ContentError from 'components/ContentError/ContentError';
 
 class PostLoop extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class PostLoop extends Component {
             <Item key={id} element={PostLoopItem} itemId={id} />
           ))}
 
-        {this.props.error && <div>{this.props.error}</div>}
+        {this.props.error || <ContentError error={this.props.error} />}
         {this.props.loading && <Loading />}
       </div>
     );
