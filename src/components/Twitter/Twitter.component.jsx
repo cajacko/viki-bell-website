@@ -7,6 +7,8 @@ import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
 import Loading from 'components/Loading/Loading';
 
+const lastGotTweets = Date.now();
+
 function spliceTweets(tweets) {
   const arr = Object.assign([], tweets);
 
@@ -18,13 +20,15 @@ class Twitter extends Component {
     super(props);
 
     this.state = { tweets: spliceTweets(this.props.tweets) };
+
+    this.getTweets = this.getTweets.bind(this);
   }
 
   componentDidMount() {
-    this.props.getTweets();
+    this.getTweets();
 
     this.interval = setInterval(() => {
-      this.props.getTweets();
+      this.getTweets();
     }, 1000 * 60);
   }
 
@@ -34,6 +38,12 @@ class Twitter extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  getTweets() {
+    if (Date.now() - lastGotTweets > 1000 * 30) {
+      this.props.getTweets();
+    }
   }
 
   render() {
