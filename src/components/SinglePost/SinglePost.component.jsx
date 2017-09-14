@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Item from 'components/Item/Item';
+import Loading from 'components/Loading/Loading';
+import ContentError from 'components/ContentError/ContentError';
 
 class SinglePost extends Component {
   componentDidMount() {
@@ -10,6 +12,14 @@ class SinglePost extends Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <Loading />;
+    }
+
+    if (this.props.error) {
+      return <ContentError error={this.props.error} />;
+    }
+
     return <Item element={PostLoopItem} itemId={this.props.id} share />;
   }
 }
