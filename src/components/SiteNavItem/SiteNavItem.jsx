@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
 
-const SiteNavItem = ({ icon, url, title, to, mobile, hidden }) => {
+const SiteNavItem = ({ icon, url, title, to, mobile, hidden, mobileShow }) => {
   let listClasses = '';
   let linkClasses = '';
   let spanClasses = '';
@@ -21,8 +21,10 @@ const SiteNavItem = ({ icon, url, title, to, mobile, hidden }) => {
 
   return (
     <li className={listClasses}>
-      <Link to={to} className={linkClasses} >
-        <Icon icon={icon} className="SiteNav-icon" />
+      <Link to={to} className={linkClasses}>
+        <div style={{ display: mobileShow && 'inline-block' }}>
+          <Icon icon={icon} className="SiteNav-icon" />
+        </div>
         <span className={spanClasses}>{title}</span>
       </Link>
     </li>
