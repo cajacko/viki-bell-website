@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PostLoopItem from 'components/PostLoopItem/PostLoopItem';
 import Item from 'components/Item/Item';
+import Loading from 'components/Loading/Loading';
 
 class PostLoop extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class PostLoop extends Component {
           ))}
 
         {this.props.error && <div>{this.props.error}</div>}
-        {this.props.loading && <div>Loading</div>}
+        {this.props.loading && <Loading />}
       </div>
     );
   }
