@@ -14,7 +14,7 @@ module.exports = isProduction => [
   (() => {
     if (isProduction) {
       return new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
+        sourceMap: false,
         beautify: false,
         mangle: {
           screw_ie8: true,
