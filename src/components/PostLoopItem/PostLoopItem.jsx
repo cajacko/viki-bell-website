@@ -52,9 +52,11 @@ const PostLoopItem = (props) => {
       </header>
 
       {content ? (
-        <div className="Post-content" itemProp="articleBody">
-          <Content content={content} />
-        </div>
+        <Content
+          content={content}
+          containerProps={{ itemProp: 'articleBody' }}
+          className="Post-content"
+        />
       ) : (
         <div
           className="Post-content"
