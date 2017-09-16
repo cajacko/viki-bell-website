@@ -9,6 +9,7 @@ import tweets from 'reducers/tweets';
 import categoriesBySlug from 'reducers/categoriesBySlug';
 import preview from 'reducers/preview';
 import pagesBySlug from 'reducers/pagesBySlug';
+import maxPostLimit from 'reducers/maxPostLimit';
 
 export default combineReducers({
   items,
@@ -21,4 +22,5 @@ export default combineReducers({
   tweets,
   categoriesBySlug,
   preview,
+  maxPostLimit,
 });

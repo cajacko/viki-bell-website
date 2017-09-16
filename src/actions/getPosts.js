@@ -2,9 +2,10 @@ import contentful from 'constants/contentfulClient';
 import transform from 'helpers/transformApiResponse';
 import queryFromTaxValue from 'helpers/queryFromTaxValue';
 
-export default function (taxonomy, value, valueId, skip = 0, limit = 20) {
+export default function (taxonomy, value, valueId, skip = 0, limitParam = 20) {
   return (dispatch, getState) => {
     const query = queryFromTaxValue(taxonomy, value);
+    const limit = getState().maxPostLimit ? 100 : limitParam;
 
     dispatch({
       type: 'GET_POSTS_INIT',
