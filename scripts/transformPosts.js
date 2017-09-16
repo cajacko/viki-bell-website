@@ -1,101 +1,56 @@
+/* eslint import/first: 0 no-console: 0  */
+require('dotenv').config('../.env');
+
 import { createClient } from 'contentful-management';
-import fetch from 'node-fetch';
-import cheerio from 'cheerio';
-import { images } from './items.json';
-import imageMapFile from './imageMapFile.json';
 
 let space;
 
 const client = createClient({
-  accessToken: '',
+  accessToken: process.env.CONTENTFUL_MANAGEMENT,
 });
 
 function replaceImages(content) {
-  if (!content) {
-    return;
-  }
-
   let newContent = content;
 
-  newContent = newContent.replace(/-[0-9]*x[0-9]*./g, '.');
-  newContent = newContent.replace(/data-srcset=".*?"/g, '');
-  newContent = newContent.replace(/data-sizes=".*?"/g, '');
-  newContent = newContent.replace(/srcset=".*?"/g, '');
-  newContent = newContent.replace(/sizes=".*?"/g, '');
+  newContent = newContent.replace(/src="\/media\/blank.gif"/g, '');
+  newContent = newContent.replace(/data-src/g, 'src');
 
-  Object.keys(images).forEach((imageId) => {
-    const { resource } = images[imageId];
-    let regex = resource;
-    regex = regex.replace(/\//g, '\\/');
-    regex = regex.replace(/\./g, '\\.');
-    let re = new RegExp(regex, 'g');
-
-    const replacement = imageMapFile[imageId].fields.file['en-GB'].url;
-
-    newContent = newContent.replace(re, replacement);
-    regex = regex.replace('https:', 'http:');
-    re = new RegExp(regex, 'g');
-    newContent = newContent.replace(re, replacement);
-  });
 
   return newContent;
 }
 
-function saveHtml(item, html) {
-  if (!html) {
+let i = 0;
+let iterator = 0;
+
+function processPost(item) {
+  if (i > 5) {
     return;
   }
 
-  const content = replaceImages(html);
+  console.log(iterator);
 
-  space.getEntry(item.sys.id).then((entry) => {
-    entry.fields.wordpressRender = { 'en-GB': content };
-    // console.log(item.fields.title);
-    return entry.update();
-  });
-}
+  if (item.fields.wordpressRender['en-GB'].includes('.gif')) {
+    console.log(item.fields.title['en-GB']);
+    const content = replaceImages(item.fields.wordpressRender['en-GB']);
+    console.log(content);
 
-function getHtml(item) {
-  return new Promise((resolve, reject) => {
-    const slug = item.fields.postSlug['en-GB'];
+    space.getEntry(item.sys.id).then((entry) => {
+      // eslint-disable-next-line
+      entry.fields.wordpressRender = { 'en-GB': content };
+      console.log(item.fields.title);
+      return entry.update();
+    });
 
-    if (!slug || slug === '') {
-      reject();
-      return;
-    }
-
-    const url = `https://vikibell.com/posts/${slug}`;
-
-    fetch(url)
-      .then(res => res.text())
-      .then((body) => {
-        const html = body;
-        const $ = cheerio.load(html);
-        resolve($('.Post-content').html());
-      });
-  });
-}
-
-function processPost(item) {
-  getHtml(item)
-    .then(html => saveHtml(item, html))
-    .catch(err => console.warn(err));
+    i += 1;
+  }
 }
 
 function processPosts(response) {
-  let i = 0;
-  console.log(response.items.length);
+  // console.log(response.items.length);
 
   response.items.forEach((item) => {
-    if (i > 15) {
-      // return;
-    }
-
-    console.log(item.fields.title);
-
     processPost(item);
-
-    i++;
+    iterator += 1;
   });
 }
 
@@ -106,7 +61,8 @@ client
 
     return space.getEntries({
       content_type: 'post',
-      'fields.wordpressRender[exists]': false,
+      skip: 90,
+      'fields.wordpressRender[exists]': 'true',
     });
   })
   .then(processPosts)
