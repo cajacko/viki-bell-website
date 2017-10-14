@@ -1,7 +1,6 @@
 import React from 'react';
 import Banner from 'components/Banner/Banner.container';
 import SiteNav from 'components/SiteNav/SiteNav';
-import Bunting from 'components/Bunting/Bunting';
 import PostLoop from 'components/PostLoop/PostLoop.container';
 import SideBar from 'components/SideBar/SideBar';
 import ContentWrap from 'components/ContentWrap/ContentWrap';
@@ -18,7 +17,6 @@ import Page from 'components/Page/Page.container';
 const componentMap = {
   banner: Banner,
   siteNav: SiteNav,
-  bunting: Bunting,
   postLoop: PostLoop,
   sideBar: SideBar,
   contentWrap: ContentWrap,

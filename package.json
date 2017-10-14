@@ -1,6 +1,6 @@
 {
   "name": "viki-bell-website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Website for Viki Bell",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "login": "firebase logout && firebase login",
     "init": "firebase init",
+    "deploy:live": "babel-node scripts/setBuild --live && npm run deploy",
+    "deploy:dev": "babel-node scripts/setBuild --dev && npm run deploy",
     "deploy": "npm run dev:build && firebase deploy",
     "dev:serve": "firebase serve",
     "dev:server": "babel-node ./devServer/index.js",
@@ -66,6 +68,7 @@
     "find-in-files": "0.4.0",
     "firebase-tools": "^3.9.1",
     "flow-check": "0.3.0",
+    "fs-extra": "^4.0.2",
     "geckodriver": "1.6.1",
     "get-youtube-id": "^1.0.0",
     "glob": "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz",
