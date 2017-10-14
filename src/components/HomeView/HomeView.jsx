@@ -6,13 +6,14 @@ const HomeView = () => (
     components={[
       { component: 'banner' },
       { component: 'siteNav' },
-      { component: 'bunting' },
       {
         component: 'contentWrap',
         components: [
           {
             component: 'mainWrap',
-            components: [{ component: 'postLoop', taxonomy: null, value: null }],
+            components: [
+              { component: 'postLoop', taxonomy: null, value: null },
+            ],
           },
           { component: 'sideBar' },
         ],

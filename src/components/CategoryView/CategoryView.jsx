@@ -6,7 +6,6 @@ const CategoryView = ({ match }) => (
     components={[
       { component: 'banner' },
       { component: 'siteNav' },
-      { component: 'bunting' },
       {
         component: 'contentWrap',
         components: [

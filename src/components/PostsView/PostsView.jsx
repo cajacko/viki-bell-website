@@ -6,7 +6,6 @@ const PostsView = () => (
     components={[
       { component: 'banner' },
       { component: 'siteNav' },
-      { component: 'bunting' },
       {
         component: 'contentWrap',
         components: [
