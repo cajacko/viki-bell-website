@@ -4,8 +4,8 @@ import Template from 'components/Template/Template.component';
 const SitemapView = () => (
   <Template
     components={[
-      { component: 'banner' },
       { component: 'siteNav' },
+      { component: 'banner' },
       {
         component: 'contentWrap',
         components: [
