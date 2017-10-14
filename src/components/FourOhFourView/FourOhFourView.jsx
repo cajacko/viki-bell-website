@@ -5,7 +5,7 @@ const FourOhFourView = () => (
   <Template
     components={[
       { component: 'siteNav' },
-      { component: 'banner' },
+      { component: 'fullWidthMultiImageBanner' },
       {
         component: 'contentWrap',
         components: [
