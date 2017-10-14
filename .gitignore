@@ -1,9 +1,6 @@
-admin/wp-content/uploads/
+node_modules
+npm-debug.log
+firebase-debug.log
 .env
-data.sql
-
-web/vendor
-config.json
-sitemap.xml
-robots.txt
-web/cache/*
+dist
+scripts/migration/data.xml
