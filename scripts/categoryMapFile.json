@@ -1,0 +1,317 @@
+{
+  "uncategorized": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "3GDHCvsleEC4qEcI0weG0I",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:51.853Z",
+      "updatedAt": "2017-09-07T18:23:51.853Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Uncategorized"
+      },
+      "slug": {
+        "en-GB": "uncategorized"
+      }
+    }
+  },
+  "food": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "2TENcJX98cIYkaAqE6uKgW",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:52.911Z",
+      "updatedAt": "2017-09-07T18:23:52.911Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Food"
+      },
+      "slug": {
+        "en-GB": "food"
+      }
+    }
+  },
+  "recipes": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "6vox2RBAooa26UYw4giuYi",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:54.048Z",
+      "updatedAt": "2017-09-07T18:23:54.048Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Recipes"
+      },
+      "slug": {
+        "en-GB": "recipes"
+      }
+    }
+  },
+  "life": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "5TeXDWAMdq6emKKKccOiUw",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:55.100Z",
+      "updatedAt": "2017-09-07T18:23:55.100Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Life"
+      },
+      "slug": {
+        "en-GB": "life"
+      }
+    }
+  },
+  "events": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "5fJ3NR4QBUw8AgkM6GGCyo",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:56.137Z",
+      "updatedAt": "2017-09-07T18:23:56.137Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Events"
+      },
+      "slug": {
+        "en-GB": "events"
+      }
+    }
+  },
+  "restaurants": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "ZLbh4naEWOgQsIUyQ0uIS",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:57.193Z",
+      "updatedAt": "2017-09-07T18:23:57.193Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Restaurants"
+      },
+      "slug": {
+        "en-GB": "restaurants"
+      }
+    }
+  },
+  "travel": {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "3ctegf19trkf"
+        }
+      },
+      "id": "25DoU7fbLaw0UoauwQkciw",
+      "type": "Entry",
+      "createdAt": "2017-09-07T18:23:58.282Z",
+      "updatedAt": "2017-09-07T18:23:58.282Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "6VWnlL6wTXZAqXrlY1SPzC"
+        }
+      },
+      "version": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "category"
+        }
+      }
+    },
+    "fields": {
+      "title": {
+        "en-GB": "Travel"
+      },
+      "slug": {
+        "en-GB": "travel"
+      }
+    }
+  }
+}

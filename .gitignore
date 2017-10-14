@@ -1,5 +1,6 @@
-web/node_modules
+node_modules
+npm-debug.log
+firebase-debug.log
 .env
-web/npm-debug.log
-web/dist
-web/src/public
+dist
+scripts/migration/data.xml
