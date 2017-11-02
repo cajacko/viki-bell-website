@@ -1,17 +1,6 @@
 import { connect } from 'react-redux';
-import FullWidthMultiImageBanner from 'components/FullWidthMultiImageBanner/FullWidthMultiImageBanner.render';
+import FullWidthMultiImageBanner from 'components/FullWidthMultiImageBanner/FullWidthMultiImageBanner.component';
 
-const mapStateToProps = () => ({
-  title: 'Viki Bell',
-  tagline: 'London Lifestyle Blogger',
-  leftImage: {
-    url: 'https://picsum.photos/200/300',
-    details: { image: { height: 100, width: 100 } },
-  },
-  rightImage: {
-    url: 'https://picsum.photos/200/300',
-    details: { image: { height: 100, width: 100 } },
-  },
-});
+const mapStateToProps = ({ banner }) => ({ itemId: banner });
 
 export default connect(mapStateToProps)(FullWidthMultiImageBanner);

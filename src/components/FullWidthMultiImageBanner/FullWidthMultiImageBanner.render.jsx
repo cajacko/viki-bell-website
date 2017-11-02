@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from 'components/Icon/Icon';
 import BannerImage from 'components/BannerImage/BannerImage.component';
+import Item from 'components/Item/Item';
 import {
   Section,
   Center,
@@ -10,34 +11,35 @@ import {
   IconContainer,
 } from 'components/FullWidthMultiImageBanner/FullWidthMultiImageBanner.style';
 
-const FullWidthMultiImageBanner = ({
-  title,
-  tagline,
+const FullWidthMultiImageBannerRender = ({
+  logoTitle,
+  noItem,
   leftImage,
   rightImage,
+  tagLine,
 }) => {
-  if (!title && !tagline && !leftImage && !rightImage) {
+  if (noItem || (!logoTitle && !tagLine && !leftImage && !rightImage)) {
     return null;
   }
 
   return (
     <Section leftImage={leftImage} rightImage={rightImage}>
-      {leftImage && <BannerImage left image={leftImage} />}
+      {leftImage && <Item element={BannerImage} left itemId={leftImage} />}
       <Center>
-        {title && (
+        {logoTitle && (
           <Link to="/">
             <IconContainer>
               <Icon icon="logo" />
             </IconContainer>
-            <SiteHeader>{title}</SiteHeader>
+            <SiteHeader>{logoTitle}</SiteHeader>
           </Link>
         )}
-        {tagline && <TagLine>{tagline}</TagLine>}
+        {tagLine && <TagLine>{tagLine}</TagLine>}
       </Center>
 
-      {rightImage && <BannerImage image={rightImage} />}
+      {rightImage && <Item element={BannerImage} itemId={rightImage} />}
     </Section>
   );
 };
 
-export default FullWidthMultiImageBanner;
+export default FullWidthMultiImageBannerRender;

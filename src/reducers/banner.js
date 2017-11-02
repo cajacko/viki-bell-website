@@ -6,7 +6,7 @@ export default (state = null, { type, payload }) => {
       Object.keys(payload.items).forEach((id) => {
         const item = payload.items[id];
 
-        if (item.contentType === 'fullWidthBanner' && item.status === 'Full Width Banner - Live') {
+        if (item.contentType === 'banner' && item.status === 'Banner - Live') {
           newState = id;
         }
       });

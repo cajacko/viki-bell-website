@@ -29,7 +29,7 @@ class BannerImage extends PureComponent {
   }
 
   getImageWidth() {
-    const { height, width } = this.props.image.details.image;
+    const { height, width } = this.props.file.details.image;
 
     const imageRatio = height / width;
 
@@ -65,7 +65,7 @@ class BannerImage extends PureComponent {
         width={this.state.width}
         left={this.state.left}
         right={this.state.right}
-        image={this.props.image}
+        image={this.props.file}
       />
     );
   }
@@ -73,7 +73,7 @@ class BannerImage extends PureComponent {
 
 BannerImage.propTypes = {
   left: PropTypes.bool,
-  image: PropTypes.shape({
+  file: PropTypes.shape({
     url: PropTypes.string,
     details: PropTypes.shape({
       image: PropTypes.shape({
