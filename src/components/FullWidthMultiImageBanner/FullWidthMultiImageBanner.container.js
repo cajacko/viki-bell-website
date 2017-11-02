@@ -12,10 +12,6 @@ const mapStateToProps = () => ({
     url: 'https://picsum.photos/200/300',
     details: { image: { height: 100, width: 100 } },
   },
-  logo: {
-    url: 'https://picsum.photos/200/300',
-    details: { image: { height: 100, width: 100 } },
-  },
 });
 
 export default connect(mapStateToProps)(FullWidthMultiImageBanner);

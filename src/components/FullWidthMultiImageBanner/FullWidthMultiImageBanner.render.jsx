@@ -15,22 +15,29 @@ const FullWidthMultiImageBanner = ({
   tagline,
   leftImage,
   rightImage,
-  logo,
-}) => (
-  <Section leftImage={leftImage} rightImage={rightImage}>
-    {leftImage && <BannerImage left image={leftImage} />}
-    <Center>
-      <Link to="/">
-        <IconContainer>
-          <Icon icon="logo" />
-        </IconContainer>
-        <SiteHeader>{title}</SiteHeader>
-      </Link>
-      <TagLine>{tagline}</TagLine>
-    </Center>
+}) => {
+  if (!title && !tagline && !leftImage && !rightImage) {
+    return null;
+  }
 
-    {rightImage && <BannerImage image={rightImage} />}
-  </Section>
-);
+  return (
+    <Section leftImage={leftImage} rightImage={rightImage}>
+      {leftImage && <BannerImage left image={leftImage} />}
+      <Center>
+        {title && (
+          <Link to="/">
+            <IconContainer>
+              <Icon icon="logo" />
+            </IconContainer>
+            <SiteHeader>{title}</SiteHeader>
+          </Link>
+        )}
+        {tagline && <TagLine>{tagline}</TagLine>}
+      </Center>
+
+      {rightImage && <BannerImage image={rightImage} />}
+    </Section>
+  );
+};
 
 export default FullWidthMultiImageBanner;
