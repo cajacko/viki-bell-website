@@ -96,8 +96,13 @@ class Image extends Component {
         bottom: 0,
         width: '100%',
         height: '100%',
+        overflow: 'hidden',
       }
-      : { paddingBottom: `${ratio * 100}%`, position: 'relative' };
+      : {
+        paddingBottom: `${ratio * 100}%`,
+        position: 'relative',
+        overflow: 'hidden',
+      };
 
     let imageStyle = { display: 'block' };
 

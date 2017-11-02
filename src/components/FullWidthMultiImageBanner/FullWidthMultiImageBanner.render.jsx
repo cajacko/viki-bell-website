@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Image from 'components/Image/Image';
 import Icon from 'components/Icon/Icon';
+import BannerImage from 'components/BannerImage/BannerImage.component';
 import {
   Section,
-  LeftImage,
-  RightImage,
   Center,
   SiteHeader,
   TagLine,
@@ -20,9 +18,7 @@ const FullWidthMultiImageBanner = ({
   logo,
 }) => (
   <Section>
-    <LeftImage>
-      <Image file={leftImage} />
-    </LeftImage>
+    <BannerImage left image={leftImage} />
     <Center>
       <Link to="/">
         <IconContainer>
@@ -33,9 +29,7 @@ const FullWidthMultiImageBanner = ({
       <TagLine>{tagline}</TagLine>
     </Center>
 
-    <RightImage>
-      <Image file={rightImage} />
-    </RightImage>
+    <BannerImage image={rightImage} />
   </Section>
 );
 
