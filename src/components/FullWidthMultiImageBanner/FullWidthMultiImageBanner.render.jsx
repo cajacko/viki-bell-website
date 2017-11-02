@@ -17,8 +17,8 @@ const FullWidthMultiImageBanner = ({
   rightImage,
   logo,
 }) => (
-  <Section>
-    <BannerImage left image={leftImage} />
+  <Section leftImage={leftImage} rightImage={rightImage}>
+    {leftImage && <BannerImage left image={leftImage} />}
     <Center>
       <Link to="/">
         <IconContainer>
@@ -29,7 +29,7 @@ const FullWidthMultiImageBanner = ({
       <TagLine>{tagline}</TagLine>
     </Center>
 
-    <BannerImage image={rightImage} />
+    {rightImage && <BannerImage image={rightImage} />}
   </Section>
 );
 
