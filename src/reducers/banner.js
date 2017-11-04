@@ -6,8 +6,12 @@ export default (state = null, { type, payload }) => {
       Object.keys(payload.items).forEach((id) => {
         const item = payload.items[id];
 
-        if (item.contentType === 'banner' && item.status === 'Banner - Live') {
-          newState = id;
+        if (
+          item.contentType === 'siteSettings' &&
+          item.type === 'Site Settings - Live' &&
+          item.banner
+        ) {
+          newState = item.banner;
         }
       });
 

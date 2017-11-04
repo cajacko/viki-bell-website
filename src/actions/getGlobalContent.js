@@ -7,7 +7,7 @@ export default function () {
 
     contentful(getState().preview)
       .getEntries({
-        'sys.contentType.sys.id[in]': 'banner,category',
+        'sys.contentType.sys.id[in]': 'siteSettings,category',
         include: 10,
       })
       .then((response) => {
