@@ -13,9 +13,11 @@ import Sitemap from 'components/Sitemap/Sitemap';
 import CategoryLoop from 'components/CategoryLoop/CategoryLoop';
 import Posts from 'components/Posts/Posts.container';
 import Page from 'components/Page/Page.container';
+import FullWidthMultiImageBanner from 'components/FullWidthMultiImageBanner/FullWidthMultiImageBanner.container';
+import BannerType from 'components/BannerType/BannerType.container';
 
 const componentMap = {
-  banner: Banner,
+  banner: FullWidthMultiImageBanner,
   siteNav: SiteNav,
   postLoop: PostLoop,
   sideBar: SideBar,
@@ -29,6 +31,8 @@ const componentMap = {
   categoryLoop: CategoryLoop,
   posts: Posts,
   page: Page,
+  fullWidthBanner: Banner,
+  bannerType: BannerType,
 };
 
 const Component = (props) => {

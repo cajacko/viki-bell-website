@@ -112,6 +112,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "node-fetch": "^1.7.0"
+    "node-fetch": "^1.7.0",
+    "styled-components": "^2.2.1"
   }
 }
