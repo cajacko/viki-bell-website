@@ -10,6 +10,7 @@ import {
   TagLine,
   IconContainer,
 } from 'components/FullWidthMultiImageBanner/FullWidthMultiImageBanner.style';
+import WindowResize from 'components/WindowResize/WindowResize.component';
 
 const FullWidthMultiImageBannerRender = ({
   logoTitle,
@@ -17,28 +18,32 @@ const FullWidthMultiImageBannerRender = ({
   leftImage,
   rightImage,
   tagLine,
+  onResize,
+  setCenter,
 }) => {
   if (noItem || (!logoTitle && !tagLine && !leftImage && !rightImage)) {
     return null;
   }
 
   return (
-    <Section leftImage={leftImage} rightImage={rightImage}>
-      {leftImage && <Item element={BannerImage} left itemId={leftImage} />}
-      <Center>
-        {logoTitle && (
-          <Link to="/">
-            <IconContainer>
-              <Icon icon="logo" />
-            </IconContainer>
-            <SiteHeader>{logoTitle}</SiteHeader>
-          </Link>
-        )}
-        {tagLine && <TagLine>{tagLine}</TagLine>}
-      </Center>
+    <WindowResize onResize={onResize}>
+      <Section leftImage={leftImage} rightImage={rightImage}>
+        {leftImage && <Item element={BannerImage} left itemId={leftImage} />}
+        <Center innerRef={setCenter}>
+          {logoTitle && (
+            <Link to="/">
+              <IconContainer>
+                <Icon icon="logo" />
+              </IconContainer>
+              <SiteHeader>{logoTitle}</SiteHeader>
+            </Link>
+          )}
+          {tagLine && <TagLine>{tagLine}</TagLine>}
+        </Center>
 
-      {rightImage && <Item element={BannerImage} itemId={rightImage} />}
-    </Section>
+        {rightImage && <Item element={BannerImage} itemId={rightImage} />}
+      </Section>
+    </WindowResize>
   );
 };
 

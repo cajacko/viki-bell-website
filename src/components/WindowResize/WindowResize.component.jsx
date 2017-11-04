@@ -22,7 +22,7 @@ class WindowResize extends PureComponent {
     const newWidth = window.innerWidth;
 
     if (this.width !== newWidth) {
-      this.props.onResize();
+      this.props.onResize(newWidth);
     }
 
     this.width = newWidth;
