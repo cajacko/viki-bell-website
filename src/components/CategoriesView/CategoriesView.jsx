@@ -5,7 +5,7 @@ const CategoriesView = () => (
   <Template
     components={[
       { component: 'siteNav' },
-      { component: 'fullWidthMultiImageBanner' },
+      { component: 'bannerType' },
       {
         component: 'contentWrap',
         components: [
