@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Component from 'components/Component/Component';
+import { ComponentLoop } from 'components/Template/Template.style';
 
 class Template extends PureComponent {
   render() {
@@ -33,7 +34,7 @@ class Template extends PureComponent {
           </div>
         </div>
 
-        <div>
+        <ComponentLoop>
           {this.props.components &&
             this.props.components.map((props) => {
               id += 1;
@@ -42,7 +43,7 @@ class Template extends PureComponent {
                 <Component key={id} component={props.component} {...props} />
               );
             })}
-        </div>
+        </ComponentLoop>
       </div>
     );
   }
