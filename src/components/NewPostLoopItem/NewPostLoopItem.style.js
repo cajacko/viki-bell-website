@@ -14,3 +14,8 @@ export const ArticleContainer = styled.div`
   border-right: none;
   ${({ noLeftBorder }) => noLeftBorder && 'border-left: none;'};
 `;
+
+export const ImageContainer = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+`;

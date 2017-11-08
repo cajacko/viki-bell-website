@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Moment from 'moment';
 import Link from 'components/Link/Link';
 import Item from 'components/Item/Item';
@@ -7,10 +8,13 @@ import Image from 'components/Image/Image';
 import {
   Article,
   ArticleContainer,
+  ImageContainer,
 } from 'components/NewPostLoopItem/NewPostLoopItem.style';
 
 class NewPostLoopItemRender extends PureComponent {
   render() {
+    if (this.props.noItem) return null;
+
     const date = new Moment(this.props.postDate);
 
     return (
@@ -24,7 +28,13 @@ class NewPostLoopItemRender extends PureComponent {
       >
         <ArticleContainer noLeftBorder={this.props.noLeftBorder}>
           <Link to="/" itemProp="mainEntityOfPage">
-            <Item element={Image} itemId={this.props.featuredImage} />
+            <ImageContainer>
+              <Item
+                element={Image}
+                itemId={this.props.featuredImage}
+                fillContainer
+              />
+            </ImageContainer>
           </Link>
 
           <time dateTime={this.props.postDate} itemProp="datePublished">
@@ -58,5 +68,26 @@ class NewPostLoopItemRender extends PureComponent {
     );
   }
 }
+
+NewPostLoopItemRender.propTypes = {
+  title: PropTypes.string,
+  updatedAt: PropTypes.string,
+  displayCategory: PropTypes.string,
+  postDate: PropTypes.string,
+  featuredImage: PropTypes.string,
+  noLeftBorder: PropTypes.bool.isRequired,
+  postWidth: PropTypes.number.isRequired,
+  paddingTop: PropTypes.number.isRequired,
+  noItem: PropTypes.bool,
+};
+
+NewPostLoopItemRender.defaultProps = {
+  title: null,
+  updatedAt: null,
+  displayCategory: null,
+  postDate: null,
+  featuredImage: null,
+  noItem: false,
+};
 
 export default NewPostLoopItemRender;
