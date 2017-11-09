@@ -39,7 +39,7 @@ class NewPostLoopRender extends PureComponent {
             })}
           </PostLoopContainer>
           <ButtonContainer verticalSpacing={paddingTop}>
-            <Button>Show More Posts</Button>
+            <Button onClick={this.props.onClick}>Show More Posts</Button>
           </ButtonContainer>
         </Section>
       </WindowResize>

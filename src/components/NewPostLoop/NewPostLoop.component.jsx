@@ -12,20 +12,22 @@ class NewPostLoop extends PureComponent {
     super(props);
 
     const postsPerRow = this.getPostsPerRow(window.innerWidth);
-    const getPostsCount = 1;
+    this.getPostsCount = 1;
 
     this.state = {
-      posts: this.getVisiblePosts(props.posts, postsPerRow, getPostsCount),
+      posts: this.getVisiblePosts(props.posts, postsPerRow),
       postsPerRow,
-      getPostsCount,
     };
 
     this.onResize = this.onResize.bind(this);
     this.getPosts = this.getPosts.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
-    this.getPosts();
+    if (this.state.posts.length === 0) {
+      this.getPosts(true);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -33,16 +35,30 @@ class NewPostLoop extends PureComponent {
       posts: this.getVisiblePosts(
         props.posts,
         this.state.postsPerRow,
-        this.state.getPostsCount,
+        this.getPostsCount,
       ),
     });
   }
 
-  getPosts() {
-    const skip = this.props.posts.length;
-    const count = this.state.postsPerRow * 2;
+  getPosts(init) {
+    if (!init) this.getPostsCount += 1;
 
-    this.props.getPosts(undefined, skip, count);
+    const numberOfPostsToShow = this.getNumberOfPostsToShow(
+      this.state.postsPerRow,
+    );
+
+    const visiblePosts = this.getVisiblePosts(
+      this.props.posts,
+      this.state.postsPerRow,
+    );
+
+    if (numberOfPostsToShow <= visiblePosts.length) {
+      this.setState({ posts: visiblePosts });
+    } else {
+      const skip = this.props.posts.length;
+      const count = this.getPostsPerBatch(this.state.postsPerRow) * 2;
+      this.props.getPosts(undefined, skip, count);
+    }
   }
 
   getPostsPerRow(width) {
@@ -53,12 +69,22 @@ class NewPostLoop extends PureComponent {
     return postsPerRow;
   }
 
-  getVisiblePosts(posts, postsPerRow, getPostsCount) {
+  getPostsPerBatch(postsPerRow) {
     const rowsToShow =
       postRowsToGetByColumnCount[postsPerRow] ||
       postRowsToGetByColumnCount.default;
 
-    const postCountToShow = rowsToShow * postsPerRow * getPostsCount;
+    return rowsToShow * postsPerRow;
+  }
+
+  getNumberOfPostsToShow(postsPerRow) {
+    const postsPerBatch = this.getPostsPerBatch(postsPerRow);
+
+    return postsPerBatch * this.getPostsCount;
+  }
+
+  getVisiblePosts(posts, postsPerRow) {
+    const postCountToShow = this.getNumberOfPostsToShow(postsPerRow);
 
     return posts.slice(0, postCountToShow);
   }
@@ -67,14 +93,14 @@ class NewPostLoop extends PureComponent {
     const postsPerRow = this.getPostsPerRow(width);
 
     if (postsPerRow !== this.state.postsPerRow) {
-      const visiblePosts = this.getVisiblePosts(
-        this.props.posts,
-        postsPerRow,
-        this.state.getPostsCount,
-      );
+      const visiblePosts = this.getVisiblePosts(this.props.posts, postsPerRow);
 
       this.setState({ postsPerRow, posts: visiblePosts });
     }
+  }
+
+  onClick() {
+    this.getPosts();
   }
 
   render() {
@@ -83,6 +109,7 @@ class NewPostLoop extends PureComponent {
         posts={this.state.posts}
         postsPerRow={this.state.postsPerRow}
         onResize={this.onResize}
+        onClick={this.onClick}
       />
     );
   }

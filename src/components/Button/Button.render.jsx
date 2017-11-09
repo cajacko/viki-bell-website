@@ -7,7 +7,9 @@ class Button extends PureComponent {
 
     const Element = styleFunc('button');
 
-    return <Element>{this.props.children}</Element>;
+    return (
+      <Element onClick={this.props.onClick}>{this.props.children}</Element>
+    );
   }
 }
 
