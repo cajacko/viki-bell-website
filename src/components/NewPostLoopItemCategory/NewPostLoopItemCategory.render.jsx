@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
+import { Category } from 'components/NewPostLoopItemCategory/NewPostLoopItemCategory.style';
 
 class NewPostLoopItemCategoryRender extends PureComponent {
   render() {
     if (this.props.noItem) return null;
 
-    return <p>{this.props.title}</p>;
+    return <Category>{this.props.title}</Category>;
   }
 }
 

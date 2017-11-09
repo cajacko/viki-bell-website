@@ -10,7 +10,7 @@ const paddingTop = 40;
 
 class NewPostLoopRender extends PureComponent {
   render() {
-    const postsPerRow = 3;
+    const postsPerRow = 4;
 
     return (
       <Section>

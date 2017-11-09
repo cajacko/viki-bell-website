@@ -9,6 +9,9 @@ import {
   Article,
   ArticleContainer,
   ImageContainer,
+  Content,
+  Title,
+  Time,
 } from 'components/NewPostLoopItem/NewPostLoopItem.style';
 
 class NewPostLoopItemRender extends PureComponent {
@@ -37,19 +40,21 @@ class NewPostLoopItemRender extends PureComponent {
             </ImageContainer>
           </Link>
 
-          <time dateTime={this.props.postDate} itemProp="datePublished">
-            {date.format('MMM D, YYYY')}
-          </time>
-          <Link to="/" itemProp="mainEntityOfPage">
-            <h2 itemProp="headline">{this.props.title}</h2>
-          </Link>
+          <Content>
+            <Time dateTime={this.props.postDate} itemProp="datePublished">
+              {date.format('MMM D, YYYY')}
+            </Time>
+            <Link to="/" itemProp="mainEntityOfPage">
+              <Title itemProp="headline">{this.props.title}</Title>
+            </Link>
 
-          {this.props.displayCategory && (
-            <Item
-              element={NewPostLoopItemCategory}
-              itemId={this.props.displayCategory}
-            />
-          )}
+            {this.props.displayCategory && (
+              <Item
+                element={NewPostLoopItemCategory}
+                itemId={this.props.displayCategory}
+              />
+            )}
+          </Content>
 
           <footer>
             <meta
