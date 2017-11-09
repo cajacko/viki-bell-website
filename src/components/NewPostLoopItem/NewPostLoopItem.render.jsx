@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Moment from 'moment';
 import Link from 'components/Link/Link';
 import Item from 'components/Item/Item';
+import postUrlFromSlug from 'helpers/postUrlFromSlug';
 import NewPostLoopItemCategory from 'components/NewPostLoopItemCategory/NewPostLoopItemCategory.render';
 import Image from 'components/Image/Image';
 import {
@@ -19,6 +20,7 @@ class NewPostLoopItemRender extends PureComponent {
     if (this.props.noItem) return null;
 
     const date = new Moment(this.props.postDate);
+    const url = postUrlFromSlug(this.props.postSlug);
 
     return (
       <Article
@@ -30,7 +32,7 @@ class NewPostLoopItemRender extends PureComponent {
         postWidth={this.props.postWidth}
       >
         <ArticleContainer noLeftBorder={this.props.noLeftBorder}>
-          <Link to="/" itemProp="mainEntityOfPage">
+          <Link to={url} itemProp="mainEntityOfPage">
             <ImageContainer>
               <Item
                 element={Image}
@@ -44,7 +46,7 @@ class NewPostLoopItemRender extends PureComponent {
             <Time dateTime={this.props.postDate} itemProp="datePublished">
               {date.format('MMM D, YYYY')}
             </Time>
-            <Link to="/" itemProp="mainEntityOfPage">
+            <Link to={url} itemProp="mainEntityOfPage">
               <Title itemProp="headline">{this.props.title}</Title>
             </Link>
 
