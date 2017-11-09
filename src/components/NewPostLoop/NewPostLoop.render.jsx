@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Item from 'components/Item/Item';
-import NewPostLoopItem from 'components/NewPostLoopItem/NewPostLoopItem.render';
+import NewPostLoopItem from 'components/NewPostLoopItem/NewPostLoopItem.component';
 import {
   Section,
   PostLoopContainer,

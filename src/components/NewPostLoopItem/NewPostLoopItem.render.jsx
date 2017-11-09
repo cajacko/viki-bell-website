@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
 import Link from 'components/Link/Link';
 import Item from 'components/Item/Item';
-import postUrlFromSlug from 'helpers/postUrlFromSlug';
 import NewPostLoopItemCategory from 'components/NewPostLoopItemCategory/NewPostLoopItemCategory.render';
 import Image from 'components/Image/Image';
 import {
@@ -17,11 +15,6 @@ import {
 
 class NewPostLoopItemRender extends PureComponent {
   render() {
-    if (this.props.noItem) return null;
-
-    const date = new Moment(this.props.postDate);
-    const url = postUrlFromSlug(this.props.postSlug);
-
     return (
       <Article
         paddingTop={this.props.paddingTop}
@@ -32,7 +25,7 @@ class NewPostLoopItemRender extends PureComponent {
         postWidth={this.props.postWidth}
       >
         <ArticleContainer noLeftBorder={this.props.noLeftBorder}>
-          <Link to={url} itemProp="mainEntityOfPage">
+          <Link to={this.props.url} itemProp="mainEntityOfPage">
             <ImageContainer>
               <Item
                 element={Image}
@@ -44,9 +37,9 @@ class NewPostLoopItemRender extends PureComponent {
 
           <Content>
             <Time dateTime={this.props.postDate} itemProp="datePublished">
-              {date.format('MMM D, YYYY')}
+              {this.props.postDateDisplay}
             </Time>
-            <Link to={url} itemProp="mainEntityOfPage">
+            <Link to={this.props.url} itemProp="mainEntityOfPage">
               <Title itemProp="headline">{this.props.title}</Title>
             </Link>
 
@@ -77,24 +70,21 @@ class NewPostLoopItemRender extends PureComponent {
 }
 
 NewPostLoopItemRender.propTypes = {
-  title: PropTypes.string,
-  updatedAt: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string.isRequired,
   displayCategory: PropTypes.string,
-  postDate: PropTypes.string,
+  postDate: PropTypes.string.isRequired,
   featuredImage: PropTypes.string,
   noLeftBorder: PropTypes.bool.isRequired,
   postWidth: PropTypes.number.isRequired,
   paddingTop: PropTypes.number.isRequired,
-  noItem: PropTypes.bool,
+  url: PropTypes.string.isRequired,
+  postDateDisplay: PropTypes.string.isRequired,
 };
 
 NewPostLoopItemRender.defaultProps = {
-  title: null,
-  updatedAt: null,
   displayCategory: null,
-  postDate: null,
   featuredImage: null,
-  noItem: false,
 };
 
 export default NewPostLoopItemRender;
