@@ -39,4 +39,4 @@ app.get('*', (req, res) => {
   res.send(html);
 });
 
-app.listen(3000);
+app.listen(process.env.DEV_PORT || 3000);
