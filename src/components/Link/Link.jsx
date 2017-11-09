@@ -3,22 +3,20 @@ import { Link as RouterLink } from 'react-router-dom';
 import style from 'components/Link/Link.style';
 
 const Link = (props) => {
-  const to = props.to;
-
   const componentProps = Object.assign({}, props);
   delete componentProps.to;
+  if (componentProps.theme !== undefined) delete componentProps.theme;
 
-  // Do a switch here with passed theme if want to change
-  const styleFunc = style.default;
+  const styleFunc = style[props.theme] || style.default;
 
-  if (to.includes('http')) {
+  if (props.to.includes('http')) {
     const Element = styleFunc('a');
 
     return (
       <Element
         target="_blank"
         rel="noopener noreferrer"
-        href={to}
+        href={props.to}
         {...componentProps}
       >
         {props.children}
@@ -29,7 +27,7 @@ const Link = (props) => {
   const Element = styleFunc(RouterLink);
 
   return (
-    <Element to={to} {...componentProps}>
+    <Element to={props.to} {...componentProps}>
       {props.children}
     </Element>
   );
