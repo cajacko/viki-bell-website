@@ -12,15 +12,13 @@ const paddingTop = 40;
 
 class NewPostLoopRender extends PureComponent {
   render() {
-    const postsPerRow = 4;
-
     return (
       <Section>
         <PostLoopContainer marginTop={-paddingTop}>
           {this.props.posts.map((itemId, i) => {
             let noLeftBorder = false;
 
-            const modulus = (i + 1) % postsPerRow;
+            const modulus = (i + 1) % this.props.postsPerRow;
 
             if (modulus === 1) {
               noLeftBorder = true;
@@ -32,7 +30,7 @@ class NewPostLoopRender extends PureComponent {
                 element={NewPostLoopItem}
                 itemId={itemId}
                 paddingTop={paddingTop}
-                postWidth={100 / postsPerRow}
+                postWidth={100 / this.props.postsPerRow}
                 noLeftBorder={noLeftBorder}
               />
             );
