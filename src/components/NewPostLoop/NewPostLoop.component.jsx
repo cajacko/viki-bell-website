@@ -11,7 +11,7 @@ class NewPostLoop extends PureComponent {
   constructor(props) {
     super(props);
 
-    const postsPerRow = 4;
+    const postsPerRow = this.getPostsPerRow(window.innerWidth);
     const getPostsCount = 1;
 
     this.state = {
@@ -20,7 +20,7 @@ class NewPostLoop extends PureComponent {
       getPostsCount,
     };
 
-    this.getVisiblePosts = this.getVisiblePosts.bind(this);
+    this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +37,14 @@ class NewPostLoop extends PureComponent {
     });
   }
 
+  getPostsPerRow(width) {
+    let postsPerRow = Math.floor(width / 200);
+
+    if (postsPerRow < 1) postsPerRow = 1;
+
+    return postsPerRow;
+  }
+
   getVisiblePosts(posts, postsPerRow, getPostsCount) {
     const rowsToShow =
       postRowsToGetByColumnCount[postsPerRow] ||
@@ -47,11 +55,26 @@ class NewPostLoop extends PureComponent {
     return posts.slice(0, postCountToShow);
   }
 
+  onResize(width) {
+    const postsPerRow = this.getPostsPerRow(width);
+
+    if (postsPerRow !== this.state.postsPerRow) {
+      const visiblePosts = this.getVisiblePosts(
+        this.props.posts,
+        postsPerRow,
+        this.state.getPostsCount,
+      );
+
+      this.setState({ postsPerRow, posts: visiblePosts });
+    }
+  }
+
   render() {
     return (
       <NewPostLoopRender
         posts={this.state.posts}
         postsPerRow={this.state.postsPerRow}
+        onResize={this.onResize}
       />
     );
   }
