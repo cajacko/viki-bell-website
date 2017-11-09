@@ -25,8 +25,8 @@ const mapStateToProps = (
 };
 
 const mapDispatchToProps = (dispatch, { taxonomy, value }) => ({
-  getPosts: (taxonomyId, skip = 0) =>
-    dispatch(getPosts(taxonomy, value, taxonomyId, skip)),
+  getPosts: (taxonomyId, skip = 0, count = 10) =>
+    dispatch(getPosts(taxonomy, value, taxonomyId, skip, count)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPostLoop);

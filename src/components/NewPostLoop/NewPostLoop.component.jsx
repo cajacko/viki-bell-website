@@ -21,10 +21,11 @@ class NewPostLoop extends PureComponent {
     };
 
     this.onResize = this.onResize.bind(this);
+    this.getPosts = this.getPosts.bind(this);
   }
 
   componentDidMount() {
-    this.props.getPosts();
+    this.getPosts();
   }
 
   componentWillReceiveProps(props) {
@@ -35,6 +36,13 @@ class NewPostLoop extends PureComponent {
         this.state.getPostsCount,
       ),
     });
+  }
+
+  getPosts() {
+    const skip = this.props.posts.length;
+    const count = this.state.postsPerRow * 2;
+
+    this.props.getPosts(undefined, skip, count);
   }
 
   getPostsPerRow(width) {
