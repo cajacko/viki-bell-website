@@ -4,7 +4,9 @@ import NewPostLoopItem from 'components/NewPostLoopItem/NewPostLoopItem.render';
 import {
   Section,
   PostLoopContainer,
+  ButtonContainer,
 } from 'components/NewPostLoop/NewPostLoop.style';
+import Button from 'components/Button/Button.render';
 
 const paddingTop = 40;
 
@@ -36,7 +38,9 @@ class NewPostLoopRender extends PureComponent {
             );
           })}
         </PostLoopContainer>
-        <button>Show More Posts</button>
+        <ButtonContainer verticalSpacing={paddingTop}>
+          <Button>Show More Posts</Button>
+        </ButtonContainer>
       </Section>
     );
   }

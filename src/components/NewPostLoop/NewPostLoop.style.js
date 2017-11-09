@@ -6,6 +6,7 @@ export const Section = styled.section`
   background-color: ${GREY_LIGHTER};
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const PostLoopContainer = styled.div`
@@ -16,4 +17,10 @@ export const PostLoopContainer = styled.div`
   margin-top: ${({ marginTop }) => marginTop}px;
   overflow: hidden;
   justify-content: center;
+`;
+
+export const ButtonContainer = styled.div`
+  max-width: 200px;
+  display: flex;
+  padding: ${({ verticalSpacing }) => verticalSpacing}px 10px;
 `;
