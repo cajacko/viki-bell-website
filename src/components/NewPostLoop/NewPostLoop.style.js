@@ -9,6 +9,11 @@ export const Section = styled.section`
   align-items: center;
 `;
 
+export const Error = styled.span`
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
 export const PostLoopContainer = styled.div`
   flex: 1;
   flex-direction: row;
@@ -19,8 +24,11 @@ export const PostLoopContainer = styled.div`
   justify-content: center;
 `;
 
-export const ButtonContainer = styled.div`
-  max-width: 200px;
-  display: flex;
+export const Footer = styled.div`
   padding: ${({ verticalSpacing }) => verticalSpacing}px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
+export const ButtonContainer = styled.div`max-width: 200px;`;

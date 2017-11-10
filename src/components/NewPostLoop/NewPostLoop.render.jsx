@@ -5,6 +5,8 @@ import {
   Section,
   PostLoopContainer,
   ButtonContainer,
+  Error,
+  Footer,
 } from 'components/NewPostLoop/NewPostLoop.style';
 import Button from 'components/Button/Button.render';
 import WindowResize from 'components/WindowResize/WindowResize.component';
@@ -41,11 +43,16 @@ class NewPostLoopRender extends PureComponent {
               );
             })}
           </PostLoopContainer>
-          <ButtonContainer verticalSpacing={paddingTop}>
-            <Button onClick={this.props.onClick} disabled={buttonDisabled}>
-              {buttonText}
-            </Button>
-          </ButtonContainer>
+          <Footer verticalSpacing={paddingTop}>
+            {this.props.error && (
+              <Error>Woops, could not get the posts, try again.</Error>
+            )}
+            <ButtonContainer>
+              <Button onClick={this.props.onClick} disabled={buttonDisabled}>
+                {buttonText}
+              </Button>
+            </ButtonContainer>
+          </Footer>
         </Section>
       </WindowResize>
     );

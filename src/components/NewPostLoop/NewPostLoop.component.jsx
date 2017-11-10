@@ -111,6 +111,7 @@ class NewPostLoop extends PureComponent {
         onResize={this.onResize}
         onClick={this.onClick}
         loading={this.props.loading}
+        error={this.props.error}
       />
     );
   }
