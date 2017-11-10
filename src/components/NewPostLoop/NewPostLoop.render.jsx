@@ -15,8 +15,18 @@ const paddingTop = 40;
 
 class NewPostLoopRender extends PureComponent {
   render() {
-    const buttonText = this.props.loading ? 'Loading' : 'Show More Posts';
-    const buttonDisabled = this.props.loading;
+    let buttonText;
+    let buttonDisabled = false;
+
+    if (this.props.noMorePosts) {
+      buttonText = 'No more posts';
+      buttonDisabled = true;
+    } else if (this.props.loading) {
+      buttonText = 'Loading';
+      buttonDisabled = true;
+    } else {
+      buttonText = 'Show More Posts';
+    }
 
     return (
       <WindowResize onResize={this.props.onResize}>
