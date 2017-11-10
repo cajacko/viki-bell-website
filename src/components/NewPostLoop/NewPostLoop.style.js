@@ -9,7 +9,7 @@ export const Section = styled.section`
   align-items: center;
 `;
 
-export const LoadingInit = styled.span`
+export const FullWidthMessage = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,19 +18,13 @@ export const LoadingInit = styled.span`
   height: 100%;
   padding: 50px 20px;
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 30px;
   opacity: 0.2;
   box-sizing: border-box;
-
-  @media (max-width: 550px) {
-    font-size: 40px;
-  }
+  text-align: center;
+  max-width: 600px;
 
   @media (max-width: 450px) {
-    font-size: 30px;
-  }
-
-  @media (max-width: 350px) {
     font-size: 20px;
   }
 `;

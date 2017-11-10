@@ -7,7 +7,7 @@ import {
   ButtonContainer,
   Error,
   Footer,
-  LoadingInit,
+  FullWidthMessage,
 } from 'components/NewPostLoop/NewPostLoop.style';
 import Button from 'components/Button/Button.render';
 import WindowResize from 'components/WindowResize/WindowResize.component';
@@ -29,13 +29,24 @@ class NewPostLoopRender extends PureComponent {
       buttonText = 'Show More Posts';
     }
 
-    const initLoading =
-      this.props.init && this.props.loading && this.props.posts.length === 0;
+    let fullWidthMessage;
+
+    if (
+      this.props.init &&
+      this.props.loading &&
+      this.props.posts.length === 0
+    ) {
+      fullWidthMessage = 'Loading posts';
+    } else if (this.props.error && this.props.posts.length === 0) {
+      fullWidthMessage = 'Error loading posts, try refreshing the page';
+    } else if (this.props.posts.length === 0) {
+      fullWidthMessage = 'No posts found';
+    }
 
     return (
       <Section>
-        {initLoading ? (
-          <LoadingInit>Loading Posts</LoadingInit>
+        {fullWidthMessage ? (
+          <FullWidthMessage>{fullWidthMessage}</FullWidthMessage>
         ) : (
           <WindowResize onResize={this.props.onResize}>
             <div>
