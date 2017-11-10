@@ -113,6 +113,7 @@ class NewPostLoop extends PureComponent {
         loading={this.props.loading}
         error={this.props.error}
         noMorePosts={this.props.noMorePosts}
+        init={this.props.init}
       />
     );
   }

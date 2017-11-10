@@ -9,6 +9,32 @@ export const Section = styled.section`
   align-items: center;
 `;
 
+export const LoadingInit = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 50px 20px;
+  text-transform: uppercase;
+  font-size: 50px;
+  opacity: 0.2;
+  box-sizing: border-box;
+
+  @media (max-width: 550px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 20px;
+  }
+`;
+
 export const Error = styled.span`
   margin-bottom: 10px;
   text-align: center;
