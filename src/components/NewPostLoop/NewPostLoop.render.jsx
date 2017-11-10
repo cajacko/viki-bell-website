@@ -44,9 +44,10 @@ class NewPostLoopRender extends PureComponent {
             })}
           </PostLoopContainer>
           <Footer verticalSpacing={paddingTop}>
-            {this.props.error && (
-              <Error>Woops, could not get the posts, try again.</Error>
-            )}
+            {this.props.error &&
+              !this.props.loading && (
+                <Error>Woops, could not get the posts, try again.</Error>
+              )}
             <ButtonContainer>
               <Button onClick={this.props.onClick} disabled={buttonDisabled}>
                 {buttonText}

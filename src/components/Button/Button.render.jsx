@@ -13,7 +13,7 @@ class Button extends PureComponent {
   }
 
   render() {
-    const styleFunc = style.default;
+    const styleFunc = this.props.disabled ? style.disabled : style.default;
 
     const Element = styleFunc('button');
 
