@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import NewPostLoopRender from 'components/NewPostLoop/NewPostLoop.render';
+import NewFourOhFour from 'components/NewFourOhFour/NewFourOhFour.render';
 
 const postRowsToGetByColumnCount = {
   1: 6,
@@ -17,6 +18,7 @@ class NewPostLoop extends PureComponent {
     this.state = {
       posts: this.getVisiblePosts(props.posts, postsPerRow),
       postsPerRow,
+      fourOhFour: false,
     };
 
     this.onResize = this.onResize.bind(this);
@@ -67,6 +69,15 @@ class NewPostLoop extends PureComponent {
 
       if (props.taxonomy && props.value) {
         taxonomyId = props.categoriesBySlug[props.value];
+
+        if (!taxonomyId) {
+          this.setState({ fourOhFour: true });
+          return;
+        }
+      }
+
+      if (this.state.fourOhFour === true) {
+        this.setState({ fourOhFour: false });
       }
 
       props.getPosts(taxonomyId, skip, count);
@@ -116,6 +127,10 @@ class NewPostLoop extends PureComponent {
   }
 
   render() {
+    if (this.state.fourOhFour) {
+      return <NewFourOhFour />;
+    }
+
     return (
       <NewPostLoopRender
         posts={this.state.posts}
