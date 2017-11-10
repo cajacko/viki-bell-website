@@ -21,7 +21,7 @@ const SiteNavItem = ({ icon, url, title, to, mobile, hidden, mobileShow }) => {
 
   return (
     <li className={listClasses}>
-      <Link to={to} className={linkClasses}>
+      <Link noStyle to={to} className={linkClasses}>
         <div style={{ display: mobileShow && 'inline-block' }}>
           <Icon icon={icon} className="SiteNav-icon" />
         </div>

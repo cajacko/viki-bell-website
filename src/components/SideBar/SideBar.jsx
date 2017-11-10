@@ -23,6 +23,7 @@ const SideBar = () => (
           <ul className="Sidebar-socialWrap">
             <li className="Sidebar-socialItem--twitter Sidebar-socialItem">
               <Link
+                noStyle
                 className="Sidebar-socialLink"
                 to="https://twitter.com/Vikiibell/"
               >
@@ -36,6 +37,7 @@ const SideBar = () => (
             </li>
             <li className="Sidebar-socialItem--instagram Sidebar-socialItem">
               <Link
+                noStyle
                 className="Sidebar-socialLink"
                 to="https://www.instagram.com/vikibell/"
               >
@@ -49,6 +51,7 @@ const SideBar = () => (
             </li>
             <li className="Sidebar-socialItem--pinterest Sidebar-socialItem">
               <Link
+                noStyle
                 className="Sidebar-socialLink"
                 to="https://www.pinterest.com/vikiibell/"
               >

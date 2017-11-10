@@ -6,8 +6,17 @@ const Link = (props) => {
   const componentProps = Object.assign({}, props);
   delete componentProps.to;
   if (componentProps.theme !== undefined) delete componentProps.theme;
+  if (componentProps.noStyle !== undefined) delete componentProps.noStyle;
 
-  const styleFunc = style[props.theme] || style.default;
+  let styleFunc;
+
+  if (props.noStyle) {
+    styleFunc = Element => Element;
+  } else if (style[props.theme]) {
+    styleFunc = style[props.theme];
+  } else {
+    styleFunc = style.default;
+  }
 
   if (props.to.includes('http')) {
     const Element = styleFunc('a');
