@@ -50,6 +50,7 @@ class NewPostLoopItem extends PureComponent {
         postWidth={this.props.postWidth}
         paddingTop={this.props.paddingTop}
         url={url}
+        maxWidth={this.props.maxWidth}
       />
     );
   }

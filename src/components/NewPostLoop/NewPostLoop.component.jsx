@@ -12,8 +12,9 @@ class NewPostLoop extends PureComponent {
   constructor(props) {
     super(props);
 
-    const postsPerRow = this.getPostsPerRow(window.innerWidth);
+    this.maxLoopItemWidth = 200;
     this.getPostsCount = 1;
+    const postsPerRow = this.getPostsPerRow(window.innerWidth);
 
     this.state = {
       posts: this.getVisiblePosts(props.posts, postsPerRow),
@@ -24,6 +25,7 @@ class NewPostLoop extends PureComponent {
     this.onResize = this.onResize.bind(this);
     this.getPosts = this.getPosts.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.getPostsPerRow = this.getPostsPerRow.bind(this);
   }
 
   componentDidMount() {
@@ -85,7 +87,7 @@ class NewPostLoop extends PureComponent {
   }
 
   getPostsPerRow(width) {
-    let postsPerRow = Math.floor(width / 200);
+    let postsPerRow = Math.floor(width / this.maxLoopItemWidth);
 
     if (postsPerRow < 1) postsPerRow = 1;
 
@@ -141,6 +143,7 @@ class NewPostLoop extends PureComponent {
         error={this.props.error}
         noMorePosts={this.props.noMorePosts}
         init={this.props.init}
+        maxLoopItemWidth={this.maxLoopItemWidth}
       />
     );
   }
