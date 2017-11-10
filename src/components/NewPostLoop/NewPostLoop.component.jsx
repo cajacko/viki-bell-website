@@ -26,7 +26,7 @@ class NewPostLoop extends PureComponent {
 
   componentDidMount() {
     if (this.state.posts.length === 0) {
-      this.getPosts(true);
+      this.getPosts(true, this.props);
     }
   }
 
@@ -38,9 +38,14 @@ class NewPostLoop extends PureComponent {
         this.getPostsCount,
       ),
     });
+
+    if (this.props.value !== props.value) {
+      this.getPostsCount = 1;
+      this.getPosts(true, props);
+    }
   }
 
-  getPosts(init) {
+  getPosts(init, props) {
     if (!init) this.getPostsCount += 1;
 
     const numberOfPostsToShow = this.getNumberOfPostsToShow(
@@ -48,16 +53,23 @@ class NewPostLoop extends PureComponent {
     );
 
     const visiblePosts = this.getVisiblePosts(
-      this.props.posts,
+      props.posts,
       this.state.postsPerRow,
     );
 
     if (numberOfPostsToShow <= visiblePosts.length) {
       this.setState({ posts: visiblePosts });
     } else {
-      const skip = this.props.posts.length;
+      const skip = props.posts.length;
       const count = this.getPostsPerBatch(this.state.postsPerRow) * 2;
-      this.props.getPosts(undefined, skip, count);
+
+      let taxonomyId;
+
+      if (props.taxonomy && props.value) {
+        taxonomyId = props.categoriesBySlug[props.value];
+      }
+
+      props.getPosts(taxonomyId, skip, count);
     }
   }
 
@@ -100,7 +112,7 @@ class NewPostLoop extends PureComponent {
   }
 
   onClick() {
-    this.getPosts();
+    this.getPosts(false, this.props);
   }
 
   render() {

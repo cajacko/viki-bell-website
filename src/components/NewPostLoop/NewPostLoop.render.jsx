@@ -31,16 +31,14 @@ class NewPostLoopRender extends PureComponent {
 
     let fullWidthMessage;
 
-    if (
-      this.props.init &&
-      this.props.loading &&
-      this.props.posts.length === 0
-    ) {
-      fullWidthMessage = 'Loading posts';
-    } else if (this.props.error && this.props.posts.length === 0) {
-      fullWidthMessage = 'Error loading posts, try refreshing the page';
-    } else if (this.props.posts.length === 0) {
-      fullWidthMessage = 'No posts found';
+    if (this.props.posts.length === 0) {
+      if (this.props.loading) {
+        fullWidthMessage = 'Loading posts';
+      } else if (this.props.error) {
+        fullWidthMessage = 'Error loading posts, try refreshing the page';
+      } else {
+        fullWidthMessage = 'No posts found';
+      }
     }
 
     return (

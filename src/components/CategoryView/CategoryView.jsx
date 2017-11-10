@@ -6,21 +6,11 @@ const CategoryView = ({ match }) => (
     components={[
       { component: 'siteNav' },
       { component: 'bannerType' },
+      { component: 'title', value: match.params.slug },
       {
-        component: 'contentWrap',
-        components: [
-          {
-            component: 'mainWrap',
-            components: [
-              {
-                component: 'posts',
-                taxonomy: 'category',
-                value: match.params.slug,
-              },
-            ],
-          },
-          { component: 'sideBar' },
-        ],
+        component: 'newPostLoop',
+        taxonomy: 'category',
+        value: match.params.slug,
       },
     ]}
   />
