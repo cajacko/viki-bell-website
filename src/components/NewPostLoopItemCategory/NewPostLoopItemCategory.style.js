@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { GREY } from 'constants/colours';
 import { FONT_SIZES } from 'constants/fonts';
 
 export const Category = styled.span`

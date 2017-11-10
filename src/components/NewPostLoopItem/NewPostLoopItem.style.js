@@ -14,6 +14,8 @@ export const ArticleContainer = styled.div`
   border: 1px solid ${GREY_LIGHT};
   border-right: none;
   ${({ noLeftBorder }) => noLeftBorder && 'border-left: none;'};
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ImageContainer = styled.div`
@@ -23,10 +25,17 @@ export const ImageContainer = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 5px 15px 20px 15px;
+  flex: 1;
+  justify-content: space-between;
+`;
+
+export const ContentHeader = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const Title = styled.h2`
