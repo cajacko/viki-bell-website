@@ -31,7 +31,7 @@ const Breadcrumbs = ({ contentType, title, slug }) => {
             itemType="http://data-vocabulary.org/Breadcrumb"
             key={link}
           >
-            <Link className="Breadcrumbs-link" to={link} itemProp="url">
+            <Link noStyle className="Breadcrumbs-link" to={link} itemProp="url">
               <span className="Breadcrumbs-title" itemProp="title">
                 {text}
               </span>

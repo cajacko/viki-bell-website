@@ -31,7 +31,7 @@ const FullWidthMultiImageBannerRender = ({
         {leftImage && <Item element={BannerImage} left itemId={leftImage} />}
         <Center innerRef={setCenter}>
           {logoTitle && (
-            <Link to="/">
+            <Link noStyle to="/">
               <IconContainer>
                 <Icon icon="logo" />
               </IconContainer>

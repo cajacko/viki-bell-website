@@ -13,6 +13,7 @@ const FeaturedImageLink = (props) => {
 
   return (
     <Link
+      noStyle
       className="Post-headerLink"
       to={url}
       itemProp="image"
