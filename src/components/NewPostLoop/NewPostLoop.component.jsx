@@ -110,6 +110,7 @@ class NewPostLoop extends PureComponent {
         postsPerRow={this.state.postsPerRow}
         onResize={this.onResize}
         onClick={this.onClick}
+        loading={this.props.loading}
       />
     );
   }

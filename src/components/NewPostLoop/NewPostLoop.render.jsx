@@ -13,6 +13,9 @@ const paddingTop = 40;
 
 class NewPostLoopRender extends PureComponent {
   render() {
+    const buttonText = this.props.loading ? 'Loading' : 'Show More Posts';
+    const buttonDisabled = this.props.loading;
+
     return (
       <WindowResize onResize={this.props.onResize}>
         <Section>
@@ -39,7 +42,9 @@ class NewPostLoopRender extends PureComponent {
             })}
           </PostLoopContainer>
           <ButtonContainer verticalSpacing={paddingTop}>
-            <Button onClick={this.props.onClick}>Show More Posts</Button>
+            <Button onClick={this.props.onClick} disabled={buttonDisabled}>
+              {buttonText}
+            </Button>
           </ButtonContainer>
         </Section>
       </WindowResize>
