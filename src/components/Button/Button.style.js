@@ -15,9 +15,13 @@ export default {
   default: Element => styled(Element)`
     color: ${WHITE};
     cursor: pointer;
-    background-color: ${({ hover }) => (hover ? JELLY_BEAN_DARK : JELLY_BEAN)};
-    text-decoration: ${({ hover }) => (hover ? 'underline' : 'inherit')};
+    background-color: ${JELLY_BEAN};
     ${buttonDefaults};
+    :hover {
+      text-decoration: underline;
+      color: ${WHITE};
+      background-color: ${JELLY_BEAN_DARK};
+    }
   `,
 
   disabled: Element => styled(Element)`

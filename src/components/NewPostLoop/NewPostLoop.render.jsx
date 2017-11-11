@@ -80,7 +80,6 @@ class NewPostLoopRender extends PureComponent {
                   <Button
                     onClick={this.props.onClick}
                     disabled={buttonDisabled}
-                    setHover={this.props.setButtonHover}
                   >
                     {buttonText}
                   </Button>

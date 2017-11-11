@@ -36,7 +36,6 @@ class NewPostLoop extends PureComponent {
     this.getPosts = this.getPosts.bind(this);
     this.onClick = this.onClick.bind(this);
     this.getPostsPerRow = this.getPostsPerRow.bind(this);
-    this.assignSetButtonHover = this.assignSetButtonHover.bind(this);
   }
 
   componentDidMount() {
@@ -164,11 +163,6 @@ class NewPostLoop extends PureComponent {
 
   onClick() {
     this.getPosts(false, this.props);
-    if (this.setButtonHover) this.setButtonHover(false);
-  }
-
-  assignSetButtonHover(callback) {
-    this.setButtonHover = callback;
   }
 
   render() {
@@ -187,7 +181,6 @@ class NewPostLoop extends PureComponent {
         noMorePosts={this.props.noMorePosts}
         init={this.props.init}
         maxLoopItemWidth={this.maxLoopItemWidth}
-        setButtonHover={this.assignSetButtonHover}
       />
     );
   }
