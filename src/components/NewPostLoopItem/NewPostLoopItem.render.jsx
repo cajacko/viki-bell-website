@@ -32,6 +32,7 @@ class NewPostLoopItemRender extends PureComponent {
                 element={Image}
                 itemId={this.props.featuredImage}
                 fillContainer
+                width={this.props.maxWidth * 2}
               />
             </ImageContainer>
           </Link>

@@ -14,7 +14,7 @@ class BannerImageRender extends PureComponent {
             left={this.props.left}
             right={this.props.right}
           >
-            <Image file={this.props.image} />
+            <Image file={this.props.image} width={1000} />
           </ImageDiv>
         </Container>
       </WindowResize>

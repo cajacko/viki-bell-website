@@ -66,6 +66,7 @@ class NewPostLoopRender extends PureComponent {
                       paddingTop={paddingTop}
                       postWidth={100 / this.props.postsPerRow}
                       noLeftBorder={noLeftBorder}
+                      maxWidth={this.props.maxLoopItemWidth}
                     />
                   );
                 })}
