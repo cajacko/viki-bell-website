@@ -8,18 +8,28 @@ const postRowsToGetByColumnCount = {
   default: 2,
 };
 
+const maxWidthsByWindowSize = [
+  { window: 800, width: 180 },
+  { window: 970, width: 220 },
+  { width: 240 },
+];
+
 class NewPostLoop extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.maxLoopItemWidth = 200;
     this.getPostsCount = 1;
-    const postsPerRow = this.getPostsPerRow(window.innerWidth);
+    const maxLoopItemWidth = this.getMaxLoopItemWidth(window.innerWidth);
+    const postsPerRow = this.getPostsPerRow(
+      window.innerWidth,
+      maxLoopItemWidth,
+    );
 
     this.state = {
       posts: this.getVisiblePosts(props.posts, postsPerRow),
       postsPerRow,
       fourOhFour: false,
+      maxLoopItemWidth,
     };
 
     this.onResize = this.onResize.bind(this);
@@ -47,6 +57,20 @@ class NewPostLoop extends PureComponent {
       this.getPostsCount = 1;
       this.getPosts(true, props);
     }
+  }
+
+  getMaxLoopItemWidth(width) {
+    for (let i = 0; i < maxWidthsByWindowSize.length; i += 1) {
+      if (maxWidthsByWindowSize[i].window) {
+        if (width < maxWidthsByWindowSize[i].window) {
+          return maxWidthsByWindowSize[i].width;
+        }
+      } else {
+        return maxWidthsByWindowSize[i].width;
+      }
+    }
+
+    return maxWidthsByWindowSize[maxWidthsByWindowSize.length - 1].width;
   }
 
   getPosts(init, props) {
@@ -86,8 +110,8 @@ class NewPostLoop extends PureComponent {
     }
   }
 
-  getPostsPerRow(width) {
-    let postsPerRow = Math.floor(width / this.maxLoopItemWidth);
+  getPostsPerRow(width, maxLoopItemWidth) {
+    let postsPerRow = Math.floor(width / maxLoopItemWidth);
 
     if (postsPerRow < 1) postsPerRow = 1;
 
@@ -115,13 +139,26 @@ class NewPostLoop extends PureComponent {
   }
 
   onResize(width) {
-    const postsPerRow = this.getPostsPerRow(width);
+    const maxLoopItemWidth = this.getMaxLoopItemWidth(width);
+    const postsPerRow = this.getPostsPerRow(width, maxLoopItemWidth);
+
+    let state;
 
     if (postsPerRow !== this.state.postsPerRow) {
       const visiblePosts = this.getVisiblePosts(this.props.posts, postsPerRow);
 
-      this.setState({ postsPerRow, posts: visiblePosts });
+      state = { postsPerRow, posts: visiblePosts };
     }
+
+    if (maxLoopItemWidth !== this.state.maxLoopItemWidth) {
+      if (state) {
+        state.maxLoopItemWidth = maxLoopItemWidth;
+      } else {
+        state = { maxLoopItemWidth };
+      }
+    }
+
+    if (state) this.setState(state);
   }
 
   onClick() {
