@@ -12,6 +12,7 @@ const SiteNavSubNav = ({
 }) => (
   <li className="SiteNav-item SiteNavMain-item u-hasDropDown">
     <Link
+      noStyle
       className="SiteNavMain-link SiteNav-link u-controlsDropdown u-clearFix"
       to={mainTo}
       aria-controls="SiteNav-subNav--2"

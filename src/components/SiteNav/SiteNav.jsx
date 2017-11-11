@@ -21,6 +21,7 @@ class SiteNav extends Component {
         <ul className="SiteNav-list u-clearFix u-wrap">
           <li className="SiteTitle SiteNav-item">
             <Link
+              noStyle
               id="MicroData-person"
               className="SiteTitle-link SiteNav-link"
               to="/"

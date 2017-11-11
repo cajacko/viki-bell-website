@@ -51,6 +51,7 @@ class Twitter extends Component {
       <div className="TweetLoop">
         <header>
           <Link
+            noStyle
             className="TweetLoop-headerLink"
             to="http://twitter.com/Vikiibell"
           >
@@ -74,7 +75,11 @@ class Twitter extends Component {
         </div>
 
         <footer>
-          <Link className="TweetLoop-follow" to="http://twitter.com/Vikiibell">
+          <Link
+            noStyle
+            className="TweetLoop-follow"
+            to="http://twitter.com/Vikiibell"
+          >
             Follow @vikibell
           </Link>
         </footer>

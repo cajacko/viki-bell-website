@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import HomeView from 'components/HomeView/HomeView';
@@ -14,7 +14,7 @@ import CategoryView from 'components/CategoryView/CategoryView';
 import PageView from 'components/PageView/PageView';
 import AppError from 'components/AppError/AppError';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
   }

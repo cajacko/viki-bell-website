@@ -1,4 +1,4 @@
-export default (state = true, { type }) => {
+export default (state = 'loading', { type }) => {
   switch (type) {
     case 'GET_GLOBAL_SUCCESS':
       return 'success';

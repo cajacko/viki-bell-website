@@ -44,7 +44,12 @@ const PostLoopItem = (props) => {
           {date.format('DD.MM')}
         </time>
         <Item element={FeaturedImageLink} itemId={featuredImage} url={url} />
-        <Link className="Post-headerLink" to={url} itemProp="mainEntityOfPage">
+        <Link
+          noStyle
+          className="Post-headerLink"
+          to={url}
+          itemProp="mainEntityOfPage"
+        >
           <h2 className="Post-title" itemProp="headline">
             {title}
           </h2>

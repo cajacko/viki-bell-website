@@ -6,19 +6,7 @@ const PostsView = () => (
     components={[
       { component: 'siteNav' },
       { component: 'bannerType' },
-      {
-        component: 'contentWrap',
-        components: [
-          {
-            component: 'mainWrap',
-            components: [
-              { component: 'breadcrumbs' },
-              { component: 'postLoop' },
-            ],
-          },
-          { component: 'sideBar' },
-        ],
-      },
+      { component: 'newPostLoop', taxonomy: null, value: null },
     ]}
   />
 );

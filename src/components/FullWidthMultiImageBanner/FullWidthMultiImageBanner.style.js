@@ -43,4 +43,14 @@ export const TagLine = styled.h2`
 
 export const SiteHeader = styled.h1`display: none;`;
 
-export const Center = styled.div`padding: 50px;`;
+function centerPadding({ leftImage, rightImage, horizontalPadding }) {
+  const verticalPadding = 50;
+
+  if (!leftImage && !rightImage) {
+    return `${verticalPadding}px 0px`;
+  }
+
+  return `${verticalPadding}px ${horizontalPadding}px`;
+}
+
+export const Center = styled.div`padding: ${centerPadding};`;

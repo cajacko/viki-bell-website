@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Template from 'components/Template/Template.component';
 
-const HomeView = () => (
-  <Template
-    components={[
-      { component: 'siteNav' },
-      { component: 'bannerType' },
-      {
-        component: 'contentWrap',
-        components: [
-          {
-            component: 'mainWrap',
-            components: [
-              { component: 'postLoop', taxonomy: null, value: null },
-            ],
-          },
-          { component: 'sideBar' },
-        ],
-      },
-    ]}
-  />
-);
+class HomeView extends PureComponent {
+  render() {
+    return (
+      <Template
+        components={[
+          { component: 'siteNav' },
+          { component: 'bannerType' },
+          { component: 'newPostLoop', taxonomy: null, value: null },
+        ]}
+      />
+    );
+  }
+}
 
 export default HomeView;
