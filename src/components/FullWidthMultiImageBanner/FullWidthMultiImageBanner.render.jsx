@@ -29,7 +29,12 @@ const FullWidthMultiImageBannerRender = ({
     <WindowResize onResize={onResize}>
       <Section leftImage={leftImage} rightImage={rightImage}>
         {leftImage && <Item element={BannerImage} left itemId={leftImage} />}
-        <Center innerRef={setCenter}>
+        <Center
+          innerRef={setCenter}
+          leftImage={!!leftImage}
+          rightImage={!!rightImage}
+          horizontalPadding={0}
+        >
           {logoTitle && (
             <Link to="/">
               <IconContainer>
