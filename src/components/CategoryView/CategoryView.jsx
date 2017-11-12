@@ -12,6 +12,7 @@ const CategoryView = ({ match }) => (
         taxonomy: 'category',
         value: match.params.slug,
       },
+      { component: 'footer' },
     ]}
   />
 );
