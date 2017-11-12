@@ -9,6 +9,7 @@ class HomeView extends PureComponent {
           { component: 'siteNav' },
           { component: 'bannerType' },
           { component: 'newPostLoop', taxonomy: null, value: null },
+          { component: 'footer' },
         ]}
       />
     );
