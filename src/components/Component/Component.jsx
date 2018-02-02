@@ -18,6 +18,7 @@ import BannerType from 'components/BannerType/BannerType.container';
 import NewPostLoop from 'components/NewPostLoop/NewPostLoop.container';
 import Title from 'components/Title/Title.container';
 import Footer from 'components/Footer/Footer.render';
+import Single from 'components/Single/Single.container';
 
 const componentMap = {
   banner: FullWidthMultiImageBanner,
@@ -39,9 +40,10 @@ const componentMap = {
   newPostLoop: NewPostLoop,
   title: Title,
   footer: Footer,
+  single: Single,
 };
 
-const Component = (props) => {
+const Component = props => {
   const Element = componentMap[props.component];
 
   if (!Element) {
