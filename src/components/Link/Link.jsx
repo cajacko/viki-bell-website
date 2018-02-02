@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import style from 'components/Link/Link.style';
 
-const Link = (props) => {
+const Link = props => {
   const componentProps = Object.assign({}, props);
   delete componentProps.to;
   if (componentProps.theme !== undefined) delete componentProps.theme;
