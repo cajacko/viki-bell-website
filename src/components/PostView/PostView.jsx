@@ -6,6 +6,7 @@ const PostsView = ({ match }) => (
     components={[
       { component: 'siteNav' },
       { component: 'bannerType' },
+      { component: 'title', value: match.params.slug, type: 'POST' },
       {
         component: 'contentWrap',
         components: [
