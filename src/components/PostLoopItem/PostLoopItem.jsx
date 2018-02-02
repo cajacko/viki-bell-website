@@ -7,7 +7,7 @@ import Item from 'components/Item/Item';
 import FeaturedImageLink from 'components/FeaturedImageLink/FeaturedImageLink';
 import Content from 'components/Content/Content';
 
-const PostLoopItem = (props) => {
+const PostLoopItem = props => {
   const {
     share,
     title,
@@ -44,16 +44,6 @@ const PostLoopItem = (props) => {
           {date.format('DD.MM')}
         </time>
         <Item element={FeaturedImageLink} itemId={featuredImage} url={url} />
-        <Link
-          noStyle
-          className="Post-headerLink"
-          to={url}
-          itemProp="mainEntityOfPage"
-        >
-          <h2 className="Post-title" itemProp="headline">
-            {title}
-          </h2>
-        </Link>
       </header>
 
       {content ? (
