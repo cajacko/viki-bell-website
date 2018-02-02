@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Section, Heading } from 'components/Title/Title.style';
+import { Section, Heading, Time } from 'components/Title/Title.style';
 
 class TitleRender extends PureComponent {
   render() {
@@ -11,7 +11,7 @@ class TitleRender extends PureComponent {
       <Section>
         <Heading>{this.props.title}</Heading>
         {this.props.dateDisplay && (
-          <time dateTime={this.props.dateString}>{this.props.dateDisplay}</time>
+          <Time dateTime={this.props.dateString}>{this.props.dateDisplay}</Time>
         )}
       </Section>
     );
