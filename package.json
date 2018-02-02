@@ -52,6 +52,7 @@
     "command-line-args": "4.0.6",
     "contentful": "^4.5.0",
     "contentful-management": "^3.9.1",
+    "copyfiles": "^1.2.0",
     "cucumber": "2.3.0",
     "deep-equal": "^1.0.1",
     "dotenv": "https://registry.npmjs.org/dotenv/-/dotenv-4.0.0.tgz",
