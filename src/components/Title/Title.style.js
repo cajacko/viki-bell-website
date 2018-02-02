@@ -18,6 +18,14 @@ export const Heading = styled.h1`
   width: 100%;
   text-transform: uppercase;
   color: ${GREY_DARK};
+
+  @media (max-width: 800px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 26px;
+  }
 `;
 
 export const Time = styled.time`
