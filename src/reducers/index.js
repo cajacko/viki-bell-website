@@ -10,6 +10,7 @@ import categoriesBySlug from 'reducers/categoriesBySlug';
 import preview from 'reducers/preview';
 import pagesBySlug from 'reducers/pagesBySlug';
 import maxPostLimit from 'reducers/maxPostLimit';
+import profileImage from 'reducers/profileImage';
 
 export default combineReducers({
   items,
@@ -23,4 +24,5 @@ export default combineReducers({
   categoriesBySlug,
   preview,
   maxPostLimit,
+  profileImage,
 });
