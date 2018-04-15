@@ -9,9 +9,9 @@ export default (state = null, { type, payload }) => {
         if (
           item.contentType === 'siteSettings' &&
           item.type === 'Site Settings - Live' &&
-          item.banner
+          item.profileImage
         ) {
-          newState = item.banner;
+          newState = item.profileImage;
         }
       });
 
