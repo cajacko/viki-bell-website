@@ -1,23 +1,29 @@
 /* eslint max-lines: 0 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'components/Link/Link';
 import Icon from 'components/Icon/Icon';
 import Twitter from 'components/Twitter/Twitter.container';
+import Image from 'components/Image/Image';
 
-const SideBar = () => (
+const SideBar = ({ profileImage, profileImageAlt }) => (
   <aside className="Sidebar">
     <div className="Sidebar-wrap">
       <div className="Sidebar-main u-clearFix">
-        <ul className="Profile">
-          <li className="Profile-item">
-            <img
-              className="Profile-image"
-              src="https://images.contentful.com/3ctegf19trkf/do1FRI7iZasuwuKykm8ok/3f7cbee1f47f5a5777820baead45c206/profile.jpg"
-              alt="Alt text"
-            />
-          </li>
-        </ul>
+        {profileImage && (
+          <ul className="Profile">
+            <li className="Profile-item">
+              <Image
+                className="Profile-image"
+                title={profileImageAlt}
+                file={profileImage}
+                height={600}
+                width={600}
+              />
+            </li>
+          </ul>
+        )}
 
         <div className="Sidebar-social">
           <ul className="Sidebar-socialWrap">
@@ -75,5 +81,23 @@ const SideBar = () => (
     </div>
   </aside>
 );
+
+SideBar.propTypes = {
+  profileImage: PropTypes.shape({
+    url: PropTypes.string,
+    details: PropTypes.shape({
+      image: PropTypes.shape({
+        height: PropTypes.number,
+        width: PropTypes.number,
+      }),
+    }),
+  }),
+  profileImageAlt: PropTypes.string,
+};
+
+SideBar.defaultProps = {
+  profileImage: null,
+  profileImageAlt: null,
+};
 
 export default SideBar;
